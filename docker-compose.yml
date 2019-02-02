@@ -1,0 +1,53 @@
+version: "3"
+services:
+  db:
+    image: postgres:10-alpine
+    container_name: celebMark_postgres
+    env_file:
+      - config/env/db_env
+    networks:
+      - db_network
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+
+  web:
+    container_name: celebMark_django
+    build: .
+    env_file:
+      - config/env/web_env
+    volumes:
+      - ./celebMark:/code/
+      - ./logs:/logs/
+    depends_on:
+      - db
+    networks:
+      - db_network
+      - nginx_network
+    restart: always
+    command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn celebMark.wsgi -w 4 -b 0.0.0.0:8000 --reload --access-logfile /logs/gunicorn-access.log --error-logfile /logs/gunicorn-error.log"
+
+  nginx:
+    container_name: celebMark_nginx
+    image: nginx:1.13-alpine
+    ports:
+      # 5000->Static(React),  8000->gunicorn(Django/HTTP)
+      - 5000:80
+      - 8000:90
+    volumes:
+      - ./config/nginx/conf.d:/etc/nginx/conf.d
+      - ./celebMark:/code/
+      - ./logs:/logs/
+      - ./frontend:/frontend/
+    depends_on:
+      - web
+    networks:
+      - nginx_network
+
+networks:
+  nginx_network:
+    driver: bridge
+  db_network:
+    driver: bridge
+
+volumes:
+  postgres_data:
