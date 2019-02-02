@@ -27,6 +27,9 @@ DEBUG = os.environ.get("DEBUG",'') == 'True'
 
 ALLOWED_HOSTS = ['celebmarkserver']
 
+if DEBUG:
+    ALLOWED_HOSTS+=['localhost']
+
 # Application definition
 
 INSTALLED_APPS = [
