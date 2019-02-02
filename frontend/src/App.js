@@ -1,9 +1,17 @@
 import React, { Component } from 'react';
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Checkbox, Form, Container, Divider, Header, Icon, Image } from 'semantic-ui-react'
 
 class App extends Component {
   render() {
     return (
+		<Container>
+
+		<div>
+    <Header as='h2' icon textAlign='center'>
+      <Icon name='users' circular />
+      <Header.Content>Celeb Mark | Signup</Header.Content>
+    </Header>
+    </div>
 		<Form>
    	 <Form.Field>
      	 <label>First Name</label>
@@ -43,6 +51,7 @@ class App extends Component {
     </Form.Field>
     		<Button type='submit'>Signup</Button>
   </Form>
+  </Container>
     );
   }
 }
