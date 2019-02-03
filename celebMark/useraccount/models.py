@@ -80,5 +80,8 @@ class User(AbstractBaseUser):
     @property
     def get_name(self):
         return f"{self.first_name} {self.last_name}"
+    @property
+    def id(self):
+        return self.user_name
 
     objects = UserManager()
