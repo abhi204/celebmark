@@ -2,6 +2,7 @@ from django.urls import reverse
 from rest_framework.test import APITestCase
 from useraccount.models import User
 from rest_framework import status
+from rest_framework.authtoken.models import Token
 
 class AccountsTest(APITestCase):
     def setUp(self):
@@ -24,7 +25,7 @@ class AccountsTest(APITestCase):
         """
         data = {
             'first_name': 'foo',
-            'last_name': 'bar',
+            'last_name': 'Sbar',
             'user_name': 'foobar',
             'mobile': '7080808080',
             'email': 'foobar@example.com',
@@ -32,7 +33,7 @@ class AccountsTest(APITestCase):
         }
 
         response = self.client.post(self.create_url , data, format='json')
-
+        user = User.objects.get(user_name='foobar')
         # We want to make sure we have two users in the database..
         self.assertEqual(User.objects.count(), 2)
         # And that we're returning a 201 created code.
@@ -40,6 +41,8 @@ class AccountsTest(APITestCase):
         # Additionally, we want to return the user_name and email upon successful creation.
         self.assertEqual(response.data['user_name'], data['user_name'])
         self.assertEqual(response.data['email'], data['email'])
+        token = Token.objects.get(user=user)
+        self.assertEqual(response.data['token'], token.key)
 
     def test_create_user_with_no_password(self):
         data = {
