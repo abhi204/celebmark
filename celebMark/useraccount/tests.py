@@ -16,8 +16,9 @@ class AccountsTest(APITestCase):
             password='testpassword'
             )
 
-        # URL for creating an account.
+        # URL for creating an account | getting auth token
         self.create_url = reverse('register-user')
+        self.token_url = reverse('get-auth-token')
 
     def test_create_user(self):
         """
@@ -103,3 +104,26 @@ class AccountsTest(APITestCase):
         self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
         self.assertEqual(User.objects.count(), 1)
         self.assertEqual(len(response.data['user_name']), 1)
+
+    def test_get_auth_token_for_existing_user(self):
+        user_name = 'testuser'
+        password = 'testpassword'
+        data = {
+            'username': user_name,
+            'password': password
+        }
+        response = self.client.post(self.token_url, data, format='json')
+        user = User.objects.get(user_name=user_name)
+        token = Token.objects.get(user=user)
+        self.assertEqual(response.status_code,status.HTTP_200_OK)
+        self.assertEqual(response.data['token'],token.key)
+
+    def test_get_auth_token_for_wrong_user(self):
+        user_name = 'wronguser'
+        password = 'wrongpassword'
+        data = {
+            'username': user_name,
+            'password': password
+        }
+        response = self.client.post(self.token_url, data, format='json')
+        self.assertEqual(response.status_code,status.HTTP_400_BAD_REQUEST)
