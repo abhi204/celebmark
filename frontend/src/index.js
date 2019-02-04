@@ -1,21 +1,21 @@
-// import './index.css';
 import * as serviceWorker from './serviceWorker';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { applyMiddleware, createStore } from 'redux';
+import createAppStore from './configureStore';
+import { PersistGate } from 'redux-persist/integration/react';
+import Routes from './routes';
 
+const { persistor, store } = createAppStore();
 
-import App from './App';
-import reducer from './reducers';
-
-const createStoreWithMiddleware = applyMiddleware()(createStore);
-
+// window.store = store
 
 ReactDOM.render(
-    <Provider store={createStoreWithMiddleware(reducer)}>
-        <App />
-    </Provider>,
+    <PersistGate persistor={persistor}>
+    <Provider store={store}>
+        <Routes/>
+    </Provider>
+    </PersistGate>,
     document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
