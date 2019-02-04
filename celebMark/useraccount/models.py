@@ -16,6 +16,7 @@ class UserManager(BaseUserManager):
         """
         now = timezone.now()
         user = self.model(user_name=user_name,
+                        id=user_name,
                         is_staff=is_staff, is_superuser=is_superuser,
                         last_login=now,
                         **extra_fields)
@@ -50,6 +51,8 @@ class User(AbstractBaseUser):
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
 
+    #required by simple-jwt
+    id = models.CharField(max_length=255, blank=True)
 
     class Meta:
         verbose_name = "User"
@@ -80,8 +83,5 @@ class User(AbstractBaseUser):
     @property
     def get_name(self):
         return f"{self.first_name} {self.last_name}"
-    @property
-    def id(self):
-        return self.user_name
 
     objects = UserManager()
