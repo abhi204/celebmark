@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from useraccount.models import User
-from rest_framework.authtoken.models import Token
 
 class UserSerializer(serializers.ModelSerializer):
     user_name = serializers.CharField(
@@ -14,15 +13,10 @@ class UserSerializer(serializers.ModelSerializer):
             validators = [UniqueValidator(queryset=User.objects.all())]
     )
     password = serializers.CharField(min_length=8)
-    token = serializers.SerializerMethodField()
-
-    def get_token(self, obj):
-        token, created = Token.objects.get_or_create(user=obj)
-        return token.key
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'user_name','mobile','email', 'password','token')
+        fields = ('first_name', 'last_name', 'user_name','mobile','email', 'password',)
         write_only_fields = ('password',)
         read_only_fields = ('user_name',)
 

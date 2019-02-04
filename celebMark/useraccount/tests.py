@@ -2,7 +2,6 @@ from django.urls import reverse
 from rest_framework.test import APITestCase
 from useraccount.models import User
 from rest_framework import status
-from rest_framework.authtoken.models import Token
 
 class AccountsTest(APITestCase):
     def setUp(self):
@@ -18,7 +17,7 @@ class AccountsTest(APITestCase):
 
         # URL for creating an account | getting auth token
         self.create_url = reverse('register-user')
-        self.token_url = reverse('get-auth-token')
+        self.obtain_token_url = reverse('get-auth-token')
 
     def test_create_user(self):
         """
@@ -42,8 +41,6 @@ class AccountsTest(APITestCase):
         # Additionally, we want to return the user_name and email upon successful creation.
         self.assertEqual(response.data['user_name'], data['user_name'])
         self.assertEqual(response.data['email'], data['email'])
-        token = Token.objects.get(user=user)
-        self.assertEqual(response.data['token'], token.key)
 
     def test_create_user_with_no_password(self):
         data = {
@@ -109,21 +106,18 @@ class AccountsTest(APITestCase):
         user_name = 'testuser'
         password = 'testpassword'
         data = {
-            'username': user_name,
+            'user_name': user_name,
             'password': password
         }
-        response = self.client.post(self.token_url, data, format='json')
-        user = User.objects.get(user_name=user_name)
-        token = Token.objects.get(user=user)
+        response = self.client.post(self.obtain_token_url, data, format='json')
         self.assertEqual(response.status_code,status.HTTP_200_OK)
-        self.assertEqual(response.data['token'],token.key)
 
     def test_get_auth_token_for_wrong_user(self):
         user_name = 'wronguser'
         password = 'wrongpassword'
         data = {
-            'username': user_name,
+            'user_name': user_name,
             'password': password
         }
-        response = self.client.post(self.token_url, data, format='json')
+        response = self.client.post(self.obtain_token_url, data, format='json')
         self.assertEqual(response.status_code,status.HTTP_400_BAD_REQUEST)
