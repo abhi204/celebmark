@@ -1,0 +1,4 @@
+/*
+    ActionCreators return payload if it is meant to be interpreted by
+    reducers directly and return meta if they are to be operated upon by apiMiddleware
+*/
