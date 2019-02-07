@@ -1,16 +1,28 @@
 import React, { Component } from 'react';
-import HomePage from '../HomePage/index';
+import { connect } from 'react-redux';
+import PublicHomePage from '../ExtraPages/PublicHomePage';
 
+// Any Page/Component is to be rendered inside App
 class App extends Component {
   render() {
-    console.log(this.props.children)
+    if(!this.props.loggedIn)
+      return <PublicHomePage />
+    
+    // Main App starts here
     return (
 			<div>
-        { this.props.children || <HomePage /> }
+        {/* Do PageLayout Styling here */}
+        APP visible only if logged in!!!!!
+        {/* Do Route switches of containers/components here */}
 			</div>
     );
   }
 }
 
-// Any Page/Component is to be rendered inside App
-export default App;
+function mapStateToProps(state){
+  return {
+    loggedIn: state.loggedIn
+  }
+}
+
+export default connect(mapStateToProps,)(App);

@@ -5,8 +5,7 @@ import {
     Button,
 } from 'semantic-ui-react';
 
-export default class HomePage extends Component {
-
+export default class PublicHomePage extends Component {
     render(){
         return (
             <Container>

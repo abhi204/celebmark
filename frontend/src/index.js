@@ -8,7 +8,7 @@ import Routes from './routes';
 
 const { persistor, store } = createAppStore();
 
-window.store = store
+// window.store = store
 
 ReactDOM.render(
     <PersistGate persistor={persistor}>
