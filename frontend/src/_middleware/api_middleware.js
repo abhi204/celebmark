@@ -17,8 +17,8 @@ export const apiMiddleware = (store) => (next) => async (action) => {
         payload: action.payload
     });
     
-    let accessToken = getCookie('access');
     const body = createBody(META.data);
+    let accessToken = getCookie('access');
     if(!accessToken)
     {
         let refreshStatus = refreshAccessToken(refreshToken);
