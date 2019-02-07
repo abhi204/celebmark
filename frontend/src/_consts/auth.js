@@ -8,3 +8,5 @@ export const NO_COOKIES = "Cookies disabled";
 export const LOGIN_REDIRECT = "Redirect Login";
 //AccessToken, RefreshToken name inside cookie => access, refresh
 
+export const ACCESS_TOKEN_EXPIRE = 0.0021; // 3 minutes
+export const REFRESH_TOKEN_EXPIRE = 7;     // 7 days
