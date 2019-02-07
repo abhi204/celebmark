@@ -11,8 +11,8 @@ class Routes extends Component{
         return(
             <ConnectedRouter history={history}>
                 <div>
-                <Route path='/' component={App} />
-                    {/* Component/Page Routing Here */}
+                <Route path='/' component={App}>
+                </Route>
                 </div>
             </ConnectedRouter>
         );

@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
+import HomePage from '../HomePage/index';
 
 class App extends Component {
   render() {
     console.log(this.props.children)
     return (
 			<div>
-        APP
+        { this.props.children || <HomePage /> }
 			</div>
     );
   }
