@@ -28,8 +28,8 @@ const configureStore = composeEnhancers(
 const persistConfig = {
     key: 'root',
     storage: storage,
+    whitelist: ['router'], //mention state names you wish to persist
     // blacklist: [] add the state names here which you don't wish to persist
-    // use whitelist the same way as above to mention state names you wish to persist
 };
 
 const combinedReducer = persistReducer(persistConfig, createRootReducer(history))
