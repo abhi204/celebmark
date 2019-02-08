@@ -1,10 +1,7 @@
-let storedPassword = null;
-
 export const required = value => (value ? undefined: 'This field is required');
 export const maxChars = max => ( value => ( value.length <= max? undefined: `Maximum ${max} Characters Permitted`));
 export const minChars = min => ( value => ( value.length >= min? undefined: `Minimum ${min} Characters Required`));
-export const setPassword = (value) => { storedPassword=value};
-export const matchPassword = (value) => (storedPassword === value ? undefined: "Passwords Don't match");
+export const matchPassword = (password2, allValues) => (password2 === allValues.password ? undefined: "Passwords Don't match");
 
 export const isAlpha = value => ( /^[A-Za-z]+$/i.test(value) ? undefined: "Enter Valid Characters")
 export const isNum = value => ( /^[0-9]+$/i.test(value) ? undefined: "Enter Digits Only")

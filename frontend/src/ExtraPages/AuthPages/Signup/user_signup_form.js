@@ -6,7 +6,6 @@ import {
     maxChars,
     minChars,
     isMobileNumber,
-    setPassword,
     matchPassword,
     isAlpha,
     isAlphaNum
@@ -23,7 +22,7 @@ const fields = [
     {label: 'Username', name:'user_name', type: 'text', placeholder: '', validators:[maxChars(30),isAlphaNum ]},
     {label: 'Email', name:'email', type: 'email', placeholder: '', validators:[maxChars(30), ]},
     {label: 'Contact Number', name:'mobile', type: 'text', placeholder: '', validators:[isMobileNumber,]},
-    {label: 'Password', name:'password', type: 'password', placeholder: 'Enter Password', validators:[minChars(8),setPassword]},
+    {label: 'Password', name:'password', type: 'password', placeholder: 'Enter Password', validators:[minChars(8),]},
     {label: 'Confirm Password', name:'password2', type: 'password', placeholder: 'Enter Password Again..', validators:[matchPassword,]},
 ]
 
