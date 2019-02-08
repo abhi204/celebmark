@@ -8,7 +8,6 @@ import {
     isMobileNumber,
     setPassword,
     matchPassword,
-    isChecked,
     isAlpha,
     isAlphaNum
 } from '../../../_helpers/field_validators';
@@ -32,12 +31,14 @@ class UserSignupForm extends Component {
     constructor(props){
         super(props);
         this.doSubmit = this.doSubmit.bind(this); 
+        this.readTerms = this.readTerms.bind(this);
+        this.state = { acceptTerms: false };
     }
     
     render(){
         const { pristine, submitting, invalid } = this.props;
         return (
-            <Form onSubmit={this.doSubmit}>
+            <Form onSubmit={ this.doSubmit }>
                 {
                     fields.map(field => (
                         <Form.Group widths='equal' key={field.name}>
@@ -53,17 +54,21 @@ class UserSignupForm extends Component {
                         </Form.Group>
                     ))
                 }
-                <Form.Field>
-                    <Field
+                <Form.Group>
+                <Checkbox
                     label='I agree to the Terms and Conditions'
-                    component={Checkbox}
                     name="agreeToTerms"
-                    validate={[isChecked]}
-                    />
-                </Form.Field>
-                <Button type='submit' color='green' disabled={ submitting || pristine || invalid } >Signup</Button>
+                    onChange={ this.readTerms }
+                    checked={this.state.acceptTerms}
+                 />
+                </Form.Group>
+                <Button type='submit' color='green' disabled={ submitting || pristine || invalid  || !this.state.acceptTerms } >Signup</Button>
             </Form>
         );
+    }
+
+    readTerms(event) {
+        this.setState({acceptTerms: (this.state.acceptTerms?false:true)})
     }
 
     doSubmit(values){
