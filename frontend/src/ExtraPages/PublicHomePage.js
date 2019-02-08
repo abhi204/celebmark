@@ -27,7 +27,7 @@ export default class PublicHomePage extends Component {
 
 
 
-                <Segment inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
+                <Segment inverted vertical style={{ margin: '1em 0em 0em', padding: '2.2em 0em' }}>
                   <Container textAlign='center'>
                     <Grid divided inverted stackable>
                       <Grid.Column width={2}>
