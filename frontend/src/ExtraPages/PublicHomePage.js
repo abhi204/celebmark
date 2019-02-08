@@ -8,9 +8,11 @@ import {
 export default class PublicHomePage extends Component {
     render(){
         return (
-            <Container>
-                <Link to='/login'><Button>Login</Button></Link>
-                <Link to='/signup'><Button>Sign Up</Button></Link>
+
+            <Container><br />
+                <Link to='/signup'><Button floated='right'>Sign Up</Button></Link>
+                <Link to='/login'><Button floated='right'>Login</Button></Link>
+
             </Container>
         );
     }

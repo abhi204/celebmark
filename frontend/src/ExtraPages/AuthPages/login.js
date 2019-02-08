@@ -1,29 +1,51 @@
-import React, {Component} from 'react';
+import React from 'react'
 import {
-    Container,
-    Divider,
-    Form, FormGroup, FormInput, Label, FormButton
-} from 'semantic-ui-react';
+  Button,
+  Form,
+  Grid,
+  Header,
+  Message,
+  Segment,
+  Icon
+} from 'semantic-ui-react'
 
-export default class LoginPage extends Component {
+const LoginForm = () => (
+  <div className='login-form'>
 
-    render(){
-        return (
-            <Container>
-                <Divider />
-                <Form>
-                    <FormGroup>
-                        <Label>Username:</Label>
-                        <FormInput />
-                    </FormGroup>
-                    <FormGroup>
-                        <Label>Password:</Label>
-                        <FormInput />
-                    </FormGroup>
-                    <FormButton>Login</FormButton>
-                </Form>
-                <Divider/>
-            </Container>
-        );
-    }
-}
+    <style>{`
+      body > div,
+      body > div > div,
+      body > div > div > div.login-form {
+        height: 100%;
+      }
+    `}</style>
+    <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
+      <Grid.Column style={{ maxWidth: 450 }}>
+        <Header as='h2' color='green' textAlign='center'>
+          <Icon name='sign in' size='huge' /> Sign in to your CelebMark account
+        </Header>
+        <Form size='large'>
+          <Segment stacked>
+            <Form.Input fluid icon='user' iconPosition='left' placeholder='User Name' />
+            <Form.Input
+              fluid
+              icon='lock'
+              iconPosition='left'
+              placeholder='Password'
+              type='password'
+            />
+
+            <Button color='green' fluid size='large'>
+              Login
+            </Button>
+          </Segment>
+        </Form>
+        <Message>
+          New to us? <a href='./signup'>Sign Up</a> Or <a href='./'> Home</a>
+        </Message>
+      </Grid.Column>
+    </Grid>
+  </div>
+)
+
+export default LoginForm
