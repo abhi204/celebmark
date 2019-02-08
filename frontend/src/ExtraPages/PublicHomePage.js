@@ -3,12 +3,9 @@ import { Link } from 'react-router-dom';
 import {
   Container,
   Divider,
-  Dropdown,
   Grid,
   Header,
-  Image,
   List,
-  Menu,
   Icon,
   Segment,
   Button,
