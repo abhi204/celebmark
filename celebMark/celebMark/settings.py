@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
     'useraccount',
@@ -47,6 +48,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -130,6 +132,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+AUTH_USER_MODEL = 'useraccount.User'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
@@ -153,4 +156,11 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 10
 }
 
-AUTH_USER_MODEL = 'useraccount.User'
+CORS_ALLOW_CREDENTIALS = True
+if DEBUG:
+    CORS_ORIGIN_WHITELIST = (
+    'localhost:3000',
+    )
+    CORS_ORIGIN_REGEX_WHITELIST = (
+    'localhost:3000',
+)

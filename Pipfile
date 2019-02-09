@@ -12,6 +12,7 @@ pillow = "*"
 djangorestframework-jwt = "*"
 coreapi = "*"
 djangorestframework-simplejwt = "*"
+django-cors-headers = "*"
 
 [dev-packages]
 
