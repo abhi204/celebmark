@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import UserSignupForm from './forms/user_form';
-import myAction from '../actions/index';
+import submitSignupForm from '../actions/signup_submit_action';
 import {
   Container,
   Header,
@@ -22,7 +22,7 @@ class UserSignupTab extends Component{
                         <Header.Content>Celeb Mark | User Signup</Header.Content>
                     </Header>
                 </div>
-                <UserSignupForm onSubmit={this.props.myAction}/>
+                <UserSignupForm onSubmit={this.props.submitSignupForm}/>
             </Container>
         </Tab.Pane>
         );
@@ -36,7 +36,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    myAction: bindActionCreators(myAction,dispatch),
+    submitSignupForm: bindActionCreators(submitSignupForm,dispatch),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(UserSignupTab);
