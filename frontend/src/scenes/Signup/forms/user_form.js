@@ -1,15 +1,7 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import renderField from '_components/form_field';
-import {
-    required,
-    maxChars,
-    minChars,
-    isMobileNumber,
-    matchPassword,
-    isAlpha,
-    isAlphaNum
-} from '_helpers/field_validators';
+import { validators as $ } from '_helpers/field_validators';
 import {
     Form,
     Button,
@@ -17,13 +9,13 @@ import {
 } from 'semantic-ui-react';
 
 const fields = [
-    {label: 'First Name', name:'first_name', type: 'text', placeholder: '', validators:[maxChars(30),isAlpha ]},
-    {label: 'Last Name', name:'last_name', type: 'text', placeholder: '', validators:[maxChars(30),isAlpha ]},
-    {label: 'Username', name:'user_name', type: 'text', placeholder: '', validators:[maxChars(30),isAlphaNum ]},
-    {label: 'Email', name:'email', type: 'email', placeholder: '', validators:[maxChars(30), ]},
-    {label: 'Contact Number', name:'mobile', type: 'text', placeholder: '', validators:[isMobileNumber,]},
-    {label: 'Password', name:'password', type: 'password', placeholder: 'Enter Password', validators:[minChars(8),]},
-    {label: 'Confirm Password', name:'password2', type: 'password', placeholder: 'Enter Password Again..', validators:[matchPassword,]},
+    {label: 'First Name', name:'first_name', type: 'text', placeholder: '', validators:[$.maxChars(30),$.isAlpha ]},
+    {label: 'Last Name', name:'last_name', type: 'text', placeholder: '', validators:[$.maxChars(30),$.isAlpha ]},
+    {label: 'Username', name:'user_name', type: 'text', placeholder: '', validators:[$.maxChars(30),$.isAlphaNum ]},
+    {label: 'Email', name:'email', type: 'email', placeholder: '', validators:[$.maxChars(30), ]},
+    {label: 'Contact Number', name:'mobile', type: 'text', placeholder: '', validators:[$.isMobileNumber,]},
+    {label: 'Password', name:'password', type: 'password', placeholder: 'Enter Password', validators:[$.minChars(8),]},
+    {label: 'Confirm Password', name:'password2', type: 'password', placeholder: 'Enter Password Again..', validators:[$.matchPassword,]},
 ]
 
 class UserSignupForm extends Component {
@@ -47,7 +39,7 @@ class UserSignupForm extends Component {
                                 component={renderField}
                                 type={field.type}
                                 placeholder={field.label}
-                                validate={[required, ...(field.validators ? field.validators : [] ),]}
+                                validate={[$.required, ...(field.validators ? field.validators : [] ),]}
                                 />
                             </Form.Field>
                         </Form.Group>
@@ -61,7 +53,7 @@ class UserSignupForm extends Component {
                     checked={this.state.acceptTerms}
                 />
                 </Form.Group>
-                <Button type='submit' color='green' disabled={ submitting || pristine || invalid  || !this.state.acceptTerms } >Signup</Button>
+                <Button type='submit' color='green' disabled={ submitting || pristine || !this.state.acceptTerms } >Signup</Button>
             </Form>
         );
     }

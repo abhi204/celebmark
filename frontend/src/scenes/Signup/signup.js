@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import UserSignupTab from './containers/user_signup_tab';
+import UserSignupTab from './components/user_signup_tab';
 import {
   Container,
   Tab,
