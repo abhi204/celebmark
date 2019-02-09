@@ -47,9 +47,9 @@ const LoginForm = () => (
                     <center>
                     <Header icon='key' size='huge' inverted content='Recover your account.' />
                         <Modal.Content>
-                          <p>
+                          <div>
                           <Form>
-                              <Form.Group widths='equal' inverted>
+                              <Form.Group widths='equal'>
                                 <Form.Field
                                   id='form-input-control-registered-email'
                                   control={Input}
@@ -64,7 +64,7 @@ const LoginForm = () => (
                               </Form.Group>
 
                             </Form>
-                          </p>
+                          </div>
                         </Modal.Content>
                         <Modal.Actions>
                           <Button basic color='red' inverted>
