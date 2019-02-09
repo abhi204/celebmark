@@ -11,7 +11,7 @@ export const LOGIN_ERROR = "Login Error";
 export const LOGOUT = "Logged Out";
 export const LOGIN_REDIRECT = "Redirect Login";
 
-export const SIGNUP_START = "Start Signup";
 export const SIGNUP_OK = "Signup Successful";
+export const SIGNUP_END = "Signup process ended";
 export const SIGNUP_FAILED = "Signup Failed";
 
