@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
-import renderField from '../../../_components/form_field';
+import renderField from '_components/form_field';
 import {
     required,
     maxChars,
@@ -9,7 +9,7 @@ import {
     matchPassword,
     isAlpha,
     isAlphaNum
-} from '../../../_helpers/field_validators';
+} from '_helpers/field_validators';
 import {
     Form,
     Button,
@@ -35,9 +35,9 @@ class UserSignupForm extends Component {
     }
     
     render(){
-        const { pristine, submitting, invalid } = this.props;
+        const { pristine, submitting, invalid, handleSubmit } = this.props;
         return (
-            <Form onSubmit={ this.doSubmit }>
+            <Form onSubmit={handleSubmit}>
                 {
                     fields.map(field => (
                         <Form.Group widths='equal' key={field.name}>
@@ -59,7 +59,7 @@ class UserSignupForm extends Component {
                     name="agreeToTerms"
                     onChange={ this.readTerms }
                     checked={this.state.acceptTerms}
-                 />
+                />
                 </Form.Group>
                 <Button type='submit' color='green' disabled={ submitting || pristine || invalid  || !this.state.acceptTerms } >Signup</Button>
             </Form>

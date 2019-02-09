@@ -6,8 +6,8 @@ import { Route, Switch } from 'react-router-dom';
 // Import Pages/Components Here
 // Homepage Component Already imported in App.js
 import App from './App/App';
-import LoginPage from './ExtraPages/AuthPages/login';
-import SignupPage from './ExtraPages/AuthPages/Signup/signup';
+import LoginPage from './scenes/AuthPages/login';
+import SignupPage from './scenes/AuthPages/Signup/signup';
 
 class Routes extends Component{
     render(){

@@ -86,7 +86,7 @@ export default class PublicHomePage extends Component {
                     </Grid>
 
                     <Divider inverted section />
-                    <Icon name='typo3' centered size='huge' /><br/>
+                    <Icon name='typo3' size='huge' /><br/>
                     <List horizontal inverted divided link size='small'>
                       <List.Item as='a' href='#'>
                         Site Map

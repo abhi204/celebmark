@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PublicHomePage from '../ExtraPages/PublicHomePage';
+import PublicHomePage from '../scenes/PublicHomePage';
 
 // Any Page/Component is to be rendered inside App
 class App extends Component {
