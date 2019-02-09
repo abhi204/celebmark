@@ -1,0 +1,1 @@
+export { default as signupReducer} from "./AuthPages/Signup/reducers/signup_reducer";
