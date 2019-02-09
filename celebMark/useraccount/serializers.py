@@ -6,11 +6,15 @@ class UserSerializer(serializers.ModelSerializer):
     user_name = serializers.CharField(
             max_length=50,
             required=True,
-            validators = [UniqueValidator(queryset=User.objects.all())]
+            validators = [UniqueValidator(queryset=User.objects.all(), message="This username is already taken")]
     )
     email = serializers.EmailField(
             required=True,
-            validators = [UniqueValidator(queryset=User.objects.all())]
+            validators = [UniqueValidator(queryset=User.objects.all(), message="email already in use")]
+    )
+    mobile = serializers.IntegerField(
+        required=True,
+        validators = [UniqueValidator(queryset=User.objects.all(), message="number already registered")]
     )
     password = serializers.CharField(min_length=8)
 
