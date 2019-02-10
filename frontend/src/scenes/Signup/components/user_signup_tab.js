@@ -1,13 +1,11 @@
 import React, { Component } from 'react';
 import UserSignupForm from '../forms/user_form';
-import submitForm from '../helpers/submit_form';
 import {
   Container,
   Header,
   Icon,
   Tab,
 } from 'semantic-ui-react';
-
 
 export default class UserSignupTab extends Component {
 
@@ -21,7 +19,7 @@ export default class UserSignupTab extends Component {
                         <Header.Content>Celeb Mark | User Signup</Header.Content>
                     </Header>
                 </div>
-                <UserSignupForm onSubmit={submitForm}/>
+                <UserSignupForm/>
             </Container>
         </Tab.Pane>
         );

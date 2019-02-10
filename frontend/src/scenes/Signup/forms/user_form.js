@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import { Field, reduxForm } from 'redux-form';
 import renderField from '_components/form_field';
 import { validators as $ } from '_helpers/field_validators';
+import { submitOK, submitForm } from '../helpers/submit_form';
+import { withRouter } from 'react-router-dom';
+
 import {
     Form,
     Button,
@@ -21,13 +24,12 @@ const fields = [
 class UserSignupForm extends Component {
     constructor(props){
         super(props);
-        this.doSubmit = this.doSubmit.bind(this); 
         this.readTerms = this.readTerms.bind(this);
         this.state = { acceptTerms: false };
     }
     
     render(){
-        const { pristine, submitting, invalid, handleSubmit } = this.props;
+        const { pristine, submitting, handleSubmit } = this.props;
         return (
             <Form onSubmit={handleSubmit}>
                 {
@@ -61,17 +63,15 @@ class UserSignupForm extends Component {
     readTerms(event) {
         this.setState({acceptTerms: (this.state.acceptTerms?false:true)})
     }
-
-    doSubmit(values){
-        console.log(values);
-    }
     
 }
 
 UserSignupForm = reduxForm({
     form: 'user_signup_form', //unique name
     pristine: false,
-    fields: fields.map(field => (field.name))
+    fields: fields.map(field => (field.name)),
+    onSubmit: (values, dispatch, props) => { submitForm(values,dispatch,props) },
+    onSubmitSuccess: (result, dispatch, props) => { submitOK(props, result, dispatch) }
 })(UserSignupForm);
 
-export default UserSignupForm;
+export default withRouter(UserSignupForm);
