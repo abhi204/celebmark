@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react';
 import {
- Card,
- Icon,
- Image
-} from 'semantic-ui-react'
+  Card,
+  Icon,
+  Image,
+  Container
+} from 'semantic-ui-react';
 
-export default class PublicHomePage extends Component {
+
+export default class UserDashboard extends Component {
+
     render(){
-        return (
+        return(
 
-            <Container><br />
+          <Container align='center'><br />
               <Card>
                 <Image src='https://react.semantic-ui.com/images/avatar/large/matthew.png' />
                 <Card.Content>
@@ -29,9 +32,9 @@ export default class PublicHomePage extends Component {
                   Logout
                   </a></center>
                 </Card.Content>
-              </Card>
+              </Card><br/>
+          </Container>
 
-            </Container>
         );
     }
 }
