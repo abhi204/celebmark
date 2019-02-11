@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Footer from '../footer/footer';
+import Footer from '_components/Footer/footer';
 import UserDashboard from '../userdashboard/loggedin';
 import BeforeLoginNav from '../navigation/beforelogin/beforeloginnav';
 
