@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux';
+import LoginFormField from './forms/login_form';
 import {
   Button,
   Form,
@@ -16,8 +17,8 @@ import {
 class LoginForm extends Component {
 
   render(){
-  const { message } = this.props.location.state || ''; 
-  return ( 
+
+  return (
     <div className='login-form'>
       <style>{`
         body > div,
@@ -31,63 +32,23 @@ class LoginForm extends Component {
           <Header as='h2' color='green' textAlign='center'>
             <center><Icon name='typo3' color='green' size='huge' /></center><br/> Sign In To CelebMark.
           </Header>
-          { message ? <Message><b>{message}</b></Message> : '' }
-          <Form size='large'>
-            <Segment stacked>
-              <Form.Input fluid icon='user' iconPosition='left' placeholder='User Name' />
-              <Form.Input
-                fluid
-                icon='lock'
-                iconPosition='left'
-                placeholder='Password'
-                type='password'
-              />
-              <Button color='green' fluid size='large'>
-                Login
-              </Button>
-              <br/>
-                  <Modal trigger={<Label as='a' color='olive' tag> Forgot Password </Label>} basic size='small'>
-                      <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
-                      <center>
-                      <Header icon='key' size='huge' inverted content='Recover your account.' />
-                          <Modal.Content>
-                            <div>
-                            <Form>
-                                <Form.Group widths='equal'>
-                                  <Form.Field
-                                    id='form-input-control-registered-email'
-                                    control={Input}
-                                    textcolor='red'
-                                    placeholder='Enter Your Registered Email Address.'
-                                  />
-                                  <Form.Field
-                                    id='form-input-control-registered-phone'
-                                    control={Input}
-                                    placeholder='Enter Your Registered Phone Number.'
-                                  />
-                                </Form.Group>
 
-                              </Form>
-                            </div>
-                          </Modal.Content>
-                          <Modal.Actions>
-                            <Button basic color='red' inverted>
-                              <Icon name='remove' /> Nope, this isn't right.
-                            </Button>
-                            <Button color='green' inverted>
-                              <Icon name='checkmark' /> Yes, that's me.
-                            </Button>
-                          </Modal.Actions></center>
-                          </Modal>
+
+
+          <Segment stacked>
+            <LoginFormField />
+
+              <br/>
+                <Label as='a' color='olive' tag> Forgot Password </Label>
                 </Segment>
-              </Form>
+
 
           <Message>
             New to us? <a href='./signup'>Sign Up</a> Or <a href='./'> Home</a>
           </Message>
         </Grid.Column>
       </Grid>
-    </div> ); 
+    </div> );
   }
 }
 
