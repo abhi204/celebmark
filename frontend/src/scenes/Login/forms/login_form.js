@@ -1,25 +1,15 @@
 import React, { Component } from 'react';
-
 import {
   Button,
   Form,
-  Grid,
-  Header,
-  Message,
-  Segment,
-  Icon,
-  Input,
-  Label
-
 } from 'semantic-ui-react';
 
 
 export default class LoginFormField extends Component {
 
     render(){
-        return(
-
-          <Form>
+      return (
+        <Form>
           <Form.Input fluid icon='user' iconPosition='left' placeholder='User Name' />
           <Form.Input
             fluid
@@ -27,15 +17,12 @@ export default class LoginFormField extends Component {
             iconPosition='left'
             placeholder='Password'
             type='password'
-          /><br/>
+          />
+          <br/>
           <Button color='green' fluid size='large'>
             Login
           </Button>          
-          </Form>
-
-
-
-
-        );
+        </Form>
+      );
     }
 }
