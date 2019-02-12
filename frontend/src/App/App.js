@@ -4,11 +4,10 @@ import PublicHomePage from '../scenes/home/homepage';
 
 // Any Page/Component is to be rendered inside App
 class App extends Component {
+  
   render() {
     var { user } = this.props;
-    if(!user.loggedIn)
-      return <PublicHomePage />
-    
+    if(!user.loggedIn) return <PublicHomePage />
     // Main App starts here
     return (
 			<div>
