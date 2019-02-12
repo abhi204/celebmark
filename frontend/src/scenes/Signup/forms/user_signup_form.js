@@ -8,6 +8,7 @@ import { withRouter } from 'react-router-dom';
 import {
     Form,
     Button,
+    Message,
     Checkbox,
 } from 'semantic-ui-react';
 
@@ -29,9 +30,11 @@ class UserSignupForm extends Component {
     }
     
     render(){
-        const { pristine, submitting, handleSubmit } = this.props;
+        const { error, pristine, submitting, handleSubmit } = this.props;
+        var errorMessage = error && error._error ? error._error : "Oops... Something Went Wrong!";
         return (
             <Form onSubmit={handleSubmit}>
+            { error ? <Message><center><h3>{ errorMessage }</h3></center></Message> : '' }
                 {
                     fields.map(field => (
                         <Form.Group widths='equal' key={field.name}>
@@ -66,11 +69,13 @@ class UserSignupForm extends Component {
     
 }
 
+export const fieldNames = fields.map(field => (field.name));
+
 UserSignupForm = reduxForm({
     form: 'user_signup_form', //unique name
     pristine: false,
-    fields: fields.map(field => (field.name)),
-    onSubmit: (values, dispatch, props) => { submitForm(values,dispatch,props) },
+    fields: fieldNames,
+    onSubmit: async (values, dispatch, props) => { await submitForm(values,dispatch,props) },
     onSubmitSuccess: (result, dispatch, props) => { submitOK(props, result, dispatch) }
 })(UserSignupForm);
 
