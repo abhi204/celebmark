@@ -1,7 +1,7 @@
+import axios from 'axios';
 import { API_HOST } from '../_consts/api';
 import { LOGIN_FAILED, LOGIN_REDIRECT } from '../_consts/auth';
 import { getCookie } from '../_helpers/cookies';
-import createBody from '../_helpers/send_body';
 import refreshAccessToken from '../_helpers/refresh_access_token';
 
 /* this middleware works only when refreshToken is present in cookie */
@@ -17,7 +17,6 @@ export const apiMiddleware = (store) => (next) => async (action) => {
         payload: action.payload
     });
     
-    const body = createBody(META.data);
     let accessToken = getCookie('access');
     if(!accessToken)
     {
@@ -29,8 +28,15 @@ export const apiMiddleware = (store) => (next) => async (action) => {
         });
     }
     //Add authorization to header and send request to api endpoint
-    await fetch(`${API_HOST}${META.path}`, {Authorization: `Bearer ${accessToken}`, method: META.method, body,},)
-                .then(response => response.json())
-                .then(data => action.payload = data);
+    await axios({
+        method: META.method,
+        url: `${API_HOST}${META.path}`,
+        data: META.data,
+        headers: {
+            'Authorization': `Bearer ${accessToken}`
+        }
+    }).then(response => { action.payload=response.data })
+    .catch((error) => {console.log('APIMIDDLEWARE AXIOS CATCH ERROR',error)})
+    
     return store.dispatch({type: action.type, payload: action.payload})
 }
