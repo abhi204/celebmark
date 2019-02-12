@@ -5,7 +5,8 @@ import PublicHomePage from '../scenes/home/homepage';
 // Any Page/Component is to be rendered inside App
 class App extends Component {
   render() {
-    if(!this.props.loggedIn)
+    var { user } = this.props;
+    if(!user.loggedIn)
       return <PublicHomePage />
     
     // Main App starts here
@@ -21,7 +22,7 @@ class App extends Component {
 
 function mapStateToProps(state){
   return {
-    loggedIn: state.loggedIn
+    user: state.user
   }
 }
 
