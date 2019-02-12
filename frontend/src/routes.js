@@ -16,7 +16,7 @@ class Routes extends Component{
             <div>
                 {/* Pages Routed here, Components Routed inside App.js */}
                 <Switch>
-                    <Route exact path='/login' component={LoginPage} />
+                    <Route path='/login' component={LoginPage} />
                     <Route path='/signup' component={SignupPage} />    
                     <Route path='/' component={App} />
                 </Switch>
