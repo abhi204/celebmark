@@ -2,7 +2,7 @@ import { deleteCookie } from '../_helpers/cookies';
 import {
     LOGOUT,
     LOGIN_FAILED,
-    LOGIN_SUCESS,
+    LOGIN_SUCCESS,
 } from '../_consts/auth';
 import sendCredentials from '../_helpers/api_login';
 
@@ -13,7 +13,7 @@ export const login = async (user_name, password) => {
     let loginResponse = await sendCredentials(user_name, password);
     const details = loginResponse.user;
     if(details) //login response got user details as user property (Thus login successful)
-        return {type: LOGIN_SUCESS, payload: details }
+        return {type: LOGIN_SUCCESS, payload: details }
     else
         return {type: LOGIN_FAILED, payload: details };
 }
