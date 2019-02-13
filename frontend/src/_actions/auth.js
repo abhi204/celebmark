@@ -6,14 +6,16 @@ import {
 } from '../_consts/auth';
 import sendCredentials from '../_helpers/api_login';
 
-// After login attempt, reducer will recieve payload which tells if the login was sucessful
-// (i.e. refresh, access tokens were set in cookie)
+/*
+login dispatches server response as payload (refer to sendCredentials)
+*/
 export const login = async (user_name, password) => {
-    let loginAttempt = await sendCredentials(user_name, password);
-    if(loginAttempt==='OK')
-        return {type: LOGIN_SUCESS, payload: { user_name } }
+    let loginResponse = await sendCredentials(user_name, password);
+    const details = loginResponse.user;
+    if(details) //login response got user details as user property (Thus login successful)
+        return {type: LOGIN_SUCESS, payload: details }
     else
-        return {type: LOGIN_FAILED, payload: loginAttempt};
+        return {type: LOGIN_FAILED, payload: details };
 }
 
 export const logout = () => {
