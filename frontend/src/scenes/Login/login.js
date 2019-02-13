@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import LoginForm from './forms/login_form';
 import {
   Grid,
@@ -9,10 +10,17 @@ import {
   Label
 } from 'semantic-ui-react';
 import './login.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
+class LoginPage extends Component {
 
-var LoginPage = ({ location }) => (
+  render(){
+    const { location } = this.props;
+    //Below check becomes redundant on creating public only routes
+    if(this.props.user.loggedIn)
+      return <Redirect to='/' />
+
+    return (
       <div className='login-form'>
         <Grid textAlign='center' style={{ height: '100%' }} verticalAlign='middle'>
           <Grid.Column style={{ maxWidth: 450 }}>
@@ -32,5 +40,11 @@ var LoginPage = ({ location }) => (
         </Grid>
       </div> 
     );
+  }
+}
 
-export default LoginPage;
+function mapStateToProps(state){
+  return {user: state.user}
+}
+
+export default connect(mapStateToProps,)(LoginPage);

@@ -3,7 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { withRouter } from 'react-router-dom';
 import renderField from '_components/form_field';
 import { validators as $ } from '_helpers/field_validators';
-import { loginFormSubmit, loginSuccesful, loginFailed } from '../actions/login_submit';
+import { loginFormSubmit } from '../actions/login_submit';
 import {
   Button,
   Form,                                                                                                                           
@@ -47,8 +47,6 @@ LoginForm = reduxForm({
   pristine: false,
   fields: ['user_name', 'password'],
   onSubmit: loginFormSubmit,
-  onSubmitFail: loginFailed,
-  onSubmitSuccess: loginSuccesful,
 })(LoginForm);
 
 export default withRouter(LoginForm);
