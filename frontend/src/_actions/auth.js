@@ -20,6 +20,7 @@ export const login = async (user_name, password) => {
 
 export const logout = () => {
     deleteCookie('access');
+    deleteCookie('refresh');
     return{
         type: LOGOUT,
         payload: null
