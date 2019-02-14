@@ -1,3 +1,5 @@
+import { ACCESS_TOKEN_EXPIRE, REFRESH_TOKEN_EXPIRE } from "../_consts/auth";
+
 export function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -23,3 +25,8 @@ export function getCookie(cname) {
 export function deleteCookie(cname) {
     setCookie(cname,'',0);
   } 
+
+export function storeTokens(access, refresh){
+  setCookie('access', access, ACCESS_TOKEN_EXPIRE);
+  setCookie('refresh', refresh, REFRESH_TOKEN_EXPIRE);
+}
