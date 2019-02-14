@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import {history} from './configureStore';
+import { history } from './configureStore';
 import { ConnectedRouter } from 'connected-react-router';
-import { Route, Switch } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import Route from '_containers/custom_route.js'
 
 // Import Pages/Components Here
 // Homepage Component Already imported in App.js
@@ -17,9 +18,9 @@ class Routes extends Component{
             <div>
                 {/* Pages Routed here, Components Routed inside App.js */}
                 <Switch>
-                    <Route path='/login' component={LoginPage} />
-                    <Route exact path='/logout' component={LogoutPage} />
-                    <Route path='/signup' component={SignupPage} />    
+                    <Route publicOnly exact path='/login' component={LoginPage} />
+                    <Route publicOnly exact path='/signup' component={SignupPage} />    
+                    <Route private exact path='/logout' component={LogoutPage} />
                     <Route path='/' component={App} />
                 </Switch>
             </div>
