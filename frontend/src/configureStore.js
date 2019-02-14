@@ -28,7 +28,7 @@ const configureStore = composeEnhancers(
 const persistConfig = {
     key: 'root',
     storage: storage,
-    whitelist: ['router','form', 'user'], //mention state names you wish to persist
+    whitelist: ['router','form',], //mention state names you wish to persist
     // blacklist: [] add the state names here which you don't wish to persist
 };
 
