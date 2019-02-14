@@ -5,7 +5,8 @@ let initialState = { loggedIn: false, details: {} };
 let userReducer = (state=initialState, action) => {
     switch (action.type) {
         case LOGIN_SUCCESS:
-            console.log("LOGIN reducer is true")
+            if(!action.payload)
+                action.payload = {name: "test", user_name: "test", email: "a@b.com"} //Dummy user Data
             return { ...state, loggedIn: true, details: action.payload };
         case LOGOUT:
         case LOGIN_ERROR:
