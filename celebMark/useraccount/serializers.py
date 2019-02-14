@@ -2,6 +2,9 @@ from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
 from useraccount.models import User
 
+from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
+
+
 class UserSerializer(serializers.ModelSerializer):
     user_name = serializers.CharField(
             max_length=50,
@@ -37,3 +40,18 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
 
         return user
+
+    
+class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
+    @classmethod
+    def get_token(cls, user):
+        token = super(CustomTokenObtainPairSerializer, cls).get_token(user)
+        #add user details
+        token['user'] = {
+            "name": user.get_name,
+            "user_name":user.user_name,
+            "mobile": user.mobile,
+            "email": user.email
+        }
+        return token
+

@@ -16,14 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 
-from rest_framework_simplejwt.views import (
-    TokenObtainPairView,
-    TokenRefreshView,
-)
+from useraccount.views import CustomTokenObtainPairView
+from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('users/', include('useraccount.urls')),
-    re_path(r'^auth/token/obtain/$', TokenObtainPairView.as_view(),name='get-auth-token'),
+    re_path(r'^auth/token/obtain/$', CustomTokenObtainPairView.as_view(),name='get-auth-token'),
     re_path(r'^auth/token/refresh/$', TokenRefreshView.as_view())
 ]
