@@ -4,7 +4,6 @@ import {
   Icon,
   Image,
   Container,
-  Feed
 } from 'semantic-ui-react';
 
 
@@ -28,8 +27,8 @@ export default class UserDashboard extends Component {
                   <Card.Description>Welcome To CelebMark <br/>  <Icon name='heart' /> <br/> Deep </Card.Description>
                 </Card.Content>
                 <Card.Content extra><center>
-                  <a>
-                    <Icon name='logout' />
+                  <a href="/">
+                    <Icon />
                   Logout
                   </a></center>
                 </Card.Content>
