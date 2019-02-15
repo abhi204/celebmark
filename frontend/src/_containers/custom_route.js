@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route as RootRoute, Redirect } from 'react-router-dom';
+import { Route as RootRoute, Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 const Route = (props) => {
@@ -19,4 +19,4 @@ let mapStateToProps = (state) => (
     {user: state.user}
 )
 
-export default connect(mapStateToProps)(Route) ;
+export default withRouter(connect(mapStateToProps)(Route));
