@@ -14,9 +14,13 @@ import LogoutPage from './scenes/Logout/logout';
 import { initLogin } from './_actions/auth';
 
 class Routes extends Component{
+
+    componentWillMount(){
+        this.props.initLogin()
+    }
+
     render(){
         // Initial actions dispatched here
-        this.props.initLogin()
         return(
             <ConnectedRouter history={history}>
             <div>
@@ -24,7 +28,7 @@ class Routes extends Component{
                 <Switch>
                     <Route publicOnly exact path='/login' component={LoginPage} />
                     <Route publicOnly exact path='/signup' component={SignupPage} />    
-                    <Route private exact path='/logout' component={LogoutPage} />
+                    <Route exact path='/logout' component={LogoutPage} />
                     <Route path='/' component={App} />
                 </Switch>
             </div>

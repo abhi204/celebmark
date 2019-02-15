@@ -5,9 +5,11 @@ import { logout } from '../../_actions/auth';
 
 
 class LogoutPage extends Component {
-    render(){
+    componentWillMount(){
         //reset root reducer here and cleanups here
         this.props.logout();
+    }
+    render(){
         return(
             <Redirect to='/' />
         );
