@@ -30,8 +30,8 @@ export function login(user_name, password){
 }
 
 export const logout = () => {
-    deleteCookie('access');
     deleteCookie('refresh');
+    deleteCookie('access');
     return{
         type: LOGOUT,
         payload: null
@@ -39,7 +39,7 @@ export const logout = () => {
 }
 
 //obtains new accessToken every time the website loads
-export function initLogin(){
+export function checkLogin(){
     const refreshToken = getCookie("refresh");
     if(!refreshToken)
         return { type: LOGIN_FAILED, payload: null}

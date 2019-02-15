@@ -11,15 +11,21 @@ import App from './App/App';
 import LoginPage from './scenes/Login/login';
 import SignupPage from './scenes/Signup/signup';
 import LogoutPage from './scenes/Logout/logout';
-import { initLogin } from './_actions/auth';
+import { checkLogin } from './_actions/auth';
 
 class Routes extends Component{
+    constructor(props){
+        super(props);
+        this.state = {loading: true};
+    }
 
-    componentWillMount(){
-        this.props.initLogin()
+    componentDidMount(){
+        this.props.checkLogin().then(data => this.setState({loading: false}))
     }
 
     render(){
+        if(this.state.loading)
+            return <div>LOADING....</div>
         // Initial actions dispatched here
         return(
             <ConnectedRouter history={history}>
@@ -29,7 +35,7 @@ class Routes extends Component{
                     <Route publicOnly exact path='/login' component={LoginPage} />
                     <Route publicOnly exact path='/signup' component={SignupPage} />    
                     <Route exact path='/logout' component={LogoutPage} />
-                    <Route path='/' component={App} />
+                    <Route exact path='/' component={App} />
                 </Switch>
             </div>
             </ConnectedRouter>
@@ -38,7 +44,7 @@ class Routes extends Component{
 }
 
 const mapDispatchToProps = {
-    initLogin
+    checkLogin
 }
 
 export default connect(null,mapDispatchToProps)(Routes);
