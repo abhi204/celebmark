@@ -1,5 +1,5 @@
-import { deleteCookie, storeTokens } from '../_helpers/cookies';
-import { API_GET_TOKEN } from '../_consts/api';
+import { deleteCookie, storeTokens, getCookie } from '../_helpers/cookies';
+import { API_GET_TOKEN, API_REFRESH_TOKEN } from '../_consts/api';
 import axios from 'axios';
 import {
     LOGOUT,
@@ -35,5 +35,20 @@ export const logout = () => {
     return{
         type: LOGOUT,
         payload: null
+    }
+}
+
+//obtains new accessToken every time the website loads
+export function initLogin(){
+    const refreshToken = getCookie("refresh");
+    if(!refreshToken)
+        return { type: LOGIN_FAILED, payload: null}
+    
+    const request = axios.post(API_REFRESH_TOKEN, {refresh: refreshToken})
+    return (dispatch) => {
+        return request.then( ({data}) => {
+            storeTokens(data.access, refreshToken);
+            dispatch({type: LOGIN_SUCCESS, payload: data.user});
+        }).catch( error => dispatch({type: LOGIN_FAILED, payload:error}) )
     }
 }
