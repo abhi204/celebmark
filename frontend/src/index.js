@@ -6,6 +6,10 @@ import createAppStore from './configureStore';
 import { PersistGate } from 'redux-persist/integration/react';
 import Routes from './routes';
 
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import 'bootstrap-css-only/css/bootstrap.min.css';
+import 'mdbreact/dist/css/mdb.css';
+
 const { persistor, store } = createAppStore();
 
 window.store = store
