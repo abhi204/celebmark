@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { userImage, favIcon } from '../_consts/dummy';
+import { userImage, favIcon, smallIcon } from '../_consts/dummy';
 import { connect } from 'react-redux'
 import { MDBFormInline, MDBNavbar, MDBNavbarBrand,
 MDBNavbarNav, MDBNavItem,
@@ -10,7 +10,7 @@ class NavBar extends Component {
     constructor(props)
     {
         super(props);
-        this.state = {collapseID: "" };
+        this.state = {collapseID: "", color: {backgroundColor: "white"} };
     }
 
     toggleCollapse = collapseID => () =>
@@ -22,7 +22,7 @@ class NavBar extends Component {
         const { name } = this.props.user
         return ( 
                 <div >
-                  <MDBNavbar style={{backgroundColor: "white"}} className="d-none d-sm-flex" scrolling fixed="top">
+                <MDBNavbar style={this.state.color} className="d-none d-sm-flex pt-1" scrolling fixed="top">
                     
                     <MDBNavbarNav left className="d-inline-flex flex-row ">
                     <MDBNavItem >
@@ -61,7 +61,33 @@ class NavBar extends Component {
                         </MDBDropdown>
                         </MDBNavItem>
                     </MDBNavbarNav>
-                  </MDBNavbar>
+                </MDBNavbar>
+
+                <MDBNavbar style={this.state.color} className="d-flex d-sm-none p-0 z-depth-5" fixed="top">
+                <MDBNavbarNav className="d-inline-flex flex-row flex-fill">
+                    <MDBNavItem className="my-auto" >
+                        <MDBNavbarBrand >
+                            <img src={smallIcon} style={{height: "2em", padding: 0}}/>
+                        </MDBNavbarBrand>
+                    </MDBNavItem >
+                    <MDBNavItem  className="my-auto">
+                        <MDBNavLink to="/">
+                            <MDBIcon icon="search" className="green-text" size="2x"/>
+                        </MDBNavLink>
+                    </MDBNavItem>
+                    <MDBNavItem  className="my-auto">
+                        <MDBNavLink to="/">
+                            <MDBIcon icon="envelope" className="green-text" size="2x"/>
+                        </MDBNavLink>
+                    </MDBNavItem>
+                    <MDBNavItem  className="my-auto">
+                        <MDBNavLink to="/">
+                        <img src={userImage} className="rounded-circle z-depth-0" 
+                                style={{height: "3em", padding: 0}} />
+                        </MDBNavLink>
+                    </MDBNavItem>
+                </MDBNavbarNav>
+                </MDBNavbar>
                 </div>)
     }
 }
