@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PublicHomePage from '../scenes/home/homepage';
 import { MDBContainer } from 'mdbreact';
-import NavBar from '../_containers/navbar';
+import NavBar from '_containers/navbar';
+import Carousel from '_components/carousel/carousel';
 
 // Any Page/Component is to be rendered inside App
 class App extends Component {
@@ -12,16 +13,14 @@ class App extends Component {
     if(!user.loggedIn) return <PublicHomePage />
     // Main App starts here
     return (
-			<div>
+      <div>
+        <br/><br/>
         <NavBar />
-        <br/><br/><br/><br/>
+        <Carousel/>
         <MDBContainer className="d-flex flex-column align-items-center justify-content-center">
         {/* Do PageLayout Styling here */}
         {/* APP visible only if logged in!!!!! */}
         {/* Do Route switches of containers/components here */}
-        SITE CONTENT HERE!!<br/>
-        SITE CONTENT HERE!!<br/>
-        SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>SITE CONTENT HERE!!<br/>
         </MDBContainer>
 			</div>
     );
