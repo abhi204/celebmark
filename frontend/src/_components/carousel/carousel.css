@@ -1,4 +1,9 @@
 .carousel-image {
-    height: 400px;
+    height: 375px;
+    overflow: hidden;
+}
+
+.carousel-image-sm {
+    height: 25%;
     overflow: hidden;
 }

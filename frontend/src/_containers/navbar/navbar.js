@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
-import { userImage, favIcon, smallIcon } from '../_consts/dummy';
+import { userImage, favIcon, smallIcon } from '../../_consts/dummy';
 import { connect } from 'react-redux'
-import { MDBFormInline, MDBNavbar, MDBNavbarBrand,
-MDBNavbarNav, MDBNavItem,
-MDBNavbarToggler, MDBCollapse,
-MDBDropdown, MDBDropdownItem, MDBDropdownMenu, MDBDropdownToggle, MDBNavLink, MDBIcon, MDBCol,MDBRow } from 'mdbreact';
+import "./navbar.css"
+
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav,
+MDBNavItem, MDBDropdown, MDBDropdownItem,
+MDBDropdownMenu, MDBDropdownToggle, MDBNavLink,
+MDBIcon, MDBCol,MDBRow
+} from 'mdbreact';
 
 class NavBar extends Component {
     constructor(props)
@@ -23,36 +26,33 @@ class NavBar extends Component {
         return (
               <div >
                 <MDBRow>
-                      <MDBNavbar color="white" light className="d-none d-sm-flex pt-1" scrolling fixed="top">
-                        <MDBCol size="1"></MDBCol>
+                      <MDBNavbar color="white" light className="d-none d-sm-flex pt-0 pb-0" scrolling fixed="top">
 
-                        <MDBCol size="1">
-                          <MDBNavItem fluid='true' className="d-inline  my-auto">
-                            <img src={favIcon}  height="50" alt="" />
+                        <MDBCol>
+                          <MDBNavItem fluid='true' className="d-inline my-auto">
+                            <MDBNavbarBrand><img style={{height: "2em"}} src={favIcon} alt="" /> &nbsp; CelebMark</MDBNavbarBrand>
                           </MDBNavItem>
                         </MDBCol>
 
-                        <MDBCol size="1"></MDBCol>
-
-                        <MDBCol size="4">
+                        <MDBCol>
                           <MDBNavItem className="d-inline float-center my-auto">
                             <input className="form-control" type="text" placeholder="Search" aria-label="Search" />
                           </MDBNavItem>
                         </MDBCol>
 
-                        <MDBCol size="3">
+                        <MDBCol className="d-inline-flex justify-content-end">
                           <MDBNavbarNav right className="d-inline-flex flex-row">
-                            <MDBNavItem className="mr-3 float-right my-auto" >
-                                <MDBNavbarBrand className="mr-2">Hi, {user_name}</MDBNavbarBrand>
+                            <MDBNavItem className="mr-3 float-right my-auto no-wrap" >
+                                Hi, {user_name}
                             </MDBNavItem>
 
                             <MDBNavItem className=" float-right my-auto">
-                                <MDBNavLink to="/"><MDBIcon className="black-text" size="lg" far icon="envelope-open">&nbsp;&nbsp;</MDBIcon></MDBNavLink>
+                                <MDBNavLink to="/"><MDBIcon className="black-text" size="lg" far icon="envelope-open"/></MDBNavLink>
                             </MDBNavItem>
 
                             <MDBNavItem className="mr-3 ml-3 float-right my-auto">
                               <MDBDropdown size="lg">
-                                <MDBDropdownToggle nav caret>
+                                <MDBDropdownToggle className="no-wrap" nav caret>
                                   <img src={userImage} className="rounded-circle z-depth-0"
                                     style={{height: "2.5em", padding: 0}} />
                                 </MDBDropdownToggle>
@@ -61,14 +61,13 @@ class NavBar extends Component {
                                     <MDBDropdownItem><MDBIcon far icon="calendar-check" /> &nbsp; My Subscription</MDBDropdownItem>
                                     <MDBDropdownItem><MDBIcon far icon="credit-card" /> &nbsp; My Plans</MDBDropdownItem>
                                     <MDBDropdownItem divider />
-                                    <MDBDropdownItem><MDBIcon icon="power-off" />&nbsp; Logout</MDBDropdownItem>
+                                    <MDBNavLink to="/logout"><MDBIcon icon="power-off" />&nbsp; Logout</MDBNavLink>
                                 </MDBDropdownMenu>
                               </MDBDropdown>
                             </MDBNavItem>
                           </MDBNavbarNav>
                         </MDBCol>
 
-                        <MDBCol size="1"></MDBCol>
                       </MDBNavbar>
                 </MDBRow>
 
