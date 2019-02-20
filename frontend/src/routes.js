@@ -12,6 +12,7 @@ import LoginPage from './scenes/Login/login';
 import SignupPage from './scenes/Signup/signup';
 import LogoutPage from './scenes/Logout/logout';
 import { checkLogin } from './_actions/auth';
+import Footer from '_components/Footer/footer';
 
 class Routes extends Component{
     constructor(props){
@@ -37,6 +38,7 @@ class Routes extends Component{
                     <Route exact path='/logout' component={LogoutPage} />
                     <Route exact path='/' component={App} />
                 </Switch>
+                <Footer/>
             </div>
             </ConnectedRouter>
         );
