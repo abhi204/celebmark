@@ -1,32 +1,16 @@
 import React, { Component } from 'react';
-import UserSignupTab from './components/user_signup_tab';
+import SignupStepper from './components/signup_stepper';
 import {
-  Container,
-  Tab,
-  Message
-} from 'semantic-ui-react';
+  MDBContainer,
+} from 'mdbreact';
 
-class SignupScene extends Component {
+class SignupPage extends Component {
   render() {
     return (
-      <Container>
-          <br/>
-          <br/>
-          <Tab
-          panes={[
-            {
-              menuItem: { key: 'usersSignup', icon: 'users', content: 'User Signup', color: 'green' },
-              render: ()=>(<UserSignupTab />)
-            },
-          ]}
-          />
-          <Message textalign='center'>
-            Already have a account with us ? <a href='./login'> Login</a> Or <a href='./'> Home</a>
-          </Message>
-          <br/>
-      </Container>
-
-    );
+      <MDBContainer>
+        <SignupStepper />
+      </MDBContainer>
+      );
   }
 }
-export default SignupScene;
+export default SignupPage;

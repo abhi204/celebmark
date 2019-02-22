@@ -7,6 +7,7 @@ export const isAlpha = value => ( /^[A-Za-z]+$/i.test(value) ? undefined: "Enter
 export const isNum = value => ( /^[0-9]+$/i.test(value) ? undefined: "Enter Digits Only")
 export const isAlphaNum = value => ( /^[A-Za-z0-9]+$/i.test(value) ? undefined: "No Special Characters or whitespace allowed")
 export const isMobileNumber = value => (value && value.length === 10 && isNum(value)===undefined ? undefined: "Enter a valid Mobile number (without country Code)");
+export const isValidEmail = value => (/\S+@\S+\.\S+/i.test(value) ? undefined : "Not a valid Email address")
 
 export const validators = {
     required,
@@ -16,6 +17,7 @@ export const validators = {
     isAlpha,
     isNum,
     isAlphaNum,
-    isMobileNumber
+    isMobileNumber,
+    isValidEmail,
 }
 
