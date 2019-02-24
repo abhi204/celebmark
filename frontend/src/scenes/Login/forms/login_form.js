@@ -11,19 +11,18 @@ const renderField = ({
   type,
   meta: { touched, error }
  }) => {
-   console.log(error)
-   return (
-        <MDBInput
-          label={label}
-          type={type}
-          className={touched && error ? "form-control is-invalid" : "form-control is-valid"}
-          {...input}
-          >
-          <div className="invalid-feedback">
-                {error}
-          </div>
-          </MDBInput>
-          );
+    return (
+      <MDBInput
+        label={label}
+        type={type}
+        className={touched && error ? "form-control is-invalid" : "form-control is-valid"}
+        {...input}
+        >
+        <div className="invalid-feedback">
+              {error}
+        </div>
+        </MDBInput>
+    );
 }
 
  class LoginForm extends Component {
