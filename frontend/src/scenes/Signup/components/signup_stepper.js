@@ -1,6 +1,8 @@
 import React from "react";
-import SignupForm from '../forms/signup_form';
+import Form1 from '../forms/form1';
+import Form2 from "../forms/form2";
 import { MDBContainer, MDBRow, MDBCol, MDBStepper, MDBStep, MDBBtn, MDBCard, MDBCardBody,} from "mdbreact";
+import { submitForm, submitOK } from "../helpers/submit_form";
 
 class SignupStepper extends React.Component {
 
@@ -61,11 +63,30 @@ render() {
                       <p>{/* Name step 2 here */}</p>
                     </MDBStep>
                 </MDBStepper>
-                <SignupForm
-                  stepperState = {this.state}
-                  calculateAutofocus = {this.calculateAutofocus}
-                  handleNextPrevClick = {this.handleNextPrevClick}
-                />
+
+                <MDBRow>
+                  {this.state.formActivePanel1 === 1 && (
+                  <MDBCol md="12">
+                    <h3 className="font-weight-bold pl-0 my-4">
+                      <strong>MDBStep 1</strong>
+                    </h3>
+                    <Form1 onSubmit={this.handleNextPrevClick(1)(2)} />
+                  </MDBCol>
+                  )}
+                  {this.state.formActivePanel1 === 2 && (
+                  <MDBCol md="12">
+                    <h3 className="font-weight-bold pl-0 my-4">
+                      <strong>MDBStep 2</strong>
+                    </h3>
+                    <Form2 onSubmit={submitForm}  gotoPrev={this.handleNextPrevClick(1)(1)} onSubmitSuccess={submitOK}>
+                    <hr/>
+                     <div className="mb-4">
+                         By clicking Signup, you agree to our <strong>Terms</strong> and that you have read our <strong>Data use Policy</strong>, including our <strong>Cookie Use</strong>
+                     </div>
+                    </Form2>
+                  </MDBCol>
+                  )}
+                </MDBRow>
             </MDBCardBody>
           </MDBCard>
         </MDBCol>

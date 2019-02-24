@@ -2,7 +2,18 @@ import axios from "axios";
 import { API_USER_REGISTER } from "_consts/api";
 import { SubmissionError } from 'redux-form';
 import _ from 'lodash';
-import { fieldNames } from "../forms/user_signup_form";
+import { fields as fieldsForStep1 } from "../forms/form1";
+import { fields as fieldsForStep2 } from "../forms/form2"
+
+let getNames = (fields) => (fields.map( field => (field.name)))
+
+
+let fieldNames = [].concat(
+    getNames(fieldsForStep1),
+    getNames(fieldsForStep2),
+)
+
+console.log("FIELD NAMES ARE", fieldNames)
 
 
 export async function submitForm(data){
@@ -22,6 +33,6 @@ export async function submitForm(data){
             )
 }
 
-export function submitOK(props){
+export function submitOK(result, dispatch, props){
     props.history.push('/login', {message: 'Check email for confirmation link'})
 }

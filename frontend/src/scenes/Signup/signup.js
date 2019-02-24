@@ -4,6 +4,7 @@ import {
   MDBContainer,
 } from 'mdbreact';
 
+
 class SignupPage extends Component {
   render() {
     return (
