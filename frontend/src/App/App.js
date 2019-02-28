@@ -4,7 +4,7 @@ import PublicHomePage from '../scenes/home/homepage';
 import NavBar from '_containers/navbar/navbar';
 import { Route } from 'react-router-dom';
 import AppHome from './app_scenes/app_home/app_home';
-
+import Search from './app_scenes/search/search';
 
 // Any Page/Component is to be rendered inside App
 class App extends Component {
@@ -17,7 +17,8 @@ class App extends Component {
       <div>
         <NavBar />
         <br/><br/>
-        <Route path="/" component={AppHome} />
+        <Route exact path="/" component={AppHome} />
+        <Route exact path="/search" component={Search} />
 			</div>
     );
   }
