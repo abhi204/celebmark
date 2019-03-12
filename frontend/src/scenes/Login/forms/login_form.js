@@ -31,22 +31,25 @@ const renderField = ({
   return (
     <MDBContainer>
       <MDBRow>
-        <MDBCol/>
+        <MDBCol className="mr-5"/>
         <MDBCol md="7" xs='6' sm='9' lg='5' xl='5'>
           <MDBCard>
             <MDBCardBody className="mx-4">
               <div className="text-center">
-                <MDBIcon fab icon="accusoft" size="5x"/>
+                <MDBIcon fab icon="teamspeak" size="6x"/>
                 <h3 className="dark-grey-text mb-5">
-                  <strong>Login</strong>
+                    <center>
+                      <strong><br/>Login To CelebMark</strong>
+                    </center>
                 </h3>
               </div>
               <form className="needs-validation" onSubmit={handleSubmit} noValidate>
                 <Field
-                  label="Your Username"
+                  label="Username"
                   name="user_name"
                   component={renderField}
                   type="text"
+                  outline
                   validate={[$.required,]}
                 />
                 <Field
@@ -66,6 +69,7 @@ const renderField = ({
                   type="submit"
                   gradient="blue"
                   rounded
+                  size="lg"
                   className="btn-block z-depth-1a"
                   disabled={submitting}
                 >
