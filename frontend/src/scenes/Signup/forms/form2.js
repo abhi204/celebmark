@@ -65,7 +65,7 @@ class Form2 extends Component {
                       previous
                     </MDBBtn>
                     <MDBBtn color="default" rounded className="float-right" type="submit" disabled={ error || submitting }>
-                      Register
+                      Register Me
                     </MDBBtn>
                 </MDBCol>
             </MDBRow>

@@ -40,7 +40,7 @@ render() {
     <MDBContainer>
       <MDBRow>
           <MDBCol/>
-        <MDBCol xl="5" lg="6" md="8" className="mb-4 mt-5">
+          <MDBCol xl="5" lg="6" md="8" className="mb-4 mt-5">
             <MDBCard>
               <MDBCardBody>
                 <div className="text-center">
@@ -79,7 +79,7 @@ render() {
                       <Form2 onSubmit={submitForm}  gotoPrev={this.handleNextPrevClick(1)(1)} onSubmitSuccess={submitOK}>
                       <hr/>
                     <div className="pl-4 pr-4 mb-4 text-center">
-                           By clicking Signup, you agree to our <strong>Terms</strong> and that you have read our <strong>Data Use Policy</strong>, including our <strong>Cookie Use Policy.</strong>
+                           By clicking <strong>Register Me</strong>, you agree to our <strong>Terms</strong> and that you have read our <strong>Data Use Policy</strong>, including our <strong>Cookie Use Policy.</strong>
                        </div>
                       </Form2>
                     </MDBCol>
