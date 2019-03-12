@@ -1,19 +1,14 @@
 import React, { Component } from 'react';
-import { MDBFormInline, MDBIcon } from "mdbreact";
+import { MDBFormInline, MDBIcon, MDBInput } from "mdbreact";
 
 class FilterSection extends Component {
-    
+
     render(){
         return (
-            <div className="card p-3 w-100">
-                <MDBFormInline className="md-form">
-                    <MDBIcon icon="city" />
-                    <input className="form-control form-control-sm ml-3 w-75" type="text" placeholder="City" aria-label="Search" />
-                </MDBFormInline>
-                <MDBFormInline className="md-form">
-                    <MDBIcon far icon="grin-tongue-squint" />
-                    <input className="form-control form-control-sm ml-3 w-75" type="text" placeholder="Search Category"/>
-                </MDBFormInline>
+            <div className="card p-4 mb-3 w-100  d-inline-block">
+              <h3><strong> <center> Filter Your Search </center></strong></h3>
+                <MDBInput label="Location" outline icon="map-marker-alt" className="w-10 mt-1" />
+                <MDBInput label="Budget" outline icon="rupee-sign" className="w-10 mt-1" />
             </div>
         );
     }
