@@ -17,13 +17,12 @@ class LoginPage extends Component {
     return (
       <MDBContainer className="h-100">
         <MDBRow>
-          <MDBCol size="1"/>
-          <MDBCol size="10">
-          <div style={{height: "4em"}} className="mx-4">
-            { message ? <MDBAlert color={location.state.warn ? 'danger': 'success' }><center>{message}</center></MDBAlert> : '' }
-          </div>
-            <LoginForm />
-          </MDBCol>
+          <MDBCol size="10" className="mt-5 ml-5">
+            <div style={{height: "4em"}} className="mx-4">
+              { message ? <MDBAlert color={location.state.warn ? 'danger': 'success' }><center>{message}</center></MDBAlert> : '' }
+            </div>
+              <LoginForm />
+            </MDBCol>
           <MDBCol size="1"/>
         </MDBRow>
       </MDBContainer>
