@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { userImage, favIcon } from '../../_consts/dummy';
+import { userImage, favIcon } from '_consts/dummy';
 import { connect } from 'react-redux'
-import "./navbar.css"
+import SearchInput from './search_input/search_input';
 
+import "./navbar.css"
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav,
 MDBNavItem, MDBDropdown, MDBDropdownItem,
 MDBDropdownMenu, MDBDropdownToggle, MDBNavLink,
@@ -39,7 +40,7 @@ class NavBar extends Component {
                         // show search bar on login
                             <MDBCol>
                             <MDBNavItem className="d-inline float-center my-auto" >
-                                <input className="form-control" type="text" placeholder="Search" aria-label="Search" />
+                                    <SearchInput/>
                             </MDBNavItem>
                             </MDBCol> }
                         
