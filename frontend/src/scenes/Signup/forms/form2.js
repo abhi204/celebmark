@@ -44,7 +44,9 @@ class Form2 extends Component {
             <MDBRow>
                 <MDBCol md="12">
                     <h3 className="font-weight-bold pl-0 my-4">
-                    <strong>PAGE 2</strong>
+                    <center>
+                      <strong>Enter Your Basic Details.</strong>
+                    </center>
                     </h3>
                     {fields.map(field => (
                         <Field

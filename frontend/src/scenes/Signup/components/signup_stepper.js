@@ -1,7 +1,7 @@
 import React from "react";
 import Form1 from '../forms/form1';
 import Form2 from "../forms/form2";
-import { MDBContainer, MDBRow, MDBCol, MDBStepper, MDBStep, MDBBtn, MDBCard, MDBCardBody,} from "mdbreact";
+import { MDBContainer, MDBRow, MDBCol, MDBStepper, MDBStep, MDBBtn, MDBCard, MDBCardBody, MDBIcon} from "mdbreact";
 import { submitForm, submitOK } from "../helpers/submit_form";
 
 class SignupStepper extends React.Component {
@@ -38,12 +38,15 @@ calculateAutofocus = (a) => {
 render() {
   return (
     <MDBContainer>
-      <MDBRow>
-        <MDBCol xl="6" lg="7" md="10">
+      <MDBRow className="mt-5">
+        <MDBCol xl="5" lg="7" md="10" className="mb-4 ml-5">
           <MDBCard>
             <MDBCardBody>
+              <div className="text-center">
+                <MDBIcon fab icon="teamspeak" size="6x"/>
+              </div>
                 <h2 className="text-center font-weight-bold pt-4 pb-5">
-                    <strong>Register at CelebMark</strong>
+                    <strong>Register At CelebMark</strong>
                 </h2>
                 <MDBStepper form>
                     <MDBStep form>
@@ -52,7 +55,7 @@ render() {
                           1
                           </MDBBtn>
                       </a>
-                      <p>{/* Name step 1 here */}</p>
+                      <p>Contact</p>
                     </MDBStep>
                     <MDBStep form>
                       <a href="#formstep2" >
@@ -60,28 +63,22 @@ render() {
                           2
                           </MDBBtn>
                       </a>
-                      <p>{/* Name step 2 here */}</p>
+                      <p>Basic</p>
                     </MDBStep>
                 </MDBStepper>
 
                 <MDBRow>
                   {this.state.formActivePanel1 === 1 && (
                   <MDBCol md="12">
-                    <h3 className="font-weight-bold pl-0 my-4">
-                      <strong>MDBStep 1</strong>
-                    </h3>
                     <Form1 onSubmit={this.handleNextPrevClick(1)(2)} />
                   </MDBCol>
                   )}
                   {this.state.formActivePanel1 === 2 && (
                   <MDBCol md="12">
-                    <h3 className="font-weight-bold pl-0 my-4">
-                      <strong>MDBStep 2</strong>
-                    </h3>
                     <Form2 onSubmit={submitForm}  gotoPrev={this.handleNextPrevClick(1)(1)} onSubmitSuccess={submitOK}>
                     <hr/>
-                     <div className="mb-4">
-                         By clicking Signup, you agree to our <strong>Terms</strong> and that you have read our <strong>Data use Policy</strong>, including our <strong>Cookie Use</strong>
+                  <div className="pl-4 pr-4 mb-4 text-center">
+                         By clicking Signup, you agree to our <strong>Terms</strong> and that you have read our <strong>Data Use Policy</strong>, including our <strong>Cookie Use Policy.</strong>
                      </div>
                     </Form2>
                   </MDBCol>
