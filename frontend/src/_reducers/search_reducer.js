@@ -25,7 +25,7 @@ let searchReducer = (state=initialState, action) => {
         case SEARCH_RESPONSE:
             let { count, searchTerm } = action.payload;
             let regexp = new RegExp(`^${state.searchTerm}`, 'gi')
-            return count==0 && regexp.test(searchTerm) ? state : { ...action.payload, total: count }
+            return count===0 && regexp.test(searchTerm) && state.total!==0 ? state : { ...action.payload, total: count }
         case SEARCH_FAILED:
             console.log("Unknown Error occured", action.payload)
             return state;
