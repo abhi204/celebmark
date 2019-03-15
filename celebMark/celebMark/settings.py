@@ -143,6 +143,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'mystatic/')
 
 #temporary media storage
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = 'media/'
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES':(

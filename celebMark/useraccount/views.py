@@ -24,9 +24,9 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 
 # View to Filter and return list of celebs
 class CelebListView(ListAPIView):
-    queryset = User.objects.all() # change to celeb user model
-    serializer_class = UserSerializer # change this to a new serializer for celeb
+    queryset = Celeb.objects.all()
+    serializer_class = CelebSerializer # change this to a new serializer for celeb
     permission_classes = [permissions.AllowAny,]
     filter_backends = (filters.SearchFilter, DjangoFilterBackend)
-    search_fields = ('=user_name', 'first_name', 'last_name')
+    search_fields = ('=user_name', 'first_name', 'last_name', 'category')
     filterset_fields = ('email',)

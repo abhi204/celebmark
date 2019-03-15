@@ -45,7 +45,10 @@ class User(AbstractBaseUser):
     user_name = models.CharField(max_length=255, unique=True, primary_key=True)
     email = models.EmailField(max_length=100, unique=True)
     mobile = models.IntegerField(unique=True)
-    profile_pic = models.ImageField(upload_to="profile_pic/", default="profile_pic/default-user.png")
+    profile_pic = models.ImageField(
+        upload_to=lambda instance, filename: '/users/'.join([str(instance.user_name), 'profile_pic.jpg']),
+        default="/default/user/profile_pic.png"
+        )
 
     date_joined = models.DateTimeField(auto_now_add=True)
     is_active = models.BooleanField(default=True)

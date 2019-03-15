@@ -4,7 +4,7 @@ from useraccount.models import User, Celeb
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-base_fields = ['first_name', 'last_name', 'user_name','mobile','email', 'password',]
+base_fields = ['first_name', 'last_name', 'user_name','mobile','email', 'password', 'profile_pic']
 
 class UserSerializer(serializers.ModelSerializer):
     user_name = serializers.CharField(
@@ -21,6 +21,11 @@ class UserSerializer(serializers.ModelSerializer):
         validators = [UniqueValidator(queryset=User.objects.all(), message="number already registered")]
     )
     password = serializers.CharField(min_length=8)
+
+    profile_pic = serializers.SerializerMethodField()
+
+    def get_profile_pic(self, user_obj):
+        return user_obj.profile_pic.url
 
     class Meta:
         model = User
@@ -42,6 +47,7 @@ class UserSerializer(serializers.ModelSerializer):
 
 class CelebSerializer(UserSerializer):
     handles = serializers.JSONField()
+
     class Meta:
         model = Celeb
         fields = base_fields + ['dob', 'category', 'handles']

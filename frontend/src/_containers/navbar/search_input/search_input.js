@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { searchCeleb } from '_actions/search';
-import { userImage } from '_consts/dummy';
+import { API_HOST } from '_consts/api';
 import { debounce } from 'lodash';
 import { withRouter } from 'react-router-dom';
 import './search_input.css';
@@ -48,8 +48,8 @@ class SearchInput extends Component {
                                       onMouseDown={ () => this.showScreen(`/${celeb.user_name}`) }
                                     >
                                     <MDBListGroupItem>
-                                        <img src={userImage} className="rounded-circle z-depth-0" style={{height: "2.5em", paddingRight: "0.5em"}} alt="" />
-                                        Cras justo odio
+                                        <img src={`${API_HOST}/${celeb.profile_pic}`} className="rounded-circle z-depth-0" style={{height: "2.5em", paddingRight: "0.5em"}} alt="" />
+                                        {`${celeb.first_name} ${celeb.last_name}`}
                                     </MDBListGroupItem>
                                     </a>
                                 </div>))
