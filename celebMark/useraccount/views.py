@@ -1,7 +1,7 @@
 from rest_framework import permissions
 from rest_framework.generics import CreateAPIView, ListAPIView
-from useraccount.models import User
-from .serializers import UserSerializer
+from useraccount.models import User, Celeb
+from .serializers import UserSerializer, CelebSerializer
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -10,13 +10,14 @@ from .serializers import CustomTokenObtainPairSerializer
 # Create your views here.
 
 class register_user(CreateAPIView):
-    
     model = User
     serializer_class = UserSerializer
-    
-    permission_classes = [
-        permissions.AllowAny,
-    ]
+    permission_classes = [permissions.AllowAny, ]
+
+class register_celeb(CreateAPIView):
+    model = Celeb
+    serializer_class = CelebSerializer
+    permission_classes = [permissions.AllowAny, ]
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer

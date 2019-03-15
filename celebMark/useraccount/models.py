@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils import timezone
+import jsonfield
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
@@ -85,3 +86,11 @@ class User(AbstractBaseUser):
         return f"{self.first_name} {self.last_name}"
 
     objects = UserManager()
+
+class Celeb(User):
+    rating = models.PositiveSmallIntegerField(default=0)
+    dob = models.DateField()
+    category = models.CharField(max_length=255)
+    description = models.TextField(null=True, blank=True)
+    handles = jsonfield.JSONField()
+    tags = jsonfield.JSONField()

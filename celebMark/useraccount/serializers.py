@@ -1,9 +1,10 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from useraccount.models import User
+from useraccount.models import User, Celeb
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
+base_fields = ['first_name', 'last_name', 'user_name','mobile','email', 'password',]
 
 class UserSerializer(serializers.ModelSerializer):
     user_name = serializers.CharField(
@@ -23,7 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = ('first_name', 'last_name', 'user_name','mobile','email', 'password',)
+        fields = base_fields
         write_only_fields = ('password',)
         read_only_fields = ('user_name',)
 
@@ -35,13 +36,23 @@ class UserSerializer(serializers.ModelSerializer):
             mobile=validated_data['mobile'],
             email=validated_data['email'],
         )
-
         user.set_password(validated_data['password'])
         user.save()
-
         return user
 
+class CelebSerializer(UserSerializer):
+    handles = serializers.JSONField()
+    class Meta:
+        model = Celeb
+        fields = base_fields + ['dob', 'category', 'handles']
     
+    def create(self, validated_data):
+        user = Celeb.objects.create(**validated_data)
+        user.set_password(validated_data['password'])
+        user.save()
+        return user
+
+
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
     def get_token(cls, user):
