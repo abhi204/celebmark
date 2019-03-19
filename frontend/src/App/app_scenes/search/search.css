@@ -1,0 +1,7 @@
+.fixed {
+    position: fixed!important;
+}
+
+.prefix.active {
+    color: #73c076;
+}

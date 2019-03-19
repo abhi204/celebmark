@@ -9,6 +9,7 @@
     "mdbreact": "git+https://oauth2:4QPn48wi5BwxK3CKjuzE@git.mdbootstrap.com/mdb/react/re-pro.git",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-masonry-component": "^6.2.1",
     "react-redux": "^6.0.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3",
@@ -36,6 +37,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.7.2"
+    "@fortawesome/fontawesome-free": "^5.7.2",
+    "node-sass": "^4.11.0"
   }
 }
