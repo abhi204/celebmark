@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PublicHomePage from '../scenes/home/homepage';
-import { MDBContainer } from 'mdbreact';
 import NavBar from '_containers/navbar/navbar';
-import Carousel from '_components/carousel/carousel';
-import SponsorSlider from '_components/sponsor_list/sponsor_list';
+import { Route } from 'react-router-dom';
+import AppHome from './app_scenes/app_home/app_home';
+import Search from './app_scenes/search/search';
 
 // Any Page/Component is to be rendered inside App
 class App extends Component {
@@ -17,15 +17,8 @@ class App extends Component {
       <div>
         <NavBar />
         <br/><br/>
-        <Carousel/>
-        <br/>
-        <MDBContainer>
-        <SponsorSlider/>
-        {/* Do PageLayout Styling here */}
-        {/* APP visible only if logged in!!!!! */}
-        {/* Do Route switches of containers/components here */}
-        START content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>Site content here<br/>
-        </MDBContainer>
+        <Route exact path="/" component={AppHome} />
+        <Route exact path="/search" component={Search} />
 			</div>
     );
   }

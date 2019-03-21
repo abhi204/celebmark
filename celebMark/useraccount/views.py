@@ -6,19 +6,25 @@ from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import CreateAPIView, RetrieveAPIView
 from useraccount.models import User
 from .serializers import UserSerializer
+from rest_framework.generics import CreateAPIView, ListAPIView
+from useraccount.models import User, Celeb
+from .serializers import UserSerializer, CelebSerializer
+from rest_framework import filters
+from django_filters.rest_framework import DjangoFilterBackend
 
 from rest_framework_simplejwt.views import TokenObtainPairView
 from .serializers import CustomTokenObtainPairSerializer
 # Create your views here.
 
 class register_user(CreateAPIView):
-    
     model = User
     serializer_class = UserSerializer
-    
-    permission_classes = [
-        permissions.AllowAny,
-    ]
+    permission_classes = [permissions.AllowAny, ]
+
+class register_celeb(CreateAPIView):
+    model = Celeb
+    serializer_class = CelebSerializer
+    permission_classes = [permissions.AllowAny, ]
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
@@ -33,3 +39,12 @@ def check_unique(request):
         user = get_object_or_404(User, **{key: value})
         return Response(status=200) if user else Response(status=404)
     return Response(status=403)
+
+# View to Filter and return list of celebs
+class CelebListView(ListAPIView):
+    queryset = Celeb.objects.all()
+    serializer_class = CelebSerializer # change this to a new serializer for celeb
+    permission_classes = [permissions.AllowAny,]
+    filter_backends = (filters.SearchFilter, DjangoFilterBackend)
+    search_fields = ('=user_name', 'first_name', 'last_name', 'category')
+    filterset_fields = ('email',)

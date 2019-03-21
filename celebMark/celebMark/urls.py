@@ -15,7 +15,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, re_path, include
-
+from django.conf import settings
 from useraccount.views import CustomTokenObtainPairView
 from rest_framework_simplejwt.views import TokenRefreshView
 
@@ -25,3 +25,7 @@ urlpatterns = [
     re_path(r'^auth/token/obtain/$', CustomTokenObtainPairView.as_view(),name='get-auth-token'),
     re_path(r'^auth/token/refresh/$', TokenRefreshView.as_view())
 ]
+
+if settings.DEBUG:
+    from django.conf.urls.static import static
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -1,0 +1,7 @@
+.pricing-card .price .number::before {
+    content: "₹" !important;
+}
+
+.pricing-card .price .number::after {
+    content: "/year" !important;
+}
