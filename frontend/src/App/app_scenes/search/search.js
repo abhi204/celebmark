@@ -6,7 +6,7 @@ import TagsSection from './containers/filter_section/tags_section';
 import SortSection from './containers/filter_section/sort_section';
 import './search.css';
 
-class Search extends Component {
+class SearchPage extends Component {
 
     render(){
         return (
@@ -29,4 +29,4 @@ class Search extends Component {
     }
 }
 
-export default Search;
+export default SearchPage;

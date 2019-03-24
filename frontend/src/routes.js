@@ -9,6 +9,7 @@ import { connect } from 'react-redux';
 // Homepage Component Already imported in App.js
 import App from './App/App';
 import LoginPage from './scenes/Login/login';
+import SearchPage from './App/app_scenes/search/search'
 import SignupPage from './scenes/Signup/signup';
 import LogoutPage from './scenes/Logout/logout';
 import { checkLogin } from './_actions/auth';
@@ -36,7 +37,7 @@ class Routes extends Component{
                     <Route publicOnly exact path='/login' component={LoginPage} />
                     <Route publicOnly exact path='/signup' component={SignupPage} />    
                     <Route exact path='/logout' component={LogoutPage} />
-                    <Route exact path='/' component={App} />
+                    <Route path='/' component={App} />
                     <Route path='*' render={() => (<div>PAGE NOT FOUND</div>)} />
                 </Switch>
                 <Footer/>
