@@ -7,7 +7,7 @@ export default class Footer extends Component {
   render(){
     return (
       <MDBFooter className="page-footer font-small foot">
-        <div>
+        <div style={ {backgroundColor:'white', padding:'16px' } }>
           <MDBContainer fluid className="text-center text-md-left">
             <MDBRow className="d-flex align-items-center">
               <MDBCol md="6" lg="5" className="text-center text-md-left mb-1 mb-md-0">

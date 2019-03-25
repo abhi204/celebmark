@@ -5,3 +5,14 @@
 .prefix.active {
     color: #73c076;
 }
+
+.row-background{
+  background-color: white;
+  position: fixed;
+  left: 0;
+  right: 0;
+}
+
+.celeb-list{
+  padding-top: 6rem;
+}
