@@ -7,6 +7,9 @@ from django.contrib.auth.models import (
     PermissionsMixin
     )
 
+def profile_pic_storage(instance, filename):
+    return '/users/'.join([str(instance.user_name), 'profile_pic.jpg'])
+
 class UserManager(BaseUserManager):
     use_in_migrations = True
 
@@ -46,7 +49,7 @@ class User(AbstractBaseUser):
     email = models.EmailField(max_length=100, unique=True)
     mobile = models.IntegerField(unique=True)
     profile_pic = models.ImageField(
-        upload_to=lambda instance, filename: '/users/'.join([str(instance.user_name), 'profile_pic.jpg']),
+        upload_to=profile_pic_storage,
         default="/default/user/profile_pic.png"
         )
 
@@ -69,7 +72,7 @@ class User(AbstractBaseUser):
         'email',
         'mobile',
         'profile_pic',
-    ] 
+    ]
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
