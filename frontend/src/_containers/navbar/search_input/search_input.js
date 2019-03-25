@@ -43,7 +43,7 @@ class SearchInput extends Component {
                 <div>
                     { search.results.map(celeb => (
                                 <div key={celeb.user_name}>
-                                    <a 
+                                    <a
                                       href={`/${celeb.user_name}`}
                                       onMouseDown={ () => this.showScreen(`/${celeb.user_name}`) }
                                     >
@@ -97,13 +97,14 @@ class SearchInput extends Component {
     render(){
         return(
             <div id="search-input">
-                <input 
+                <input
                     className="form-control"
                     onChange={event => this.sendQuery(event.target.value)}
                     onBlur = {this.onInputBlur}
                     type="text"
                     placeholder="Search"
                     aria-label="Search"
+                    onKeyUp={event => { if(event.keyCode===13){this.showScreen('/search')} }}
                 />
                 <div className="pos-absolute-correction search-dropdown" hidden={!this.state.showList}>
                     <MDBListGroup>
