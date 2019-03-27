@@ -117,7 +117,7 @@ class SearchInput extends Component {
 }
 
 function mapStateToProps(state){
-    return { search: state.search }
+    return { search: state.navSearch }
 }
 
 const mapDispatchToProps = {

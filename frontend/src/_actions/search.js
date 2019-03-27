@@ -1,5 +1,5 @@
 import { API_SEARCH_CELEB } from '_consts/api';
-import { SEARCH_RESPONSE, SEARCH_FAILED } from '_consts/types';
+import { NAV_SEARCH_RESPONSE, NAV_SEARCH_FAILED } from '_consts/types';
 import axios from 'axios';
 
 /*
@@ -26,8 +26,8 @@ export function searchCeleb(params=null){
     const request = params ? axios.get(API_SEARCH_CELEB, { params }) : axios.get(API_SEARCH_CELEB)
     return (dispatch) => {
         return request.then( ({data}) => {
-            dispatch({type: SEARCH_RESPONSE, payload: {...data, searchTerm} });
-        }).catch( error => dispatch({type: SEARCH_FAILED, payload: {searchTerm, ...error} }) )
+            dispatch({type: NAV_SEARCH_RESPONSE, payload: {...data, searchTerm} });
+        }).catch( error => dispatch({type: NAV_SEARCH_FAILED, payload: {searchTerm, ...error} }) )
     }
 
 }

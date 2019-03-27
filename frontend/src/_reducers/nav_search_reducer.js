@@ -1,4 +1,4 @@
-import { SEARCH_RESPONSE, SEARCH_FAILED } from "../_consts/types";
+import { NAV_SEARCH_RESPONSE, NAV_SEARCH_FAILED } from "../_consts/types";
 
 /*
  total -> total number of matching queries
@@ -20,13 +20,13 @@ let initialState = {
  * (Done by the Regexp matching)
  */
 
-let searchReducer = (state=initialState, action) => {
+let navSearchReducer = (state=initialState, action) => {
     switch (action.type) {
-        case SEARCH_RESPONSE:
+        case NAV_SEARCH_RESPONSE:
             let { count, searchTerm } = action.payload;
             let regexp = new RegExp(`^${state.searchTerm}`, 'gi')
             return count===0 && regexp.test(searchTerm) && state.total!==0 ? state : { ...action.payload, total: count }
-        case SEARCH_FAILED:
+        case NAV_SEARCH_FAILED:
             console.log("Unknown Error occured", action.payload)
             return state;
         default:
@@ -34,4 +34,4 @@ let searchReducer = (state=initialState, action) => {
     }
 }
 
-export default searchReducer;
+export default navSearchReducer;

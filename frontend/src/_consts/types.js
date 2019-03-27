@@ -1,2 +1,2 @@
-export const SEARCH_RESPONSE = "Search Response";
-export const SEARCH_FAILED = "Search Unsuccessful";
+export const NAV_SEARCH_RESPONSE = "Search Response";
+export const NAV_SEARCH_FAILED = "Search Unsuccessful";
