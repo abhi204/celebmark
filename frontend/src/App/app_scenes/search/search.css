@@ -6,13 +6,17 @@
     color: #73c076;
 }
 
-.row-background{
-  background-color: white;
-  position: fixed;
-  left: 0;
-  right: 0;
-}
-
 .celeb-list{
   padding-top: 6rem;
 }
+
+
+
+/* .center { 
+  height: 40px;
+  width: 300px; 
+  overflow: auto;
+  margin: auto; 
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0; 
+} */

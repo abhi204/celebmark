@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { MDBCol } from 'mdbreact';
-import CelebCard from '../../components/celeb_card';
+import CelebCard from '../components/celeb_card';
 import { connect } from 'react-redux';
 import Masonry from 'react-masonry-component';
 
