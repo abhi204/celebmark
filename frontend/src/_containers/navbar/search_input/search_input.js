@@ -41,7 +41,7 @@ class SearchInput extends Component {
         {
             return(
                 <div>
-                    { search.results.slice(0,4).map(celeb => (
+                    { search.results.slice(0,5).map(celeb => (
                                 <div key={celeb.user_name}>
                                     <a
                                       href={`/${celeb.user_name}`}
