@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
-import { MDBCol } from 'mdbreact';
-import CelebCard from '../components/celeb_card';
 import { connect } from 'react-redux';
+import { searchNext } from '_actions/search';
+import CelebCard from '../components/celeb_card';
+import { MDBBtn } from 'mdbreact';
 import Masonry from 'react-masonry-component';
 
 // class SearchResults extends Component {
@@ -26,8 +27,11 @@ import Masonry from 'react-masonry-component';
 
 class SearchResults extends Component {
 
+
+
   render(){
-    let childElements = this.props.celebs.map( celeb => (
+    let { search } = this.props;
+    let childElements = search.results.map( celeb => (
       <CelebCard
         key={celeb.user_name}
         name={`${celeb.first_name} ${celeb.last_name}`}
@@ -37,26 +41,33 @@ class SearchResults extends Component {
         profile_pic = {celeb.profile_pic}
       />
     ))
-
-    return (
-      <MDBCol className="mt-1 pr-0 pl-0">
-      <div>
-        <Masonry
-        // elementType={'ul'} // default 'div'
-        options={{transitionDuration: 0}} // default {}
-        disableImagesLoaded={false} // default false
-        updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
-        >
-        {childElements}
-        </Masonry>
-      </div>
-      </MDBCol>
-    );
+    if(search.loading)
+      return <div>LOADING...</div>
+    else if(search.count===0)
+      return <div>No results Found</div>
+    else
+      return (
+        <div className="mt-1 pr-0 pl-0">
+          <Masonry
+          // elementType={'ul'} // default 'div'
+          options={{transitionDuration: 0}} // default {}
+          disableImagesLoaded={false} // default false
+          updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
+          >
+          {childElements}
+          </Masonry>
+          { search.next && <center><MDBBtn onClick={()=>{this.props.searchNext(search.next)}} disabled={search.loadingNext}>SHOW MORE</MDBBtn></center>}
+        </div>
+      );
   }
 }
 
 function mapStateToProps(state){
-  return {celebs: state.search.results}
+  return { search: state.search }
 }
 
-export default connect(mapStateToProps)(SearchResults);
+const mapDispatchToProps = {
+  searchNext
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);

@@ -7,7 +7,7 @@ import './celeb_card.css'
 class CelebCard extends Component {
 
     render(){
-        const { name, rating, category, profile_pic, user_name } = this.props
+        const { name, profile_pic, user_name } = this.props
         return (
           <div className="ml-3 mb-3" style={{width: "12em"}} >
             <Link to={`/profile/${user_name}`} >

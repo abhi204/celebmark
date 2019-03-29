@@ -1,5 +1,6 @@
 .row-background{
     position: fixed;
+    z-index: 99;
     left: 0;
     right: 0;
 }
@@ -12,6 +13,7 @@
 .text-fix{
     font-weight: bold;
     letter-spacing: 1px;
+    width: 8em;
 }
 
 .celeb-search-input{

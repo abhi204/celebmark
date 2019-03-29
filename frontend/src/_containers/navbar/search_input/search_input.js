@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchCeleb } from '_actions/search';
+import { navSearchCeleb as searchCeleb } from '_actions/search';
 import { API_HOST } from '_consts/api';
 import { debounce } from 'lodash';
 import { withRouter } from 'react-router-dom';
@@ -41,7 +41,7 @@ class SearchInput extends Component {
         {
             return(
                 <div>
-                    { search.results.map(celeb => (
+                    { search.results.slice(0,4).map(celeb => (
                                 <div key={celeb.user_name}>
                                     <a
                                       href={`/${celeb.user_name}`}

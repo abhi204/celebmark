@@ -13,9 +13,6 @@ let fieldNames = [].concat(
     getNames(fieldsForStep2),
 )
 
-console.log("FIELD NAMES ARE", fieldNames)
-
-
 export async function submitForm(data){
     await axios.post(`${API_USER_REGISTER}`, data)
             .then(response => {
