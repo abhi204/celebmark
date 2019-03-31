@@ -4,10 +4,17 @@ from useraccount.models import User, Celeb
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-base_fields = ['first_name', 'last_name', 'user_name', 'profile_pic']
-register_fields = base_fields[:] + ['password', 'mobile', 'email']
+public_fields = ['first_name', 'last_name', 'user_name', 'profile_pic']
+private_fields = ['password', 'mobile', 'email']
+register_fields = public_fields + private_fields 
 exclude_fields = ['last_login', 'date_joined', 'is_active', 'is_staff', 'is_superuser', 'id']
 
+class CelebViewSerializer(serializers.ModelSerializer):
+    handles = serializers.JSONField()
+    tags = serializers.JSONField()
+    class Meta:
+        model = Celeb
+        exclude = exclude_fields + private_fields
 
 '''
  For both User and Celeb registration
@@ -56,7 +63,6 @@ class CelebRegisterSerializer(UserRegisterSerializer):
 
     class Meta:
         model = Celeb
-        # fields = register_fields + ['dob', 'category', 'handles']
         exclude = exclude_fields + ['description', 'tags']
     
     def create(self, validated_data):
