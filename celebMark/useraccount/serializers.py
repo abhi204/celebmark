@@ -4,9 +4,15 @@ from useraccount.models import User, Celeb
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
-base_fields = ['first_name', 'last_name', 'user_name','mobile','email', 'password', 'profile_pic']
+base_fields = ['first_name', 'last_name', 'user_name', 'profile_pic']
+register_fields = base_fields[:] + ['password', 'mobile', 'email']
+exclude_fields = ['last_login', 'date_joined', 'is_active', 'is_staff', 'is_superuser', 'id']
 
-class UserSerializer(serializers.ModelSerializer):
+
+'''
+ For both User and Celeb registration
+'''
+class UserRegisterSerializer(serializers.ModelSerializer):
     user_name = serializers.CharField(
             max_length=50,
             required=True,
@@ -29,7 +35,7 @@ class UserSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        fields = base_fields
+        fields = register_fields
         write_only_fields = ('password',)
         read_only_fields = ('user_name',)
 
@@ -45,19 +51,19 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         return user
 
-class CelebSerializer(UserSerializer):
+class CelebRegisterSerializer(UserRegisterSerializer):
     handles = serializers.JSONField()
 
     class Meta:
         model = Celeb
-        fields = base_fields + ['dob', 'category', 'handles']
+        # fields = register_fields + ['dob', 'category', 'handles']
+        exclude = exclude_fields + ['description', 'tags']
     
     def create(self, validated_data):
         user = Celeb.objects.create(**validated_data)
         user.set_password(validated_data['password'])
         user.save()
         return user
-
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
