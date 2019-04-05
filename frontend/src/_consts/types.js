@@ -9,3 +9,7 @@ export const SEARCH_RESET = "Search Reset"
 export const SEARCH_NEXT_RESPONSE = "Search next Response";
 export const SEARCH_NEXT_LOADING = "Searching next";
 export const SEARCH_NEXT_FAILED = "Search next Unsuccessful";
+
+export const PROFILE_LOADING = "loading profile"
+export const PROFILE_FAILED = "failed to fetch Profile"
+export const PROFILE_RESPONSE = "Profile Response"

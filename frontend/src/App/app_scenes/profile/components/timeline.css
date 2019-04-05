@@ -1,0 +1,13 @@
+.invite-button {
+    position: absolute!important;
+    bottom: -2rem;
+    right: 4rem;
+    font-size: large!important;
+    border-radius: 5rem!important;
+}
+
+.sticky-timeline {
+    position: sticky;
+    top: -14rem;
+    z-index: 99;
+}

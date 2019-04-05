@@ -44,8 +44,8 @@ class SearchInput extends Component {
                     { search.results.slice(0,5).map(celeb => (
                                 <div key={celeb.user_name}>
                                     <a
-                                      href={`/${celeb.user_name}`}
-                                      onMouseDown={ () => this.showScreen(`/${celeb.user_name}`) }
+                                      href={`/profile/${celeb.user_name}`}
+                                      onMouseDown={ () => this.showScreen(`/profile/${celeb.user_name}`) }
                                     >
                                     <MDBListGroupItem>
                                         <img src={`${API_HOST}/${celeb.profile_pic}`} className="rounded-circle z-depth-0" style={{height: "2.5em", paddingRight: "0.5em"}} alt="" />
