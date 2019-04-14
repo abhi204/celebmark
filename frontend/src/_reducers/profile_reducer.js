@@ -1,4 +1,5 @@
-import { PROFILE_LOADING, PROFILE_RESPONSE, PROFILE_FAILED } from "../_consts/types";
+import { PROFILE_LOADING, PROFILE_RESPONSE, PROFILE_FAILED } from "_consts/types";
+import { API_HOST } from "_consts/api";
 
 let initialState = {};
 
@@ -7,8 +8,9 @@ let profileReducer = (state=initialState, { type, payload }) => {
         case PROFILE_LOADING:
             return { loading: true}
         case PROFILE_RESPONSE:
-            let fullName = `${payload.first_name} ${payload.last_name}`
-            return { ...payload, fullName }
+            let fullName = `${payload.first_name} ${payload.last_name}`;
+            let gallery = payload.gallery.map(image_url => (`${API_HOST}/${image_url}`));
+            return { ...payload, fullName, gallery };
         case PROFILE_FAILED:
             return { error: true, ...payload }
         default:

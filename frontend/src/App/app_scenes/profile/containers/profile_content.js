@@ -4,7 +4,6 @@ import { MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink, MDBBtn, MDBN
 import AboutTab from './about'
 import GalleryTab from './gallery'
 import './profile_content.css';
-import HandlesList from "../components/handles";
 
 class TabsPage extends Component {
 state = {
