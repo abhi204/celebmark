@@ -9,18 +9,6 @@ private_fields = ['password', 'mobile', 'email']
 register_fields = public_fields + private_fields 
 exclude_fields = ['last_login', 'date_joined', 'is_active', 'is_staff', 'is_superuser', 'id']
 
-class CelebViewSerializer(serializers.ModelSerializer):
-    handles = serializers.JSONField()
-    tags = serializers.JSONField()
-    profile_pic = serializers.SerializerMethodField()
-
-    def get_profile_pic(self, user_obj):
-        return user_obj.profile_pic.url
-    
-    class Meta:
-        model = Celeb
-        exclude = exclude_fields + private_fields
-
 '''
  For both User and Celeb registration
 '''

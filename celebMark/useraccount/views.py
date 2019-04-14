@@ -3,11 +3,11 @@ from .helpers import unique_fields
 from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.generics import CreateAPIView, RetrieveAPIView
+from rest_framework.generics import CreateAPIView
 from useraccount.models import User
-from rest_framework.generics import CreateAPIView, ListAPIView
+from rest_framework.generics import CreateAPIView
 from useraccount.models import User, Celeb
-from .serializers import UserRegisterSerializer, CelebRegisterSerializer, CelebViewSerializer
+from .serializers import UserRegisterSerializer, CelebRegisterSerializer
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -38,17 +38,3 @@ def check_unique(request):
         user = get_object_or_404(User, **{key: value})
         return Response(status=200) if user else Response(status=404)
     return Response(status=403)
-
-# View to Filter and return list of celebs
-class CelebListView(ListAPIView):
-    queryset = Celeb.objects.all()
-    serializer_class = CelebViewSerializer # change this to a new serializer for celeb
-    permission_classes = [permissions.AllowAny,]
-    filter_backends = (filters.SearchFilter, DjangoFilterBackend)
-    search_fields = ('=user_name', 'first_name', 'last_name', 'category')
-    filterset_fields = ('email',)
-
-class CelebProfileView(RetrieveAPIView):
-    queryset = Celeb.objects.all()
-    serializer_class = CelebViewSerializer
-    permission_classes = [permissions.AllowAny,]
