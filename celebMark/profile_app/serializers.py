@@ -10,9 +10,13 @@ class CelebViewSerializer(serializers.ModelSerializer):
     handles = serializers.JSONField()
     tags = serializers.JSONField()
     profile_pic = serializers.SerializerMethodField()
+    gallery = serializers.SerializerMethodField()
 
     def get_profile_pic(self, user_obj):
         return user_obj.profile_pic.url
+
+    def get_gallery(self, user_obj):
+        return [ gallery_object.image_url for gallery_object in user_obj.gallery_set.all() ]
     
     class Meta:
         model = Celeb
