@@ -1,0 +1,15 @@
+
+.tab-header {
+    padding: 3em 1em 1em 1em!important;
+    border-color: black!important;
+}
+
+.profile-nav-tabs{
+    /* position: sticky!important; */
+    background-color:white;
+    /* top: 6.5rem; */
+}
+
+.invite-btn {
+    margin-top: 2.4rem!important;
+}

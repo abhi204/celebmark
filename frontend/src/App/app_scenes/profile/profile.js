@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { getCelebProfile } from '../../../_actions/profile';
-import Timeline from './components/timeline';
-import ProfileTabs from './components/profile_content';
+import ProfileTabs from './containers/profile_content';
 import './profile.css'
 
 class ProfilePage extends Component {
@@ -28,8 +27,7 @@ class ProfilePage extends Component {
             return <div>NO CELEB</div>
         else 
             return (
-                <div>
-                <Timeline celeb={profile}/>
+                <div style={{ backgroundColor: "white"}}>
                 <ProfileTabs celeb={profile} />
                 </div>
             );
