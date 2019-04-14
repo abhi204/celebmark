@@ -2,15 +2,15 @@ import { PROFILE_LOADING, PROFILE_RESPONSE, PROFILE_FAILED } from "../_consts/ty
 
 let initialState = {};
 
-let profileReducer = (state=initialState, action) => {
-    console.log("type", action.type)
-    switch (action.type) {
+let profileReducer = (state=initialState, { type, payload }) => {
+    switch (type) {
         case PROFILE_LOADING:
             return { loading: true}
         case PROFILE_RESPONSE:
-            return action.payload
+            let fullName = `${payload.first_name} ${payload.last_name}`
+            return { ...payload, fullName }
         case PROFILE_FAILED:
-            return { error: true, ...action.payload }
+            return { error: true, ...payload }
         default:
             break;
     }
