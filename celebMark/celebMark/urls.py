@@ -24,6 +24,7 @@ urlpatterns = [
     path('users/', include('useraccount.urls')),
     path('profile/', include('profile_app.urls')),
     path('events/', include('events.urls')),
+    path('invite/', include('invite.urls')),
     re_path(r'^auth/token/obtain/$', CustomTokenObtainPairView.as_view(),name='get-auth-token'),
     re_path(r'^auth/token/refresh/$', TokenRefreshView.as_view())
 ]
