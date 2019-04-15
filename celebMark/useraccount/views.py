@@ -7,7 +7,7 @@ from rest_framework.generics import CreateAPIView
 from useraccount.models import User
 from rest_framework.generics import CreateAPIView
 from useraccount.models import User, Celeb
-from .serializers import UserRegisterSerializer, CelebRegisterSerializer
+from .serializers import BaseUserRegisterSerializer, CelebRegisterSerializer
 from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
 
@@ -20,7 +20,7 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 
 class register_user(CreateAPIView):
     model = User
-    serializer_class = UserRegisterSerializer
+    serializer_class = BaseUserRegisterSerializer
     permission_classes = [permissions.AllowAny, ]
 
 class register_celeb(CreateAPIView):

@@ -4,15 +4,17 @@ from useraccount.models import BaseUser, Celeb
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
+#base user
+exclude_fields = ['last_login', 'date_joined', 'is_active', 'is_staff', 'is_superuser', 'id']
 public_fields = ['first_name', 'last_name', 'user_name', 'profile_pic','dob']
 private_fields = ['password', 'mobile', 'email']
-register_fields = public_fields + private_fields 
-exclude_fields = ['last_login', 'date_joined', 'is_active', 'is_staff', 'is_superuser', 'id']
+register_fields = public_fields + private_fields
+ 
 
 '''
  For both User and Celeb registration
 '''
-class UserRegisterSerializer(serializers.ModelSerializer):
+class BaseUserRegisterSerializer(serializers.ModelSerializer):
     user_name = serializers.CharField(
             max_length=50,
             required=True,
@@ -39,31 +41,22 @@ class UserRegisterSerializer(serializers.ModelSerializer):
         write_only_fields = ('password',)
         read_only_fields = ('user_name',)
 
-    def create(self, validated_data):
-        user = BaseUser.objects.create(
-            first_name=validated_data['first_name'],
-            last_name=validated_data['last_name'],
-            user_name=validated_data['user_name'],
-            mobile=validated_data['mobile'],
-            email=validated_data['email'],
-            dob=validated_data['dob']
-        )
-        user.set_password(validated_data['password'])
-        user.save()
-        return user
-
-class CelebRegisterSerializer(UserRegisterSerializer):
+class CelebRegisterSerializer(serializers.ModelSerializer):
+    user = BaseUserRegisterSerializer()
     handles = serializers.JSONField()
 
     class Meta:
         model = Celeb
-        exclude = exclude_fields + ['description', 'tags']
+        exclude = ['rating', 'tags']
+        write_only_fields = ('password',)
+        read_only_fields = ('user_name',)
     
     def create(self, validated_data):
-        user = Celeb.objects.create(**validated_data)
-        user.set_password(validated_data['password'])
-        user.save()
-        return user
+        user_data = validated_data.pop('user')
+        user = BaseUser.objects.create(**user_data)
+        celeb = Celeb.objects.create(user=user,**validated_data)
+        celeb.save()
+        return celeb
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
