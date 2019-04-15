@@ -1,26 +1,22 @@
-from django.shortcuts import get_object_or_404
 from .helpers import unique_fields
+from .serializers import ( UserRegisterSerializer, CelebRegisterSerializer, CustomTokenObtainPairSerializer )
+from django_filters.rest_framework import DjangoFilterBackend
+from django.shortcuts import get_object_or_404
+from rest_framework import filters
 from rest_framework.response import Response
 from rest_framework import permissions
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import CreateAPIView
-from useraccount.models import User
-from rest_framework.generics import CreateAPIView
-from useraccount.models import User, Celeb
-from .serializers import BaseUserRegisterSerializer, CelebRegisterSerializer
-from rest_framework import filters
-from django_filters.rest_framework import DjangoFilterBackend
-
 from rest_framework_simplejwt.views import TokenObtainPairView
-from .serializers import CustomTokenObtainPairSerializer
-# Create your views here.
+from useraccount.models import User, Celeb
 
+# Create your views here.
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
 
 class register_user(CreateAPIView):
     model = User
-    serializer_class = BaseUserRegisterSerializer
+    serializer_class = UserRegisterSerializer
     permission_classes = [permissions.AllowAny, ]
 
 class register_celeb(CreateAPIView):

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from rest_framework.validators import UniqueValidator
-from useraccount.models import BaseUser, Celeb
+from useraccount.models import BaseUser, Celeb, User
 
 from rest_framework_simplejwt.serializers import TokenObtainPairSerializer
 
@@ -11,9 +11,6 @@ private_fields = ['password', 'mobile', 'email']
 register_fields = public_fields + private_fields
  
 
-'''
- For both User and Celeb registration
-'''
 class BaseUserRegisterSerializer(serializers.ModelSerializer):
     user_name = serializers.CharField(
             max_length=50,
@@ -41,6 +38,7 @@ class BaseUserRegisterSerializer(serializers.ModelSerializer):
         write_only_fields = ('password',)
         read_only_fields = ('user_name',)
 
+
 class CelebRegisterSerializer(serializers.ModelSerializer):
     user = BaseUserRegisterSerializer()
     handles = serializers.JSONField()
@@ -48,15 +46,27 @@ class CelebRegisterSerializer(serializers.ModelSerializer):
     class Meta:
         model = Celeb
         exclude = ['rating', 'tags']
-        write_only_fields = ('password',)
-        read_only_fields = ('user_name',)
     
     def create(self, validated_data):
         user_data = validated_data.pop('user')
-        user = BaseUser.objects.create(**user_data)
-        celeb = Celeb.objects.create(user=user,**validated_data)
+        base_user = BaseUser.objects.create(**user_data)
+        celeb = Celeb.objects.create(user=base_user,**validated_data)
         celeb.save()
         return celeb
+
+class UserRegisterSerializer(serializers.ModelSerializer):
+    user = BaseUserRegisterSerializer()
+
+    class Meta:
+        model = User
+        exclude = ['has_invites',]
+
+    def create(self, validated_data):
+        user_data = validated_data.pop('user')
+        base_user = BaseUser.objects.create(**user_data)
+        user = User.objects.create(user=base_user,**validated_data)
+        user.save()
+        return user
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
