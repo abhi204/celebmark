@@ -2,9 +2,9 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.db import transaction
 from django.contrib.auth.forms import ReadOnlyPasswordHashField
-from useraccount.models import BaseUser, Celeb
+from useraccount.models import BaseUser, Celeb, User
 
-class UserCreationForm(forms.ModelForm):
+class BaseUserCreationForm(forms.ModelForm):
     """A form for creating new users. Includes all the required
     fields, plus a repeated password."""
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
@@ -30,7 +30,7 @@ class UserCreationForm(forms.ModelForm):
             user.save()
         return user
 
-class UserChangeForm(forms.ModelForm):
+class BaseUserChangeForm(forms.ModelForm):
     """A form for updating users. Includes all the fields on
     the user, but replaces the password field with admin's
     password hash display field.
@@ -56,4 +56,15 @@ class CelebChangeForm(forms.ModelForm):
 
     class Meta:
         model = Celeb
+        fields = '__all__'
+
+class UserCreationForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = '__all__'
+
+class UserChangeForm(forms.ModelForm):
+
+    class Meta:
+        model = User
         fields = '__all__'

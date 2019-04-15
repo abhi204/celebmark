@@ -63,7 +63,7 @@ class BaseUser(AbstractBaseUser):
     id = models.CharField(max_length=255, blank=True)
 
     class Meta:
-        verbose_name = "User"
+        verbose_name = "BaseUser"
 
     USERNAME_FIELD = 'user_name'
     EMAIL_FIELD = 'email'
