@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django_filters',
     'useraccount',
     'profile_app',
+    'events',
 ]
 
 MIDDLEWARE = [
