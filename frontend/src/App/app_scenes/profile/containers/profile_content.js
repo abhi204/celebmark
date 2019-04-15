@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from 'react-redux';
 import { MDBTabPane, MDBTabContent, MDBNav, MDBNavItem, MDBNavLink, MDBBtn, MDBNavbarNav, MDBIcon } from "mdbreact";
 import AboutTab from './about'
-import GalleryTab from './gallery'
+import GalleryTab from './gallery/gallery'
 import './profile_content.css';
 
 class TabsPage extends Component {
@@ -27,7 +27,7 @@ render() {
                 <span style={{ fontSize: "large", fontWeight:"normal", color:"black" }}>About</span>
               </MDBNavLink>
             </MDBNavItem>
-            <MDBNavItem>
+            <MDBNavItem hidden={this.props.profile.gallery.length===0}>
               <MDBNavLink to="#" className={this.state.activeItemClassicTabs1==="2" ? "active tab-header" : " tab-header " } onClick={this.toggleClassicTabs1("2")}>
               <span style={{ fontSize: "large", fontWeight:"normal", color:"black" }}>Gallery</span>
               </MDBNavLink>

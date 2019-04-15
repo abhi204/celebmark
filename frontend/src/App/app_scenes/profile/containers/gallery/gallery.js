@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { MDBContainer } from 'mdbreact';
 import { connect } from 'react-redux';
-import GalleryLightbox from '../components/lightbox';
+import GalleryPagination from './gallery_pagination';
 
 class GalleryTab extends Component {
     render(){
-        const { profile } = this.props;
         return (
             <div>
                 <MDBContainer className="p-0 overflow-auto position-relative" >
@@ -13,7 +12,7 @@ class GalleryTab extends Component {
                     <span style={{ backgroundColor: "white"}}>GALLERY</span>
                 </div>
                 <div className="float-right" style={{width: "90%"}}>
-                    <GalleryLightbox images={ profile.gallery }/>
+                    <GalleryPagination/>
                 </div>
                 </MDBContainer>
             </div>
@@ -23,7 +22,7 @@ class GalleryTab extends Component {
 
 let mapStateToProps = (state) => (
     {
-        profile: state.profile
+        profile: state.profile,
     }
 )
 
