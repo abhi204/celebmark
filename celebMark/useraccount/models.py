@@ -41,13 +41,14 @@ class UserManager(BaseUserManager):
                                  is_staff=True, is_superuser=True,
                                 **extra_fields)
 
-class User(AbstractBaseUser):
+class BaseUser(AbstractBaseUser):
     #Add validators
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
     user_name = models.CharField(max_length=255, unique=True, primary_key=True)
     email = models.EmailField(max_length=100, unique=True)
     mobile = models.IntegerField(unique=True)
+    dob = models.DateField()
     profile_pic = models.ImageField(
         upload_to=profile_pic_storage,
         default="/default/user/profile_pic.png"
@@ -72,6 +73,7 @@ class User(AbstractBaseUser):
         'email',
         'mobile',
         'profile_pic',
+        'dob'
     ]
 
     def __str__(self):
@@ -93,10 +95,15 @@ class User(AbstractBaseUser):
 
     objects = UserManager()
 
-class Celeb(User):
+class Celeb(models.Model):
+    user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)    
     rating = models.PositiveSmallIntegerField(default=0)
-    dob = models.DateField()
     category = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
     handles = jsonfield.JSONField()
     tags = jsonfield.JSONField()
+    
+class User(models.Model):
+    user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)
+    has_invites = models.IntegerField(default=0)
+

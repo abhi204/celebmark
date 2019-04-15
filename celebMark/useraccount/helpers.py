@@ -1,4 +1,4 @@
-from useraccount.models import User
+from useraccount.models import BaseUser
 
 def unique_fields():
     unique_fields = []
