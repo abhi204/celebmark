@@ -48,7 +48,7 @@ class BaseUser(AbstractBaseUser):
     user_name = models.CharField(max_length=255, unique=True, primary_key=True)
     email = models.EmailField(max_length=100, unique=True)
     mobile = models.IntegerField(unique=True)
-    dob = models.DateField()
+    dob = models.DateField(blank=True, null=True)
     profile_pic = models.ImageField(
         upload_to=profile_pic_storage,
         default="/default/user/profile_pic.png"
@@ -96,7 +96,7 @@ class BaseUser(AbstractBaseUser):
     objects = UserManager()
 
 class Celeb(models.Model):
-    user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)    
+    base_user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)    
     rating = models.PositiveSmallIntegerField(default=0)
     category = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
@@ -104,6 +104,6 @@ class Celeb(models.Model):
     tags = jsonfield.JSONField()
     
 class User(models.Model):
-    user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)
+    base_user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)
     has_invites = models.IntegerField(default=0)
 

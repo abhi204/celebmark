@@ -44,10 +44,10 @@ class CelebAdmin(admin.ModelAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('user', 'category', 'rating')
+    list_display = ('base_user', 'category', 'rating')
     list_filter = ()
     fieldsets = (
-        (None, {'fields': ('user',)}),
+        (None, {'fields': ('base_user',)}),
         ('Information', {'fields': ('category',)}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
@@ -56,13 +56,13 @@ class CelebAdmin(admin.ModelAdmin):
         (None, {
             'classes': ('wide',),
             'fields': (
-                'user', 'category', 
+                'base_user', 'category', 
                 'description', 'handles',
                 )}
         ),
     )
-    search_fields = ('user','category')
-    ordering=('user',)
+    search_fields = ('base_user','category')
+    ordering=('base_user',)
     filter_horizontal = ()
 
 class UserAdmin(admin.ModelAdmin):
@@ -73,10 +73,10 @@ class UserAdmin(admin.ModelAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('user', 'has_invites')
+    list_display = ('base_user', 'has_invites')
     list_filter = ()
     fieldsets = (
-        (None, {'fields': ('user',)}),
+        (None, {'fields': ('base_user',)}),
         ('Information', {'fields': ('has_invites',)}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
@@ -85,12 +85,12 @@ class UserAdmin(admin.ModelAdmin):
         (None, {
             'classes': ('wide',),
             'fields': (
-                'user', 'has_invites', 
+                'base_user', 'has_invites', 
                 )}
         ),
     )
-    search_fields = ('user','has_invites')
-    ordering=('user',)
+    search_fields = ('base_user','has_invites')
+    ordering=('base_user',)
     filter_horizontal = ()
 
 
