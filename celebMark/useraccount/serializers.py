@@ -40,31 +40,80 @@ class BaseUserRegisterSerializer(serializers.ModelSerializer):
 
 
 class CelebRegisterSerializer(serializers.ModelSerializer):
-    user = BaseUserRegisterSerializer()
+    base_user = BaseUserRegisterSerializer(required=False)
     handles = serializers.JSONField()
 
     class Meta:
         model = Celeb
         exclude = ['rating', 'tags']
+
+    def to_representation(self, obj):
+        '''Move BaseUser fields to this serializer'''
+        representation = super().to_representation(obj)
+        baseuser_representation = representation.pop('base_user')
+        for key in baseuser_representation:
+            representation[key] = baseuser_representation[key]
+        return representation
+
+    def to_internal_value(self, data):
+        '''Move incoming BaseUser field keys back into user field'''
+        base_user_internal = {}
+        for key in BaseUserRegisterSerializer.Meta.fields:
+            if key in data:
+                base_user_internal[key]=data.pop(key)
+        internal = super().to_internal_value(data)
+        internal['base_user'] = base_user_internal
+        return internal
     
     def create(self, validated_data):
-        user_data = validated_data.pop('user')
-        base_user = BaseUser.objects.create(**user_data)
-        celeb = Celeb.objects.create(user=base_user,**validated_data)
+        base_user_data = validated_data.pop('base_user')
+
+        '''check if base_user_data is valid'''
+        base_user_serializer=BaseUserRegisterSerializer(data=base_user_data)
+        if not base_user_serializer.is_valid():
+            return base_user_serializer.is_valid(raise_exception=True)
+
+        base_user = BaseUser.objects.create(**base_user_data)
+        celeb = Celeb.objects.create(base_user=base_user,**validated_data)
         celeb.save()
         return celeb
 
 class UserRegisterSerializer(serializers.ModelSerializer):
-    user = BaseUserRegisterSerializer()
+    ''' BaseUser fields are flattened'''
+    base_user = BaseUserRegisterSerializer(required=False)
 
     class Meta:
         model = User
         exclude = ['has_invites',]
 
+    def to_representation(self, obj):
+        '''Move BaseUser fields to this serializer'''
+        representation = super().to_representation(obj)
+        baseuser_representation = representation.pop('base_user')
+        for key in baseuser_representation:
+            representation[key] = baseuser_representation[key]
+        return representation
+
+    def to_internal_value(self, data):
+        '''Move incoming BaseUser field keys back into user field'''
+        base_user_internal = {}
+        for key in BaseUserRegisterSerializer.Meta.fields:
+            if key in data:
+                base_user_internal[key]=data.pop(key)
+        internal = super().to_internal_value(data)
+        internal['base_user'] = base_user_internal
+        return internal
+
     def create(self, validated_data):
-        user_data = validated_data.pop('user')
-        base_user = BaseUser.objects.create(**user_data)
-        user = User.objects.create(user=base_user,**validated_data)
+        base_user_data = validated_data.pop('base_user')
+
+        '''check if base_user_data is valid'''
+        base_user_serializer=BaseUserRegisterSerializer(data=base_user_data)
+        if not base_user_serializer.is_valid():
+            return base_user_serializer.is_valid(raise_exception=True)
+
+        base_user = BaseUser.objects.create(**base_user_data)
+        user = User.objects.create(base_user=base_user,**validated_data)
         user.save()
         return user
 
