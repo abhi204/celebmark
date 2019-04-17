@@ -8,7 +8,7 @@ from rest_framework import permissions
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import CreateAPIView
 from rest_framework_simplejwt.views import TokenObtainPairView
-from useraccount.models import User, Celeb
+from useraccount.models import BaseUser, User, Celeb
 
 # Create your views here.
 class CustomTokenObtainPairView(TokenObtainPairView):
@@ -31,6 +31,6 @@ def check_unique(request):
     if len(params) == 1 and list(params.keys())[0] in unique_fields():
         key,value = params.popitem()
         value = ''.join(value)
-        user = get_object_or_404(User, **{key: value})
+        user = get_object_or_404(BaseUser, **{key: value})
         return Response(status=200) if user else Response(status=404)
     return Response(status=403)
