@@ -96,12 +96,21 @@ class BaseUser(AbstractBaseUser):
     objects = UserManager()
 
 class Celeb(models.Model):
+    CITY_CHOICES = (
+        ('BANGALORE', 'Bangalore'),
+        ('COCHIN', 'Cochin'),
+        ('DELHI', 'Delhi'),
+        ('HYDERABAD','Hyderabad'),
+        ('KOLKATA', 'Kolkata'),
+        ('MUMBAI', 'Mumbai'),
+    )
     base_user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)    
     rating = models.PositiveSmallIntegerField(default=0)
     category = models.CharField(max_length=255)
     description = models.TextField(null=True, blank=True)
     handles = jsonfield.JSONField()
     tags = jsonfield.JSONField()
+    city = models.CharField(max_length=100, choices=CITY_CHOICES)
 
     def __str__(self):
         return self.base_user.full_name
