@@ -2,7 +2,7 @@ from django.db import models
 from useraccount.models import Celeb
 
 def gallery_image_upload(instance, filename):
-    return f'users/{instance.celeb.user_name}/gallery/{filename}'
+    return f'users/{instance.celeb.base_user.user_name}/gallery/{filename}'
 
 # Create your models here.
 class Gallery(models.Model):

@@ -90,7 +90,7 @@ class BaseUser(AbstractBaseUser):
         return True
 
     @property
-    def get_name(self):
+    def full_name(self):
         return f"{self.first_name} {self.last_name}"
 
     objects = UserManager()
@@ -102,8 +102,14 @@ class Celeb(models.Model):
     description = models.TextField(null=True, blank=True)
     handles = jsonfield.JSONField()
     tags = jsonfield.JSONField()
+
+    def __str__(self):
+        return self.base_user.full_name
     
 class User(models.Model):
     base_user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)
     has_invites = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.base_user.full_name
 
