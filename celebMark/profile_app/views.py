@@ -11,9 +11,10 @@ class CelebViewSet(ReadOnlyModelViewSet):
     serializer_class = CelebListSerializer
     queryset = Celeb.objects.all()
     permission_classes = [permissions.AllowAny,]
-    filter_backends = (filters.SearchFilter, DjangoFilterBackend)
-    search_fields = ('=base_user__user_name', 'base_user__first_name', 'base_user__last_name', 'category')
-    filterset_fields = ('base_user__email',)
+    filter_backends = (filters.SearchFilter, filters.OrderingFilter, DjangoFilterBackend)
+    search_fields = ('=base_user__user_name', '=base_user__email', 'base_user__first_name', 'base_user__last_name')
+    filterset_fields = ('category', 'city')
+    ordering_fields = ('base_user__first_name', 'rating')
 
     # For retreiving profile
     def retrieve(self, request, pk=None):
