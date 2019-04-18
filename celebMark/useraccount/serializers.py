@@ -55,14 +55,16 @@ class CelebRegisterSerializer(serializers.ModelSerializer):
             representation[key] = baseuser_representation[key]
         return representation
 
+    '''Move incoming BaseUser field keys back into user field'''
+    '''Should return validated data or raise error'''
     def to_internal_value(self, data):
-        '''Move incoming BaseUser field keys back into user field'''
         base_user_internal = {}
         for key in BaseUserRegisterSerializer.Meta.fields:
             if key in data:
                 base_user_internal[key]=data.pop(key)
         internal = super().to_internal_value(data)
         internal['base_user'] = base_user_internal
+        '''validate base user HERE'''
         return internal
     
     def create(self, validated_data):

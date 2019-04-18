@@ -1,24 +1,22 @@
-from django.shortcuts import render
-from useraccount.models import Celeb
-from .serializers import CelebViewSerializer
-from rest_framework.generics import RetrieveAPIView, ListAPIView
-from rest_framework import permissions
-from rest_framework import filters
+from .serializers import CelebViewSerializer, CelebListSerializer
+from django.shortcuts import render, get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import permissions, filters
+from rest_framework.response import Response
+from rest_framework.viewsets import ReadOnlyModelViewSet
+from useraccount.models import Celeb
 
-
-# Create your views here.
-
-class CelebListView(ListAPIView):
+class CelebViewSet(ReadOnlyModelViewSet):
+    # For listing Celebs
+    serializer_class = CelebListSerializer
     queryset = Celeb.objects.all()
-    serializer_class = CelebViewSerializer # change this to a new serializer for celeb
     permission_classes = [permissions.AllowAny,]
     filter_backends = (filters.SearchFilter, DjangoFilterBackend)
-    search_fields = ('=user_name', 'first_name', 'last_name', 'category')
-    filterset_fields = ('email',)
+    search_fields = ('=base_user__user_name', 'base_user__first_name', 'base_user__last_name', 'category')
+    filterset_fields = ('base_user__email',)
 
-
-class CelebProfileView(RetrieveAPIView):
-    queryset = Celeb.objects.all()
-    serializer_class = CelebViewSerializer
-    permission_classes = [permissions.AllowAny,]
+    # For retreiving profile
+    def retrieve(self, request, pk=None):
+        celeb = get_object_or_404(self.queryset, base_user__user_name=pk)
+        serializer = CelebViewSerializer(celeb)
+        return Response(serializer.data)
