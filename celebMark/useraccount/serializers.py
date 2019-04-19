@@ -126,14 +126,15 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
 class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
     @classmethod
-    def get_token(cls, user):
-        token = super(CustomTokenObtainPairSerializer, cls).get_token(user)
-        #add user details
+    def get_token(cls, base_user):
+        token = super(CustomTokenObtainPairSerializer, cls).get_token(base_user)
+        # add BaseUser details
         token['user'] = {
-            "name": user.full_name,
-            "user_name":user.user_name,
-            "mobile": user.mobile,
-            "email": user.email
+            "name": base_user.full_name,
+            "user_name": base_user.user_name,
+            "mobile": base_user.mobile,
+            "email": base_user.email,
+            "bookmarks": base_user.bookmarks
         }
         return token
 

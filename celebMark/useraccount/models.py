@@ -49,6 +49,7 @@ class BaseUser(AbstractBaseUser):
     email = models.EmailField(max_length=100, unique=True)
     mobile = models.IntegerField(unique=True)
     dob = models.DateField(blank=True, null=True)
+    bookmarks = jsonfield.JSONField(blank=True, null=True)
     profile_pic = models.ImageField(
         upload_to=profile_pic_storage,
         default="/default/user/profile_pic.png"
@@ -121,4 +122,3 @@ class User(models.Model):
 
     def __str__(self):
         return self.base_user.full_name
-
