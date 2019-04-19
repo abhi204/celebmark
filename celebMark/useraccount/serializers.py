@@ -80,9 +80,6 @@ class CelebRegisterSerializer(serializers.ModelSerializer):
 
         '''check if base_user_data is valid'''
         base_user_serializer=BaseUserRegisterSerializer(data=base_user_data)
-        if not base_user_serializer.is_valid():
-            return base_user_serializer.is_valid(raise_exception=True)
-
         base_user = BaseUser.objects.create(**base_user_data)
         celeb = Celeb.objects.create(base_user=base_user,**validated_data)
         celeb.save()
