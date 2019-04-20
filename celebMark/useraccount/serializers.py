@@ -137,3 +137,31 @@ class CustomTokenObtainPairSerializer(TokenObtainPairSerializer):
         }
         return token
 
+
+
+# For viewing current user details
+class UserViewSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = User
+        fields = '__all__'
+# Currently view only User model details
+class BaseUserViewSerializer(serializers.ModelSerializer):
+    user = UserViewSerializer()
+    profile_pic = serializers.SerializerMethodField()
+    bookmarks = serializers.JSONField()
+
+    def get_profile_pic(self, user_obj):
+        return user_obj.profile_pic.url
+
+    def to_representation(self, obj):
+        '''Move USER fields to this serializer'''
+        representation = super().to_representation(obj)
+        user_representation = representation.pop('user')
+        for key in user_representation:
+            representation[key] = user_representation[key]
+        return representation
+
+    class Meta:
+        model = BaseUser
+        exclude = exclude_fields +  [ 'password' ]

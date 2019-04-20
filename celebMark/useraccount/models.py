@@ -49,7 +49,7 @@ class BaseUser(AbstractBaseUser):
     email = models.EmailField(max_length=100, unique=True)
     mobile = models.IntegerField(unique=True)
     dob = models.DateField(blank=True, null=True)
-    bookmarks = jsonfield.JSONField(blank=True, null=True)
+    bookmarks = jsonfield.JSONField(default={})
     profile_pic = models.ImageField(
         upload_to=profile_pic_storage,
         default="/default/user/profile_pic.png"
@@ -93,7 +93,21 @@ class BaseUser(AbstractBaseUser):
     @property
     def full_name(self):
         return f"{self.first_name} {self.last_name}"
-
+    
+    @property
+    def user_type(self):
+        try:
+            if self.user:
+                return "user"
+        except:
+            pass
+        try:
+            if self.celeb:
+                return "celeb"
+        except:
+            pass
+        return None
+    
     objects = UserManager()
 
 class Celeb(models.Model):
