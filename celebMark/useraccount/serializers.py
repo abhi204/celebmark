@@ -77,7 +77,7 @@ class CelebRegisterSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         base_user_data = validated_data.pop('base_user')
         base_user_serializer=BaseUserRegisterSerializer(data=base_user_data)
-        base_user = BaseUser.objects.create(**base_user_data)
+        base_user = BaseUser.objects.create(**base_user_data, id=base_user_data['user_name'])
         base_user.set_password(base_user_data['password'])
         base_user.save()
 
@@ -116,9 +116,10 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
     def create(self, validated_data):
         base_user_data = validated_data.pop('base_user')
-        base_user = BaseUser.objects.create(**base_user_data)
+        base_user = BaseUser.objects.create(**base_user_data, id=base_user_data['user_name'])
         base_user.set_password(base_user_data['password'])
         base_user.save()
+
         user = User.objects.create(base_user=base_user,**validated_data)
         user.save()
         return user

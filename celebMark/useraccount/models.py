@@ -61,7 +61,7 @@ class BaseUser(AbstractBaseUser):
     is_superuser = models.BooleanField(default=False)
 
     #required by simple-jwt
-    id = models.CharField(max_length=255, blank=True)
+    id = models.CharField(max_length=255,)
 
     class Meta:
         verbose_name = "BaseUser"
