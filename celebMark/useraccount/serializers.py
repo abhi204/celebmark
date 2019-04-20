@@ -38,7 +38,6 @@ class BaseUserRegisterSerializer(serializers.ModelSerializer):
         write_only_fields = ('password',)
         read_only_fields = ('user_name',)
 
-
 class CelebRegisterSerializer(serializers.ModelSerializer):
     base_user = BaseUserRegisterSerializer(required=False)
     handles = serializers.JSONField()
@@ -77,10 +76,11 @@ class CelebRegisterSerializer(serializers.ModelSerializer):
     
     def create(self, validated_data):
         base_user_data = validated_data.pop('base_user')
-
-        '''check if base_user_data is valid'''
         base_user_serializer=BaseUserRegisterSerializer(data=base_user_data)
         base_user = BaseUser.objects.create(**base_user_data)
+        base_user.set_password(base_user_data['password'])
+        base_user.save()
+
         celeb = Celeb.objects.create(base_user=base_user,**validated_data)
         celeb.save()
         return celeb
@@ -117,6 +117,8 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         base_user_data = validated_data.pop('base_user')
         base_user = BaseUser.objects.create(**base_user_data)
+        base_user.set_password(base_user_data['password'])
+        base_user.save()
         user = User.objects.create(base_user=base_user,**validated_data)
         user.save()
         return user
