@@ -48,7 +48,7 @@ class CelebAdmin(admin.ModelAdmin):
     list_filter = ()
     fieldsets = (
         (None, {'fields': ('base_user',)}),
-        ('Information', {'fields': ('category',)}),
+        ('Information', {'fields': ('category','city','description')}),
     )
     # add_fieldsets is not a standard ModelAdmin attribute. UserAdmin
     # overrides get_fieldsets to use this attribute when creating a user.
@@ -56,8 +56,8 @@ class CelebAdmin(admin.ModelAdmin):
         (None, {
             'classes': ('wide',),
             'fields': (
-                'base_user', 'category', 
-                'description', 'handles',
+                'base_user', 'category',
+                'description','city',
                 )}
         ),
     )
@@ -85,7 +85,7 @@ class UserAdmin(admin.ModelAdmin):
         (None, {
             'classes': ('wide',),
             'fields': (
-                'base_user', 'has_invites', 
+                'base_user', 'has_invites',
                 )}
         ),
     )
