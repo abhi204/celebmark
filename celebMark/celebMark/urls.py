@@ -21,7 +21,7 @@ from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('users/', include('useraccount.urls')),
+    path('user/', include('useraccount.urls')),
     path('profile/', include('profile_app.urls')),
     path('events/', include('events.urls')),
     path('invite/', include('invite.urls')),
