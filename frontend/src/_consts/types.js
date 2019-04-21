@@ -12,4 +12,6 @@ export const SEARCH_NEXT_FAILED = "Search next Unsuccessful";
 
 export const PROFILE_LOADING = "loading profile"
 export const PROFILE_FAILED = "failed to fetch Profile"
-export const PROFILE_RESPONSE = "Profile Response"
+export const PROFILE_RESPONSE = "Profile Response";
+export const BOOKMARK = "Profile Bookmark";
+export const BOOKMARK_FAILED = "Profile Bookmark Failed";
