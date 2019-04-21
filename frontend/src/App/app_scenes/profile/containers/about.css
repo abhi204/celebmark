@@ -1,0 +1,17 @@
+.head-line{
+    z-index: 9;
+    letter-spacing: 0.1em;
+    line-height: 1em;
+    font-weight: bold;
+    font-size: 5rem;
+    margin-top: 0;
+    top: 10rem;
+}
+
+#category-text{
+    background-color: white;
+    line-height: 1em;
+    letter-spacing: 0;
+    font-size: 2rem;
+    font-weight: normal;
+}

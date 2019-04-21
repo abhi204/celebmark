@@ -1,7 +1,7 @@
 import { API_CELEB_BOOKMARK } from '_consts/api';
 import { BOOKMARK, BOOKMARK_FAILED } from '_consts/types';
 
-export const doProfileBookmark = (celebUsername) => {
+function doProfileBookmark(celebUsername){
     // Used Custom Authentication Middleware for JWT
     return {
         type: BOOKMARK,
@@ -14,3 +14,5 @@ export const doProfileBookmark = (celebUsername) => {
         }
     }
 }
+
+export default doProfileBookmark;

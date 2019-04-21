@@ -1,5 +1,9 @@
 import React, {Component} from "react";
 import {connect} from 'react-redux';
+import AboutTab from './about'
+import GalleryTab from './gallery/gallery'
+import './profile_content.css';
+import doProfileBookmark from '../actions/bookmark';
 import {
     MDBTabPane,
     MDBTabContent,
@@ -13,13 +17,12 @@ import {
     MDBRow,
     MDBCOL,
 } from "mdbreact";
-import AboutTab from './about'
-import GalleryTab from './gallery/gallery'
-import './profile_content.css';
+
 
 class TabsPage extends Component {
     state = {
         activeItemClassicTabs1: "1",
+        bookmark: false
     }
 
     toggleClassicTabs1 = tab => () => {
@@ -30,7 +33,16 @@ class TabsPage extends Component {
         }
     }
 
+    componentDidMount(){
+        let { profile, user } = this.props;
+        let bookmarks = user.loggedIn === true && user.details.bookmarks.celebs ? user.details.bookmarks.celebs : [] ; 
+        if(bookmarks.includes(profile.user_name))
+            this.setState({ bookmark: true })
+    }
+
     render() {
+        const { profile, user } = this.props;
+        let bookmarks = user.loggedIn === true && user.details.bookmarks.celebs ? user.details.bookmarks.celebs : []; 
         return (
             <MDBContainer>
                 <div className="classic-tabs">
@@ -42,7 +54,7 @@ class TabsPage extends Component {
                                 <span style={{fontSize: "large", fontWeight: "normal", color: "black"}}>About</span>
                             </MDBNavLink>
                         </MDBNavItem>
-                        <MDBNavItem hidden={this.props.profile.gallery.length === 0}>
+                        <MDBNavItem hidden={profile.gallery.length === 0}>
                             <MDBNavLink to="#"
                                         className={this.state.activeItemClassicTabs1 === "2" ? "active tab-header" : " tab-header "}
                                         onClick={this.toggleClassicTabs1("2")}>
@@ -58,7 +70,7 @@ class TabsPage extends Component {
                         </MDBNavItem>
                         <MDBNavbarNav right className="d-flex flex-row mr-5">
                             <MDBNavItem>
-                                {/* <HandlesList handles={this.props.profile.handles} /> */}
+                                {/* <HandlesList handles={profile.handles} /> */}
                             </MDBNavItem>
                             <MDBNavItem>
                                 <MDBBtn color="black" className="invite-btn mr-5" rounded>
@@ -66,9 +78,13 @@ class TabsPage extends Component {
                                 </MDBBtn>
                             </MDBNavItem>
                             <MDBNavItem className="mt-5">
-                                <span style={{fontSize: "large", fontWeight: "normal", color: "black"}}><MDBIcon far
-                                                                                                                 icon="bookmark"
-                                                                                                                 size='lg'/></span>
+                                <span onClick={ () => {
+                                    this.props.doProfileBookmark(profile.user_name)
+                                    this.setState({ bookmark: !this.state.bookmark })
+                                    } }
+                                    style={{fontSize: "large", fontWeight: "normal", color: "black"}}>
+                                    <MDBIcon far={!this.state.bookmark} icon="bookmark" size='lg'/>
+                                </span>
                             </MDBNavItem>
                         </MDBNavbarNav>
                     </MDBNav>
@@ -89,8 +105,13 @@ class TabsPage extends Component {
     }
 }
 
-let mapStateToProps = (state) => (
-    {profile: state.profile}
-)
+let mapStateToProps = (state) => ({
+    profile: state.profile,
+    user: state.user,
+})
 
-export default connect(mapStateToProps)(TabsPage);
+const mapDispatchToProps = {
+    doProfileBookmark
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(TabsPage);
