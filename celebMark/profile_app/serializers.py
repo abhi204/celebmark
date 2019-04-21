@@ -10,6 +10,7 @@ celeb_public_fields = ['handles', 'gallery', 'category']
 
 class BaseUserSerializer(serializers.ModelSerializer):
     profile_pic = serializers.SerializerMethodField()
+    bookmarks = serializers.JSONField(required=False)
 
     def get_profile_pic(self, user_obj):
         return user_obj.profile_pic.url
