@@ -15,8 +15,8 @@ export const history = createBrowserHistory();
 // Add Middlewares Here
 const middlewares = [
   routerMiddleware(history),
-  thunk,
   apiMiddleware,
+  thunk,
 ]
 
 

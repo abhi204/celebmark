@@ -1,11 +1,27 @@
 import { deleteCookie, storeTokens, getCookie } from '../_helpers/cookies';
-import { API_GET_TOKEN, API_REFRESH_TOKEN } from '../_consts/api';
+import { API_GET_TOKEN, API_REFRESH_TOKEN, API_USER_DETAILS } from '../_consts/api';
 import axios from 'axios';
 import {
     LOGOUT,
     LOGIN_FAILED,
     LOGIN_SUCCESS,
+    LOGIN_IN_PROGRESS,
+    LOGIN_RETRY,
 } from '../_consts/auth';
+
+export function getUserDetails(){
+    // Used MY Custom Authentication Middleware for JWT
+    return {
+        type: LOGIN_SUCCESS,
+        failedType: LOGIN_FAILED,
+        meta: {
+            type: 'api',
+            method: 'get',
+            url: API_USER_DETAILS,
+            data: {}
+        }
+    }
+}
 
 /*
  IF successful saves tokens to cookies
@@ -21,10 +37,11 @@ import {
 export function login(user_name, password){
     const request = axios.post(API_GET_TOKEN, { user_name, password })
     return (dispatch) => {
+        dispatch({ type: LOGIN_IN_PROGRESS })
         return request.then( ({data}) => {
             storeTokens(data.access, data.refresh);
-            dispatch({type: LOGIN_SUCCESS, payload: data.user});
-        }).catch( error => dispatch({type: LOGIN_FAILED, payload:error}) )
+            dispatch(getUserDetails());
+        }).catch( error => dispatch({type: LOGIN_RETRY, payload:error}) )
     }
 
 }
@@ -45,10 +62,12 @@ export function checkLogin(){
         return { type: LOGIN_FAILED, payload: null}
     
     const request = axios.post(API_REFRESH_TOKEN, {refresh: refreshToken})
+
     return (dispatch) => {
+        dispatch({type: LOGIN_IN_PROGRESS})
         return request.then( ({data}) => {
             storeTokens(data.access, refreshToken);
-            dispatch({type: LOGIN_SUCCESS, payload: data.user});
+            dispatch(getUserDetails());
         }).catch( error => dispatch({type: LOGIN_FAILED, payload:error}) )
     }
 }

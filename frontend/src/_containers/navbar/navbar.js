@@ -23,7 +23,8 @@ class NavBar extends Component {
     }));
 
     render(){
-        const { user_name } = this.props.user
+        const { details, loggedIn } = this.props.user;
+        const { user_name } = details || '';
         return (
               <div >
                 <MDBRow>
@@ -36,7 +37,7 @@ class NavBar extends Component {
                           </MDBNavItem>
                         
                         </MDBCol>
-                        { this.props.loggedIn &&
+                        { loggedIn === true &&
                         // show search bar on login
                             <MDBCol>
                             <MDBNavItem className="d-inline float-center my-auto" >
@@ -45,7 +46,7 @@ class NavBar extends Component {
                             </MDBCol> }
                         
                         <MDBCol className="d-inline-flex justify-content-end">
-                        {( this.props.loggedIn &&
+                        {( loggedIn === true &&
                         //loggedin desktop navigation
                             <MDBNavbarNav right className="d-inline-flex flex-row">
                                 <MDBNavItem className="mr-3 float-right my-auto no-wrap" >
@@ -88,7 +89,7 @@ class NavBar extends Component {
 
                 {/* Navabar for Mobile Devices */}
                 <MDBNavbar style={this.state.color} className="d-flex d-sm-none p-0 z-depth-1" fixed="top">
-                  {( this.props.loggedIn &&
+                  {( loggedIn === true &&
                   // loggedin mobile navigation
                   <MDBNavbarNav className="d-inline-flex flex-row flex-fill">
                     <MDBNavItem className="my-auto" >
@@ -132,8 +133,7 @@ class NavBar extends Component {
 
 function mapStateToProps(state) {
     return { 
-        user: state.user.details,
-        loggedIn: state.user.loggedIn
+        user: state.user
     }
 }
 

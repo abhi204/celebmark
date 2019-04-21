@@ -13,6 +13,7 @@ import SignupPage from './scenes/Signup/signup';
 import LogoutPage from './scenes/Logout/logout';
 import { checkLogin } from './_actions/auth';
 import Footer from '_components/Footer/footer';
+import { LOGIN_IN_PROGRESS } from './_consts/auth';
 
 class Routes extends Component{
     constructor(props){
@@ -21,7 +22,12 @@ class Routes extends Component{
     }
 
     componentDidMount(){
-        this.props.checkLogin().then(data => this.setState({loading: false}))
+       this.props.checkLogin()
+    }
+
+    componentDidUpdate(){
+        if(this.props.user.loggedIn !== LOGIN_IN_PROGRESS && this.state.loading )
+            this.setState({loading: false})
     }
 
     render(){
@@ -46,8 +52,12 @@ class Routes extends Component{
     }
 }
 
+let mapStateToProps = (state) => ({
+    user: state.user,
+})
+
 const mapDispatchToProps = {
     checkLogin
 }
 
-export default connect(null,mapDispatchToProps)(Routes);
+export default connect(mapStateToProps, mapDispatchToProps)(Routes);

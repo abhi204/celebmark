@@ -11,8 +11,9 @@ import ProfilePage from './app_scenes/profile/profile';
 class App extends Component {
   
   render() {
-    var { user } = this.props;
-    if(!user.loggedIn) return <PublicHomePage />
+    let { user } = this.props;
+    if(user.loggedIn===false)
+      return <PublicHomePage />
     // Main App starts here
     return (
       <div>
@@ -21,7 +22,7 @@ class App extends Component {
         <Route exact path="/" component={AppHome} />
         <Route exact path="/search" component={SearchPage} />
         <Route exact path="/profile/:user_name" component={ProfilePage} />
-			</div>
+      </div>
     );
   }
 }
