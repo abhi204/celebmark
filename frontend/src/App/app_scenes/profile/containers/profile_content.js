@@ -14,8 +14,6 @@ import {
     MDBNavbarNav,
     MDBIcon,
     MDBContainer,
-    MDBRow,
-    MDBCOL,
 } from "mdbreact";
 
 
@@ -41,8 +39,7 @@ class TabsPage extends Component {
     }
 
     render() {
-        const { profile, user } = this.props;
-        let bookmarks = user.loggedIn === true && user.details.bookmarks.celebs ? user.details.bookmarks.celebs : []; 
+        const { profile } = this.props;
         return (
             <MDBContainer>
                 <div className="classic-tabs">
