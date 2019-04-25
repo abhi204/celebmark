@@ -1,5 +1,6 @@
 import React, {Component} from "react";
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import AboutTab from './about'
 import GalleryTab from './gallery/gallery'
 import './profile_content.css';
@@ -70,8 +71,8 @@ class TabsPage extends Component {
                                 {/* <HandlesList handles={profile.handles} /> */}
                             </MDBNavItem>
                             <MDBNavItem>
-                                <MDBBtn color="black" className="invite-btn mr-5" rounded>
-                                    <span style={{fontWeight: "normal", color: "white"}}>Send Invitation</span>
+                                <MDBBtn color="black" onClick={ () => {this.props.history.push(`/invite/${profile.user_name}`)} } className="invite-btn mr-5" rounded>
+                                    <span style={{fontWeight: "normal", color: "white"}}><MDBIcon icon="envelope" /> Send Invite</span>
                                 </MDBBtn>
                             </MDBNavItem>
                             <MDBNavItem className="mt-5">
@@ -111,4 +112,4 @@ const mapDispatchToProps = {
     doProfileBookmark
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(TabsPage);
+export default withRouter( connect(mapStateToProps, mapDispatchToProps)(TabsPage) );

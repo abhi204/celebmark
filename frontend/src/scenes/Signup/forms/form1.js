@@ -27,7 +27,13 @@ const renderField = ({
             className={ error && ( touched || (asyncField && active )) ? "form-control is-invalid" : "form-control is-valid" }
             {...input}
             >
-            { asyncValidating ? <div>CHECKING....</div>:''}
+            { asyncValidating ? 
+              <div className="spinner-border spinner-border-sm" role="status">
+                <span className="sr-only">Loading...</span>
+              </div>
+              :
+              ''
+            }
             <div className="invalid-feedback">
                   { error }
             </div>
