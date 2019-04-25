@@ -31,3 +31,4 @@ class InviteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Invite
         fields = '__all__'
+        read_only_fields = ('payment_status',)
