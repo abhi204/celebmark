@@ -11,5 +11,6 @@ export const API_USER_DETAILS = `${API_HOST}/user/details/`
 export const API_SEARCH_CELEB = `${API_HOST}/profile`;
 export const API_CELEB_PROFILE = `${API_HOST}/profile`;
 export const API_CELEB_BOOKMARK = `${API_HOST}/profile/bookmark/`;
+export const API_INVITE = `${API_HOST}/invite/`;
 
 export const API_MEDIA = `${API_HOST}/media`;
