@@ -15,7 +15,7 @@ class UserField(serializers.Field):
 
 class CelebField(serializers.Field):
     default_error_messages = {
-    'invalid_value': 'No celeb exists with the given user_name: {input_user_name}'
+    'invalid_value': 'Invalid Celeb: {input_user_name}'
     }
     def to_representation(self, celeb_obj):
         return celeb_obj.base_user.user_name
@@ -31,4 +31,4 @@ class InviteSerializer(serializers.ModelSerializer):
     class Meta:
         model = Invite
         fields = '__all__'
-        read_only_fields = ('payment_status',)
+        read_only_fields = ('payment_request_id',)
