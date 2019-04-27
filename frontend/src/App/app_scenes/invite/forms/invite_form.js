@@ -118,9 +118,11 @@ const renderField = ({
 };
 }
 
+export const inviteFields = ['user', 'celeb', 'role', 'event_date', 'venue', 'description'] ;
+
 InviteForm = reduxForm({
   form: 'invite_form',
-  fields: ['user', 'celeb', 'role', 'event_date', 'venue', 'description'],
+  fields: inviteFields,
   onSubmit: inviteFormSubmit,
 })(InviteForm)
 
