@@ -14,7 +14,9 @@ class Payment(models.Model):
     mac = models.TextField()
     purpose = models.CharField(max_length=100, default="")
     status = models.CharField(max_length=100, choices=STATUS_CHOICES, default='Pending')
+    amount = models.FloatField()
+    fees = models.FloatField()
 
     # Relational Fields
-    buyer = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, null=True)
     invite = models.OneToOneField(Invite, on_delete=models.SET_NULL, null=True)
