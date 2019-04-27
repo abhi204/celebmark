@@ -27,4 +27,4 @@ class IMHookView(APIView):
 
     def invite_pay(self, data, user):
         invite_obj = Invite.objects.get(payment_request_id=data['payment_request_id'])
-        Payment.objects.create(**data, user=user, invite=invite_obj)
+        Payment.objects.update_or_create(**data, user=user, invite=invite_obj)

@@ -173,3 +173,6 @@ if DEBUG:
 IM_API_KEY = os.environ.get('IM_API_KEY', '')
 IM_AUTH_TOKEN = os.environ.get('IM_AUTH_TOKEN', '')
 IM_PRIVATE_SALT = os.environ.get('IM_PRIVATE_SALT', '')
+if DEBUG:
+    IM_REDIRECT_URL = 'http://localhost:8000'
+    IM_WEBHOOK = 'http://e79ffbb6.ngrok.io/payment/hook/'
