@@ -168,3 +168,14 @@ if DEBUG:
     CORS_ORIGIN_ALLOW_ALL = True
     CORS_ORIGIN_WHITELIST = ('localhost:3000',)
     CORS_ORIGIN_REGEX_WHITELIST = ('localhost:3000',)
+
+# Instamojo credentials
+from instamojo_wrapper import Instamojo
+
+IM_API_KEY = os.environ.get('IM_API_KEY', '')
+IM_AUTH_TOKEN = os.environ.get('IM_AUTH_TOKEN', '')
+
+im_api = Instamojo(api_key=IM_API_KEY, auth_token=IM_AUTH_TOKEN)
+
+if DEBUG:
+    im_api.endpoint = im_api.endpoint.replace('www.', 'test.')
