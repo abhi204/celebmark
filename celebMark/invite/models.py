@@ -18,3 +18,13 @@ class Invite(models.Model):
 
     def __str__(self):
         return f'{self.user.base_user.user_name} -> {self.celeb.base_user.full_name}'
+
+    @property
+    def has_payment_record(self):
+        try:
+            if self.payment:
+                return True
+            else:
+                return False
+        except:
+            return False
