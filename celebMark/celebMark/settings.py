@@ -28,7 +28,7 @@ DEBUG = os.environ.get("DEBUG",'') == 'True'
 ALLOWED_HOSTS = ['celebmarkserver']
 
 if DEBUG:
-    ALLOWED_HOSTS+=['*']
+    ALLOWED_HOSTS += ['*']
 
 # Application definition
 

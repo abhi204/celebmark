@@ -21,12 +21,12 @@ from rest_framework_simplejwt.views import TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('user/', include('useraccount.urls')),
-    path('profile/', include('profile_app.urls')),
+    path('auth/token/obtain/', CustomTokenObtainPairView.as_view(),name='get-auth-token'),
+    path('auth/token/refresh/', TokenRefreshView.as_view()),
     path('events/', include('events.urls')),
     path('invite/', include('invite.urls')),
-    re_path(r'^auth/token/obtain/$', CustomTokenObtainPairView.as_view(),name='get-auth-token'),
-    re_path(r'^auth/token/refresh/$', TokenRefreshView.as_view())
+    path('profile/', include('profile_app.urls')),
+    path('user/', include('useraccount.urls')),
 ]
 
 if settings.DEBUG:
