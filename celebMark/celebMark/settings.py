@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'profile_app',
     'events',
     'invite',
+    'payment',
 ]
 
 MIDDLEWARE = [

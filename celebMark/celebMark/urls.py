@@ -25,6 +25,7 @@ urlpatterns = [
     path('auth/token/refresh/', TokenRefreshView.as_view()),
     path('events/', include('events.urls')),
     path('invite/', include('invite.urls')),
+    path('payment/', include('payment.urls')),
     path('profile/', include('profile_app.urls')),
     path('user/', include('useraccount.urls')),
 ]
