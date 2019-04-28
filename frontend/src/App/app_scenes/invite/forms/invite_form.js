@@ -33,7 +33,11 @@ const renderField = ({
   const { submitting, handleSubmit } = this.props;
   return (
     <MDBContainer>
+<<<<<<< HEAD
       <MDBRow className="mt-5 mb-4">
+=======
+      <MDBRow className="mt-5">
+>>>>>>> 9a7e8e8a8f67185bfb42431e2b234f2660032bb7
         <MDBCol lg='3' xl='3' className="ml-5"/>
         <MDBCol md="12" xs='12' sm='11' lg='5' xl='5' >
           <MDBCard>
