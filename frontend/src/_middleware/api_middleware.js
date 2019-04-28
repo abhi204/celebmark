@@ -45,20 +45,18 @@ export const apiMiddleware = (store) => (next) => async (action) => {
     })
 
     if(typeof(META.then) === "function")
-        return store.dispatch(
+        store.dispatch(
             (dispatch) => {
                 return request.then( response => META.then(response, true) )
                                 .catch( error => META.then(error, false) )
             }
         )
-
-
-    return store.dispatch(
-        (dispatch) => {
-            return request.then( ({data}) => next({ type: action.type, payload: data }) )
-                            .catch( error => dispatch({ type: action.failedType, payload: error }))
-        }
-    )
+    else
+        next((dispatch) => {
+                return request.then( ({data}) => next({ type: action.type, payload: data }) )
+                                .catch( error => dispatch({ type: action.failedType, payload: error }))
+            }
+        )
 
     // if(!accessToken)
     // {
