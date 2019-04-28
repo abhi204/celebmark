@@ -14,3 +14,5 @@ export const API_CELEB_BOOKMARK = `${API_HOST}/profile/bookmark/`;
 export const API_INVITE = `${API_HOST}/invite/`;
 
 export const API_MEDIA = `${API_HOST}/media`;
+
+export const API_PAYMENT_CHECK = `${API_HOST}/payment/check/`;
