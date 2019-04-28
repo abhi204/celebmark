@@ -34,8 +34,8 @@ const renderField = ({
   return (
     <MDBContainer>
       <MDBRow>
-        <MDBCol className="mr-5"/>
-        <MDBCol md="11" xs='11' sm='11' lg='8' xl='8'>
+        <MDBCol lg='3' xl='3' className="ml-5"/>
+        <MDBCol md="12" xs='12' sm='11' lg='5' xl='5' >
           <MDBCard>
             <MDBCardBody className="mx-4">
               <div className="text-center">
@@ -66,7 +66,7 @@ const renderField = ({
                   validate={[$.required,]}
                 />
                 Event Date:
-                <MDBDatePicker 
+                <MDBDatePicker
                   getValue={ (value) => { this.props.change("event_date", getYMDFormat(value) ) } }
                   disablePast
                   emptyLabel="Event Date"
@@ -111,7 +111,7 @@ const renderField = ({
             </MDBCardBody>
           </MDBCard>
         </MDBCol>
-        <MDBCol/>
+        <MDBCol lg='3' xl='3' className="mr-5"/>
       </MDBRow>
     </MDBContainer>
   );
