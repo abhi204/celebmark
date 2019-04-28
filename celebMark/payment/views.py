@@ -31,13 +31,17 @@ class IMHookView(APIView):
 class CheckPayStatusView(APIView):
     permission_classes = [ permissions.IsAuthenticated, UserOnly ]
 
-    def get(self, request):
-        payment_id = request.GET['payment_id']
-        payment_request_id = request.GET['payment_request_id']
+    def post(self, request):
+        payment_id = request.data['payment_id']
+        payment_request_id = request.data['payment_request_id']
+        
         im_response = im_api.payment_request_payment_status(
             payment_request_id,
             payment_id
             )
+        if not im_response['success']:
+            return Response({ 'status': 'Failed'})
+        
         im_response = im_response['payment_request'].copy()
         im_response.update(im_response['payment'])
         im_response['payment_request_id'] = payment_request_id
