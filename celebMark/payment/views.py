@@ -55,4 +55,4 @@ class CheckPayStatusView(APIView):
         user_obj = BaseUser.objects.get(email=im_response['buyer_email']).user
         if pay_data['purpose'] == 'invite':
             create_invite_payment(pay_data, user_obj)
-        return Response({ 'status': pay_data['status']})
+        return Response({ 'status': pay_data['status'], 'purpose': pay_data['purpose'] })

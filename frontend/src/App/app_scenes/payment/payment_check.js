@@ -11,12 +11,12 @@ class PaymentCheckPage extends Component {
     constructor(props){
         super(props);
         this.getPaymentStatus = this.getPaymentStatus.bind(this);
-        this.state = { fetching: true, status: null };
+        this.state = { fetching: true, response: null };
     }
 
     getPaymentStatus(paymentDetails){
         axios.post(API_PAYMENT_CHECK, paymentDetails,{ headers: { 'Authorization': `Bearer ${getCookie('access')}`}})
-            .then( ({data}) => this.setState({fetching: false, status: data.status}) )
+            .then( ({data}) => this.setState({fetching: false, response: data}) )
             .catch(error => this.setState({fetching: false}))
         
     }
@@ -35,13 +35,13 @@ class PaymentCheckPage extends Component {
     }
     
     render(){
-        const { fetching, status } = this.state;
+        const { fetching, response } = this.state;
         if(fetching)
             return <FetchPayDetail/>
-        if(status === "Credit")
-            return <PaymentDone/>
+        if(response.status === "Credit")
+            return <PaymentDone purpose={response.purpose} />
         else
-            return <PaymentFail/>
+            return <PaymentFail purpose={response.purpose} />
     }
 }
 

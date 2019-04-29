@@ -1,9 +1,18 @@
 import React from 'react';
 
-const PaymentFail = (props) => (
-    <div>
-        Pay Failed Or unknown Error Occured!
-    </div>
-)
+let PaymentFail = (props) => {
+    if(props.purpose === 'invite')
+        return (
+            <div>
+                Invite Was Not sent due to payment processing Issues
+            </div>
+        );
+    else
+        return (
+            <div>
+                Payment Failed
+            </div>
+        );
+}
 
 export default PaymentFail;
