@@ -131,8 +131,18 @@ class Celeb(models.Model):
         return self.base_user.full_name
     
 class User(models.Model):
+    SUBSCRIPTION_CHOICES = (
+        ('free', 'free'),
+        ('platinum', 'platinum'),
+        ('diamond', 'diamond')
+    )
+
     base_user = models.OneToOneField(BaseUser, on_delete=models.CASCADE)
-    has_invites = models.IntegerField(default=0)
+
+    # Subscription Details
+    subscription = models.CharField(max_length=100, choices=SUBSCRIPTION_CHOICES, default='free')
+    free_invites = models.IntegerField(default=0)
+    subscription_expiration = models.DateField(auto_now_add=True, blank=True, null=True) 
 
     def __str__(self):
         return self.base_user.full_name
