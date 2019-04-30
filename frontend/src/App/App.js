@@ -6,7 +6,8 @@ import { Route } from 'react-router-dom';
 import AppHome from './app_scenes/app_home/app_home';
 import SearchPage from './app_scenes/search/search';
 import ProfilePage from './app_scenes/profile/profile';
-
+import InvitePage from "./app_scenes/invite/invite";
+import PaymentCheckPage from './app_scenes/payment/payment_check'
 // Any Page/Component is to be rendered inside App
 class App extends Component {
   
@@ -22,6 +23,8 @@ class App extends Component {
         <Route exact path="/" component={AppHome} />
         <Route exact path="/search" component={SearchPage} />
         <Route exact path="/profile/:user_name" component={ProfilePage} />
+        <Route exact path="/invite/:celeb" component={InvitePage} />
+        <Route exact path="/payment/check" component={PaymentCheckPage} />
       </div>
     );
   }

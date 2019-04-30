@@ -37,13 +37,26 @@ export const apiMiddleware = (store) => (next) => async (action) => {
         )
     }
 
-    return store.dispatch(
-        (dispatch) => {
-            return axios({ method: META.method, url: META.url, data: META.data, headers: { 'Authorization': `Bearer ${accessToken}` }})
-                    .then( ({data}) => next({ type: action.type, payload: data }) )
-                    .catch( error => dispatch({ type: action.failedType, payload: error }))
-        }
-    )
+    let request = axios({ 
+        method: META.method,
+        url: META.url,
+        data: META.data,
+        headers: { 'Authorization': `Bearer ${accessToken}` }
+    })
+
+    if(typeof(META.then) === "function")
+        store.dispatch(
+            (dispatch) => {
+                return request.then( response => META.then(response, true) )
+                                .catch( error => META.then(error, false) )
+            }
+        )
+    else
+        next((dispatch) => {
+                return request.then( ({data}) => next({ type: action.type, payload: data }) )
+                                .catch( error => dispatch({ type: action.failedType, payload: error }))
+            }
+        )
 
     // if(!accessToken)
     // {

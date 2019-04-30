@@ -1,3 +1,4 @@
+from rest_framework.permissions import BasePermission
 from useraccount.models import BaseUser
 
 def unique_fields():
@@ -9,3 +10,10 @@ def unique_fields():
         except:
             pass
     return unique_fields
+
+'''
+    The view permission to check if user is User
+'''
+class UserOnly(BasePermission):
+    def has_permission(self, request, view):
+        return request.user.user_type == 'user'
