@@ -48,9 +48,18 @@ let PaymentFail = (props) => {
         );
     else
         return (
-            <div>
-                Payment Failed
-            </div>
+          <div className="mt-5">
+          <MDBContainer>
+              <h3 className="red-text font-weight-bold ">Failed to process Payment</h3><br/>
+              <MDBCardHeader className="border-0  font-weight-bold d-flex justify-content-between">
+                <p className="mr-4 mb-0">Seems like the payment transaction didn't complete Successfully</p>
+                <ul className="list-unstyled text-default list-inline mb-0">
+                  <li className="list-inline-item mr-3"><MDBIcon className="mr-2" icon="home"  />Home</li>
+                  <li className="list-inline-item mr-3"><MDBIcon className="mr-2" icon="user" />Profile</li>
+                </ul>
+              </MDBCardHeader>
+            </MDBContainer>
+          </div>
         );
 }
 
