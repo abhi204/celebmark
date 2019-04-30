@@ -8,10 +8,10 @@ let PaymentDone = (props) => {
                 <MDBContainer>
                     <h3 className="green-text font-weight-bold ">Invitation Sent Successfully</h3><br/>
                     <MDBCardHeader className="border-0  font-weight-bold d-flex justify-content-between">
-                      <p className="mr-4 mb-0">About The Celebrity</p>
+                      <p className="mr-4 mb-0">Your invitation for following celebrity was successfull.</p>
                       <ul className="list-unstyled text-default list-inline mb-0">
                         <li className="list-inline-item mr-3"><MDBIcon className="mr-2" icon="home"  />Home</li>
-                        <li className="list-inline-item mr-3"><MDBIcon className="mr-2" icon="user" />See profile</li>
+                        <li className="list-inline-item mr-3"><MDBIcon className="mr-2" icon="user" />Profile</li>
                       </ul>
                     </MDBCardHeader>
                     <MDBMedia className="p-4 bg-white">
@@ -48,7 +48,7 @@ let PaymentDone = (props) => {
                   <MDBContainer>
                     <h3 className="blue-text mt-4 font-weight-bold ">Event & Contact :-</h3><br/>
                     <MDBCardHeader className="border-0  font-weight-bold d-flex justify-content-between">
-                      <p className="mr-4 mb-0"> Details</p>
+                      <p className="mr-4 mb-0">About The Celebrity</p>
                     </MDBCardHeader>
                     <MDBMedia className="p-4 bg-white">
                       <MDBMedia >
