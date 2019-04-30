@@ -11,7 +11,7 @@ class PaymentCheckPage extends Component {
     constructor(props){
         super(props);
         this.getPaymentStatus = this.getPaymentStatus.bind(this);
-        this.state = { fetching: true, response: null };
+        this.state = { fetching: true, response: {} };
     }
 
     getPaymentStatus(paymentDetails){
