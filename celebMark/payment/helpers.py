@@ -7,7 +7,8 @@ from uuid import uuid4
 # Create Payment record For With reference to an Invite payment
 def create_invite_payment(data):
     data['invite'] = Invite.objects.get(payment_request_id=data['payment_request_id'])
-    return Payment.objects.update_or_create(payment_id=data['payment_id'], defaults=data)
+    payment_obj, created = Payment.objects.update_or_create(payment_id=data['payment_id'], defaults=data)
+    return payment_obj
 
 def create_subscription_payment(data):
     # Purpose format => "subscribe {name of subscription}"
@@ -18,7 +19,8 @@ def create_subscription_payment(data):
     user_obj.subscription_expiration = date.today() + timedelta(weeks=subscription_detail['duration_months']*4)
     user_obj.save()
 
-    Payment.objects.update_or_create(payment_id=data['payment_id'], defaults=data)
+    payment_obj, created = Payment.objects.update_or_create(payment_id=data['payment_id'], defaults=data)
+    return payment_obj
 
 # Create Free Invite Based Payment record using free invites of user
 # And also decrement the user's free invite count
