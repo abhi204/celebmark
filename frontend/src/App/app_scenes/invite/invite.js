@@ -2,20 +2,30 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import InviteForm from './forms/invite_form';
 import { getYMDFormat } from '_helpers/date_convertor';
+import InviteSent from './forms/components/invite_sent';
 
 class InvitePage extends Component {
     render() {
-        const { userDetails, profile } = this.props;
+        const { state } = this.props.location ;
+        const { userDetails, match } = this.props ;
+
         return (
             <div style={{backgroundColor: "white"}}>
                 <br/>
-                <InviteForm
-                    initialValues={{
-                        user: userDetails.user_name,
-                        celeb: profile.user_name,
-                        event_date: getYMDFormat(new Date())
-                    }}
-                />
+                {
+                    state && state.inviteSent
+                    ?
+                    <InviteSent invite={state.invite} />
+                    :
+                    <InviteForm
+                        initialValues={{
+                            user: userDetails.user_name,
+                            celeb: match.params.celeb,
+                            event_date: getYMDFormat(new Date())
+                        }}
+                        className="invite-form"
+                    />
+                }
             </div>
         );
     }
@@ -23,7 +33,6 @@ class InvitePage extends Component {
 
 const mapStateToProps = state => (
     { 
-        profile: state.profile,
         userDetails: state.user.details
     }
 )
