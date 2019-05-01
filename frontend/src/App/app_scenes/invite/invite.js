@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import InviteForm from './forms/invite_form';
 import { getYMDFormat } from '_helpers/date_convertor';
-import InviteSent from './forms/components/invite_sent';
+import InviteSent from './components/invite_sent';
 
 class InvitePage extends Component {
     render() {
