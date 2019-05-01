@@ -36,7 +36,7 @@ const renderField = ({
           <MDBCard>
             <MDBCardBody className="mx-4">
               <div className="text-center">
-                <MDBIcon fab icon="teamspeak" size="6x"/>
+                <a className="black-text" href="/"><MDBIcon fab icon="teamspeak" size="6x"/></a>
                 <h3 className="dark-grey-text mb-5">
                     <center>
                       <strong><br/>Login</strong>

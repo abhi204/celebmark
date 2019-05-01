@@ -44,7 +44,7 @@ render() {
             <MDBCard>
               <MDBCardBody>
                 <div className="text-center">
-                  <MDBIcon fab icon="teamspeak" size="6x"/>
+                    <a className="black-text" href="/"><MDBIcon fab icon="teamspeak" size="6x"/></a>
                 </div>
                   <h2 className="text-center font-weight-bold pt-4 pb-5">
                       <strong>Register At CelebMark</strong>
