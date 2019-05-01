@@ -8,12 +8,13 @@ const setInvite = (apiResponse, okStatus) => {
     {
         window.location.assign(apiResponse.data.payURL);
     }
-    else if(!okStatus)
+    else
         {
             let { data } = apiResponse && apiResponse.response ? apiResponse.response : {}
             if( _.difference(_.keys(data), inviteFields).length > 0)
                 throw new SubmissionError({ _error: "Unknown error occured", });
-            throw new SubmissionError(data)
+            else
+                throw new SubmissionError(data);
         }
 }
 
