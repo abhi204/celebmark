@@ -94,23 +94,23 @@ class NavBar extends Component {
                   <MDBNavbarNav className="d-inline-flex flex-row flex-fill">
                     <MDBNavItem className="my-auto" >
                         <MDBNavbarBrand >
-                            <a href="/"><img src={favIcon} style={{height: "2em", padding: 0}} alt=""/></a>
+                            <a href="/"><img src={favIcon} style={{height: "1.8em", padding: 0}} alt=""/></a>
                         </MDBNavbarBrand>
                     </MDBNavItem >
                     <MDBNavItem  className="my-auto">
                         <MDBNavLink to="/search">
-                            <MDBIcon fab icon="superpowers" className="black-text" size="2x"/>
+                            <MDBIcon fas icon="search" className="black-text" size="lg"/>
                         </MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem  className="my-auto">
                         <MDBNavLink to="/">
-                            <MDBIcon far icon="envelope-open" className="black-text" size="2x"/>
+                            <MDBIcon fas icon="layer-group" className="black-text" size="lg"/>
                         </MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem  className="my-auto">
                         <MDBNavLink to="/">
                           <img src={userImage} className="rounded-circle z-depth-0"
-                                style={{height: "2.4em", padding: 0}} alt="" />
+                                style={{height: "2em", padding: 0}} alt="" />
                         </MDBNavLink>
                     </MDBNavItem>
                   </MDBNavbarNav> )
