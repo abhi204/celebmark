@@ -45,14 +45,14 @@ export const apiMiddleware = (store) => (next) => async (action) => {
     })
 
     if(typeof(META.then) === "function")
-        store.dispatch(
+        return store.dispatch(
             (dispatch) => {
                 return request.then( response => META.then(response, true) )
                                 .catch( error => META.then(error, false) )
             }
         )
     else
-        next((dispatch) => {
+        return next((dispatch) => {
                 return request.then( ({data}) => next({ type: action.type, payload: data }) )
                                 .catch( error => dispatch({ type: action.failedType, payload: error }))
             }
