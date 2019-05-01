@@ -27,7 +27,7 @@ class InviteViewset(ModelViewSet):
             invite_obj.save()
             
             payment = create_free_invite_payment(invite_obj, request.user.user)
-            return Response({'status': 'credit', 'invite': InviteSerializer(invite_obj).data })
+            return Response({'invite': InviteSerializer(invite_obj).data })
         
         # Create Instamojo api endpoint
         response = im_api.payment_request_create(
