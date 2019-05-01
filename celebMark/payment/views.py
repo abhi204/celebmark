@@ -1,8 +1,10 @@
 from .helpers import create_invite_payment, create_subscription_payment
 from .im_api import im_api
 from .models import Payment
+from .serializers import PaymentViewSerializer
 from django.shortcuts import render
 from invite.models import Invite
+from invite.serializers import InviteSerializer
 from rest_framework import permissions
 from rest_framework.response import Response
 from rest_framework.views import APIView
@@ -38,10 +40,7 @@ class CheckPayStatusView(APIView):
         payment_id = request.data['payment_id']
         payment_request_id = request.data['payment_request_id']
         
-        im_response = im_api.payment_request_payment_status(
-            payment_request_id,
-            payment_id
-        )
+        im_response = im_api.payment_request_payment_status(payment_request_id, payment_id)
         if not im_response['success']:
             return Response({ 'status': 'Failed'})
         
@@ -58,8 +57,17 @@ class CheckPayStatusView(APIView):
         pay_data['user'] = BaseUser.objects.get(email=im_response['buyer_email']).user
 
         # Check and pass payment to appropriate method
-        if pay_data['purpose'].startswith('invite'):
-            create_invite_payment(pay_data)
-        elif pay_data['purpose'].startswith('subscribe'):
-            create_subscription_payment(pay_data)
-        return Response({ 'status': pay_data['status'], 'purpose': pay_data['purpose'] })
+        if pay_data['purpose'].startswith('invite'): # For invite related Payments
+            payment_obj = create_invite_payment(pay_data)
+            invite_obj = Invite.objects.get(payment_request_id=payment_obj.payment_request_id)
+            return Response({ 
+                'payment': PaymentViewSerializer(payment_obj).data,
+                'invite': InviteSerializer(invite_obj).data
+            })
+        
+        elif pay_data['purpose'].startswith('subscribe'): # For subscription related Payments
+            payment_obj = create_subscription_payment(pay_data)
+            return Response({ 'payment': PaymentViewSerializer(payment_obj).data })
+
+        # Undefined Object to return
+        return Response(status=404)

@@ -6,12 +6,13 @@ import { getCookie } from '_helpers/cookies';
 import PaymentDone from './components/pay_ok';
 import PaymentFail from './components/pay_fail';
 import FetchPayDetail from './components/pay_fetch';
+import { withRouter } from 'react-router-dom';
 
 class PaymentCheckPage extends Component {
     constructor(props){
         super(props);
         this.getPaymentStatus = this.getPaymentStatus.bind(this);
-        this.state = { fetching: true, response: {} };
+        this.state = { fetching: true, response: { } };
     }
 
     getPaymentStatus(paymentDetails){
@@ -34,15 +35,35 @@ class PaymentCheckPage extends Component {
             this.setState({ fetching: false });
     }
     
+    componentDidUpdate(){
+        const { response } = this.state;
+        const { payment } = response;
+        if( payment && payment.purpose.startsWith('invite')) // Invite Related Payments
+        {
+            this.props.history.replace({
+                pathname: `/invite/${response.invite.celeb}`,
+                state: { 
+                    inviteSent: Boolean(response.payment.status === "Credit"),
+                    invite: response.invite
+                }
+            })
+        }
+    }
+
     render(){
         const { fetching, response } = this.state;
+        const { payment } = response;
+
         if(fetching)
+        {
             return <FetchPayDetail/>
-        if(response.status === "Credit")
-            return <PaymentDone purpose={response.purpose} />
-        else
-            return <PaymentFail purpose={response.purpose} />
+        }
+        else if((!payment || payment.status !== "Credit") && response.invite === null) // Non-invite Payment Failed
+        {
+            return <PaymentFail purpose={payment.purpose}/>
+        }
+        return <PaymentDone/>
     }
 }
 
-export default PaymentCheckPage;
+export default withRouter(PaymentCheckPage);
