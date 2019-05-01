@@ -11,7 +11,7 @@ class Payment(models.Model):
     )
     payment_id = models.TextField(primary_key=True)
     payment_request_id = models.TextField(unique=True)
-    mac = models.TextField()
+    mac = models.TextField(blank=True, null=True)
     purpose = models.CharField(max_length=100, default="")
     status = models.CharField(max_length=100, choices=STATUS_CHOICES, default='Pending')
     amount = models.FloatField()

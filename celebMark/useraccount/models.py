@@ -1,3 +1,4 @@
+from .subscription_details import subscription_details
 from django.db import models
 from django.utils import timezone
 import jsonfield
@@ -146,3 +147,11 @@ class User(models.Model):
 
     def __str__(self):
         return self.base_user.full_name
+
+    @property
+    def has_free_invites(self):
+        return self.free_invites > 0
+
+    @property
+    def invite_fee(self):
+        return subscription_details[self.subscription]['invite_fee']
