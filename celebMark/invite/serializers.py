@@ -7,7 +7,7 @@ class UserField(serializers.Field):
     'invalid_value': 'No user exists with the given user_name: {input_user_name}'
     }
     def to_representation(self, user_obj):
-        return user_obj.base_user.user_name
+        return user_obj.base_user.full_name
     def to_internal_value(self, user_name):
         if not BaseUser.objects.filter(user_name=user_name).exists():
             self.fail('invalid_value', input_user_name=user_name)
@@ -18,7 +18,7 @@ class CelebField(serializers.Field):
     'invalid_value': 'Invalid Celeb: {input_user_name}'
     }
     def to_representation(self, celeb_obj):
-        return celeb_obj.base_user.user_name
+        return celeb_obj.base_user.full_name
     def to_internal_value(self, user_name):
         if not BaseUser.objects.filter(user_name=user_name).exists():
             self.fail('invalid_value', input_user_name=user_name)
