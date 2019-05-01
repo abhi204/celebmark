@@ -4,6 +4,7 @@ import { ConnectedRouter } from 'connected-react-router';
 import { Switch } from 'react-router-dom';
 import Route from '_containers/custom_route.js'
 import { connect } from 'react-redux';
+import { MDBSpinner, MDBRow, MDBCol } from 'mdbreact';
 
 // Import Pages/Components Here
 // Homepage Component Already imported in App.js
@@ -32,7 +33,13 @@ class Routes extends Component{
 
     render(){
         if(this.state.loading)
-            return <div>LOADING....</div>
+            return <div>
+                <MDBRow className="mt-5 pt-5">
+                    <MDBCol size="5"></MDBCol>
+                    <MDBCol size="2" className="mt-5 pt-5">Loading..<br/><MDBSpinner green /></MDBCol>
+                    <MDBCol size="5"></MDBCol>
+                </MDBRow>
+        </div>
         // Initial actions dispatched here
         return(
             <ConnectedRouter history={history}>
