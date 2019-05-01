@@ -33,7 +33,7 @@ class NavBar extends Component {
 
                         <MDBCol>
                           <MDBNavItem fluid='true' className="d-inline my-auto">
-                            <MDBNavbarBrand><img style={{height: "2em"}} src={favIcon} alt="" />&nbsp;CelebMark</MDBNavbarBrand>
+                            <MDBNavbarBrand><a className="black-text" href="/"><img style={{height: "2em"}} src={favIcon} alt="" />&nbsp;CelebMark</a></MDBNavbarBrand>
                           </MDBNavItem>
                         
                         </MDBCol>
@@ -63,8 +63,8 @@ class NavBar extends Component {
                                     </MDBDropdownToggle>
                                     <MDBDropdownMenu basic >
                                         <MDBDropdownItem><MDBIcon icon="user-circle" /> &nbsp; My Profile</MDBDropdownItem>
-                                        <MDBDropdownItem><MDBIcon far icon="calendar-check" /> &nbsp; My Subscription</MDBDropdownItem>
-                                        <MDBDropdownItem><MDBIcon far icon="credit-card" /> &nbsp; My Plans</MDBDropdownItem>
+                                        <MDBDropdownItem><MDBIcon far icon="credit-card" /> &nbsp; My Subscription</MDBDropdownItem>
+                                        <MDBDropdownItem><MDBIcon fas icon="bookmark" /> &nbsp; My Bookmarks</MDBDropdownItem>
                                         <MDBDropdownItem divider />
                                         <MDBNavLink to="/logout"><MDBIcon icon="power-off" />&nbsp; Logout</MDBNavLink>
                                     </MDBDropdownMenu>
@@ -75,10 +75,10 @@ class NavBar extends Component {
                             // loggedout desktop navigation
                             <MDBNavbarNav right className="d-inline-flex flex-row">
                                 <MDBNavItem className="float-right my-auto mr-3">
-                                <MDBNavLink to="/signup"><MDBIcon className="black-text" size="lg" icon="user-plus"/>&nbsp;Signup</MDBNavLink>
+                                <MDBNavLink to="/signup"><MDBIcon className="black-text" size="lg" icon="user-shield"/>&nbsp;Signup</MDBNavLink>
                                 </MDBNavItem>
                                 <MDBNavItem className="float-right my-auto">
-                                <MDBNavLink to="/login"><MDBIcon className="black-text" size="lg" icon="users"/>&nbsp;Login</MDBNavLink>
+                                <MDBNavLink to="/login"><MDBIcon className="black-text" size="lg" icon="lock"/>&nbsp;Login</MDBNavLink>
                                 </MDBNavItem>
                             </MDBNavbarNav>
                                 }
