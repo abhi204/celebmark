@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import { searchNext } from '_actions/search';
 import CelebCard from '../components/celeb_card';
 import { MDBBtn } from 'mdbreact';
-import Masonry from 'react-masonry-component';
 
 // class SearchResults extends Component {
 
@@ -48,14 +47,7 @@ class SearchResults extends Component {
     else
       return (
         <div className="mt-1 pr-0 pl-0">
-          <Masonry
-          // elementType={'ul'} // default 'div'
-          options={{transitionDuration: 0}} // default {}
-          disableImagesLoaded={false} // default false
-          updateOnEachImageLoad={false} // default false and works only if disableImagesLoaded is false
-          >
           {childElements}
-          </Masonry>
           { search.next && <center><MDBBtn onClick={()=>{this.props.searchNext(search.next)}} disabled={search.loadingNext}>SHOW MORE</MDBBtn></center>}
         </div>
       );

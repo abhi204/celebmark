@@ -33,7 +33,7 @@ class SearchPanel extends Component{
         return (
             <div className="ml-2 mr-2 row-background">
             <center>
-                <div className="search-options p-3">
+                <div className="search-options p-3 mt-3 border border-info">
                 <MDBDropdown className="border-right text-fix">
                     <MDBDropdownToggle caret nav>
                         { this.state.city || 'City' }
@@ -54,7 +54,7 @@ class SearchPanel extends Component{
                         <MDBDropdownItem onClick={this.applySort}>Ratings</MDBDropdownItem>
                     </MDBDropdownMenu>
                 </MDBDropdown>
-                <input onChange={event => {this.setState({searchTerm: event.target.value})}} onKeyUp={event => { if(event.keyCode === 13) this.searchCeleb() }} placeholder="Search..." className="mr-5 ml-5 celeb-search-input" />
+                <input outline onChange={event => {this.setState({searchTerm: event.target.value})}} onKeyUp={event => { if(event.keyCode === 13) this.searchCeleb() }} placeholder="Search..." className="mr-5 ml-5 celeb-search-input" />
                 <img alt="SEARCH" src="https://img.icons8.com/ios/50/000000/search.png" className="pr-4" style={{height: "2.5em"}} onClick={this.searchCeleb} />
                 </div>
             </center>
