@@ -5,3 +5,6 @@
 .pricing-card .price .number::after {
     content: "/year" !important;
 }
+.pricing-card .price  .number1::after {
+    content: "/mo" !important;
+}
