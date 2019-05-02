@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 
 const Route = (props) => {
     const { user, privateURL, publicOnly } = props;
-    const state = props.location.state || {};
     let goto = sessionStorage.getItem('goto');
     if(user.loggedIn === false && privateURL)
     {

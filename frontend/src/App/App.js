@@ -12,7 +12,6 @@ import PaymentCheckPage from './app_scenes/payment/payment_check'
 class App extends Component {
   
   render() {
-    let { user } = this.props;
     // Main App starts here
     return (
       <div>

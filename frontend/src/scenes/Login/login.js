@@ -14,9 +14,9 @@ class LoginPage extends Component {
 
   render(){
     const { location, user } = this.props;
-    const state = location && location.state ? location.state : {}; 
-    const message = state.message;
-    const warnColour = state.warn ? 'danger' : 'success';
+    let state = location && location.state ? location.state : {}; 
+    let message = state.message;
+    let warnColour = state.warn ? 'danger' : 'success';
     if(user.loginStatus === LOGIN_RETRY){
       message = "Invalid Username or Password";
       warnColour = 'danger';
