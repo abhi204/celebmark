@@ -40,7 +40,7 @@ class TabsPage extends Component {
     }
 
     render() {
-        const { profile } = this.props;
+        const { profile, user } = this.props;
         return (
             <MDBContainer>
                 <div className="classic-tabs">
@@ -75,15 +75,17 @@ class TabsPage extends Component {
                                     <span style={{fontWeight: "normal", color: "white"}}><MDBIcon icon="envelope" /> Send Invite</span>
                                 </MDBBtn>
                             </MDBNavItem>
-                            <MDBNavItem className="mt-5">
+                            { user.loggedIn === true &&   
+                                <MDBNavItem className="mt-5" hidden>
                                 <span onClick={ () => {
                                     this.props.doProfileBookmark(profile.user_name)
                                     this.setState({ bookmark: !this.state.bookmark })
-                                    } }
-                                    style={{fontSize: "large", fontWeight: "normal", color: "black"}}>
+                                } }
+                                style={{fontSize: "large", fontWeight: "normal", color: "black"}}>
                                     <MDBIcon far={!this.state.bookmark} icon="bookmark" size='lg'/>
                                 </span>
                             </MDBNavItem>
+                            }
                         </MDBNavbarNav>
                     </MDBNav>
                     <MDBTabContent activeItem={this.state.activeItemClassicTabs1}>
