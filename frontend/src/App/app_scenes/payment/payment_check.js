@@ -62,7 +62,7 @@ class PaymentCheckPage extends Component {
         {
             return <PaymentFail purpose={payment.purpose}/>
         }
-        return <PaymentDone/>
+        return <PaymentDone purpose={payment.purpose}/>
     }
 }
 

@@ -15,3 +15,6 @@ export const PROFILE_FAILED = "failed to fetch Profile"
 export const PROFILE_RESPONSE = "Profile Response";
 export const BOOKMARK = "Profile Bookmark";
 export const BOOKMARK_FAILED = "Profile Bookmark Failed";
+
+export const SUBSCRIBE = "Do Subscribe";
+export const SUBSCRIBE_FAILED = "Subscribe Failed";
