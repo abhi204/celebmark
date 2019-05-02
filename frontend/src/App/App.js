@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PublicHomePage from '../scenes/home/homepage';
 import NavBar from '_containers/navbar/navbar';
-import { Route } from 'react-router-dom';
+import { Switch } from 'react-router-dom';
+import Route from '_containers/custom_route';
 import AppHome from './app_scenes/app_home/app_home';
 import SearchPage from './app_scenes/search/search';
 import ProfilePage from './app_scenes/profile/profile';
@@ -13,18 +13,19 @@ class App extends Component {
   
   render() {
     let { user } = this.props;
-    if(user.loggedIn===false)
-      return <PublicHomePage />
     // Main App starts here
     return (
       <div>
         <NavBar />
         <br/><br/>
-        <Route exact path="/" component={AppHome} />
-        <Route exact path="/search" component={SearchPage} />
-        <Route exact path="/profile/:user_name" component={ProfilePage} />
-        <Route exact path="/invite/:celeb" component={InvitePage} />
-        <Route exact path="/payment/check" component={PaymentCheckPage} />
+        <Switch>
+          <Route exact path="/" component={AppHome} />
+          <Route exact path="/search" component={SearchPage} />
+          <Route exact path="/profile/:user_name" component={ProfilePage} />
+          <Route privateURL exact path="/invite/:celeb" component={InvitePage} />
+          <Route privateURL exact path="/payment/check" component={PaymentCheckPage} />
+          <Route path='*' render={() => (<div>PAGE NOT FOUND</div>)} />
+        </Switch>
       </div>
     );
   }

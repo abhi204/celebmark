@@ -45,12 +45,11 @@ class Routes extends Component{
             <ConnectedRouter history={history}>
             <div id="body">
                 {/* Pages Routed here, Components Routed inside App.js */}
-                <Switch >
+                <Switch>
                     <Route publicOnly exact path='/login' component={LoginPage} />
                     <Route publicOnly exact path='/signup' component={SignupPage} />    
                     <Route exact path='/logout' component={LogoutPage} />
                     <Route path='/' component={App} />
-                    <Route path='*' render={() => (<div>PAGE NOT FOUND</div>)} />
                 </Switch>
                 <Footer/>
             </div>
