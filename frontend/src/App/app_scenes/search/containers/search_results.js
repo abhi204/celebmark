@@ -34,7 +34,6 @@ class SearchResults extends Component {
       <CelebCard
         key={celeb.user_name}
         name={`${celeb.first_name} ${celeb.last_name}`}
-        rating={0}
         category={celeb.category}
         user_name={celeb.user_name}
         profile_pic = {celeb.profile_pic}
