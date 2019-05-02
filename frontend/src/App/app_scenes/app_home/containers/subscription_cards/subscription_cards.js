@@ -23,7 +23,7 @@ class SubscriptionCards extends Component {
     return (
       <section className="text-center my-5">
         <h2 className="h1-responsive font-weight-bold text-center my-5">
-          Our pricing plans
+          Our Pricing Plans
         </h2>
         <p className="grey-text text-center w-responsive mx-auto mb-5">
           {/* Discription */}
@@ -34,27 +34,27 @@ class SubscriptionCards extends Component {
               <MDBCardBody>
                 <h5 className="font-weight-bold mt-3">Free</h5>
                 <div className="price pt-0">
-                  <h2 className="number red-text mb-0">1k</h2>
+                  <h2 className="number red-text mb-0">00</h2>
                 </div>
                 <ul className="striped mb-1">
                   <li>
                     <p>
-                      <strong>5</strong> invites
+                      <strong>Default</strong> plan
                     </p>
                   </li>
                   <li>
                     <p>
-                      <strong>Free</strong> access to CelebMark events
+                      500 /- <strong> Per Invite</strong>
                     </p>
                   </li>
                   <li>
                     <p>
-                      <strong>1</strong> year subscription
+                      <strong>Unlimited </strong> Validity
                     </p>
                   </li>
                   <li>
                     <p>
-                      CelebMark <strong>Support</strong>
+                      200 /- Non Refundable<strong> Upon Cancellation</strong>
                     </p>
                   </li>
                 </ul>
@@ -74,35 +74,35 @@ class SubscriptionCards extends Component {
                   'url("https://mdbootstrap.com/img/Photos/Others/pricing-table%20(6).jpg")'
               }}
             >
-              <div className="text-white text-center pricing-card d-flex align-items-center rgba-indigo-strong py-3 px-3 rounded">
+              <div className="text-white text-center pricing-card d-flex align-items-center rgba-stylish-strong py-3 px-3 rounded">
                 <MDBCardBody>
                   <h5 className="font-weight-bold mt-2">Platinum</h5>
                   <div className="price pt-0">
-                    <h2 className="number mb-0">5k</h2>
+                    <h2 className="number number1 mb-0">4999</h2>
                   </div>
                   <ul className="striped mb-0">
                     <li>
                       <p>
-                        <strong>Unlimited</strong> invites
+                        12 free invites <strong> per month</strong>
                       </p>
                     </li>
                     <li>
                       <p>
-                        a chance to get <strong>Sponsorships</strong>
+                        <strong>03 months</strong> validity
                       </p>
                     </li>
                     <li>
                       <p>
-                        <strong>Prioritised</strong> Support
+                        <strong>350 /- per invite</strong> after 12 free
                       </p>
                     </li>
                     <li>
                       <p>
-                        <strong>Free</strong> Advertisements
+                        150 /- non-refundable <strong> upon cancellation </strong>
                       </p>
                     </li>
                   </ul>
-                  <MDBBtn 
+                  <MDBBtn
                     onClick={() => this.onSubscribeClick('platinum')}
                     outline color="white"
                     disabled={this.state.subscribeTo==='platinum'}
@@ -118,27 +118,27 @@ class SubscriptionCards extends Component {
               <MDBCardBody>
                 <h5 className="font-weight-bold mt-3">Diamond</h5>
                 <div className="price pt-0">
-                  <h2 className="number red-text mb-0">15k</h2>
+                  <h2 className="number red-text mb-0">9999</h2>
                 </div>
                 <ul className="striped mb-0">
                     <li>
                       <p>
-                        <strong>Unlimited</strong> invites
+                        20 free invites <strong> per month</strong>
                       </p>
                     </li>
                     <li>
                       <p>
-                        a chance to get <strong>Sponsorships</strong>
+                        <strong>12 months</strong> validity
                       </p>
                     </li>
                     <li>
                       <p>
-                        <strong>Prioritised</strong> Support
+                        <strong>200 /- per invite</strong> after 20 free
                       </p>
                     </li>
                     <li>
                       <p>
-                        <strong>Free</strong> Advertisements
+                        75 /- non-refundable <strong> upon cancellation </strong>
                       </p>
                     </li>
                   </ul>
