@@ -14,8 +14,9 @@ class LoginPage extends Component {
 
   render(){
     const { location, user } = this.props;
-    let message = location && location.state ? location.state.message : null;
-    let warnColour = location.state && location.state.warn ? 'danger' : 'success';
+    const state = location && location.state ? location.state : {}; 
+    const message = state.message;
+    const warnColour = state.warn ? 'danger' : 'success';
     if(user.loginStatus === LOGIN_RETRY){
       message = "Invalid Username or Password";
       warnColour = 'danger';
@@ -30,7 +31,7 @@ class LoginPage extends Component {
               { message ? <MDBAlert color={warnColour}><center>{message}</center></MDBAlert> : '' }
               </center>
             </div>
-              <LoginForm />
+              <LoginForm/>
             </MDBCol>
           <MDBCol size="1"/>
         </MDBRow>
