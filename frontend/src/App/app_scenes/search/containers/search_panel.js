@@ -54,7 +54,7 @@ class SearchPanel extends Component{
                         <MDBDropdownItem onClick={this.applySort}>Ratings</MDBDropdownItem>
                     </MDBDropdownMenu>
                 </MDBDropdown>
-                <input outline onChange={event => {this.setState({searchTerm: event.target.value})}} onKeyUp={event => { if(event.keyCode === 13) this.searchCeleb() }} placeholder="Search..." className="mr-5 ml-5 celeb-search-input" />
+                <input onChange={event => {this.setState({searchTerm: event.target.value})}} onKeyUp={event => { if(event.keyCode === 13) this.searchCeleb() }} placeholder="Search..." className="mr-5 ml-5 celeb-search-input" />
                 <img alt="SEARCH" src="https://img.icons8.com/ios/50/000000/search.png" className="pr-4" style={{height: "2.5em"}} onClick={this.searchCeleb} />
                 </div>
             </center>

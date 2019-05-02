@@ -34,15 +34,15 @@ class CelebCard extends Component {
                           <MDBMedia body>
                             <ul className="list-unstyled list-inline mb-2 pt-1 more-padding">
                             <li className="list-inline-item">
-                              <MDBIcon fas className="green-text" size="lg" icon="user-circle"/><span className="font-weight-bold"> Artist:</span> {name}
+                              <MDBIcon className="green-text" size="lg" icon="user-circle"/><span className="font-weight-bold"> Artist:</span> {name}
                               </li>
                                 <br/>
                               <li className="list-inline-item">
-                                  <MDBIcon fas className="green-text" size="lg" icon="poll"/><span className="font-weight-bold"> Type:</span> MUSICIAN//
+                                  <MDBIcon  className="green-text" size="lg" icon="poll"/><span className="font-weight-bold"> Type:</span> MUSICIAN//
                               </li>
                                 <br/>
                               <li className="list-inline-item">
-                                  <MDBIcon fas className="green-text" size="lg" icon="map-marker-alt"/><span className="font-weight-bold"> City:</span> Patna
+                                  <MDBIcon  className="green-text" size="lg" icon="map-marker-alt"/><span className="font-weight-bold"> City:</span> Patna
                               </li>
                                 <br/>
                               <li className="list-inline-item pl-0">

@@ -99,12 +99,12 @@ class NavBar extends Component {
                     </MDBNavItem >
                     <MDBNavItem  className="my-auto">
                         <MDBNavLink to="/search">
-                            <MDBIcon fas icon="search" className="black-text" size="lg"/>
+                            <MDBIcon icon="search" className="black-text" size="lg"/>
                         </MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem  className="my-auto">
                         <MDBNavLink to="/">
-                            <MDBIcon fas icon="layer-group" className="black-text" size="lg"/>
+                            <MDBIcon icon="layer-group" className="black-text" size="lg"/>
                         </MDBNavLink>
                     </MDBNavItem>
                     <MDBNavItem  className="my-auto">
