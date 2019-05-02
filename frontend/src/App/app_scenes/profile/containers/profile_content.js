@@ -76,11 +76,11 @@ class TabsPage extends Component {
                                 </MDBBtn>
                             </MDBNavItem>
                             { user.loggedIn === true &&   
-                                <MDBNavItem className="mt-5" hidden>
+                                <MDBNavItem className="mt-5">
                                 <span onClick={ () => {
                                     this.props.doProfileBookmark(profile.user_name)
                                     this.setState({ bookmark: !this.state.bookmark })
-                                } }
+                                    }}
                                 style={{fontSize: "large", fontWeight: "normal", color: "black"}}>
                                     <MDBIcon far={!this.state.bookmark} icon="bookmark" size='lg'/>
                                 </span>
