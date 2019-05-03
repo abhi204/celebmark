@@ -22,4 +22,20 @@
     outline: 0;
     width: 16em;
 }
-  
+
+/* Mobile (sm) Screen */
+.row-background-sm{
+    background-color: grey;
+    top: 3em;
+    position: fixed;
+    z-index: 99;
+    left: 0;
+    right: 0;
+}
+
+.celeb-search-input-sm{
+    outline: 0;
+    border-radius: 2em!important;
+    height: 3em!important;
+    width: 100%!important;
+}
