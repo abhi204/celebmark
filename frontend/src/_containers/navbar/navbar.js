@@ -3,6 +3,7 @@ import { userImage, favIcon } from '_consts/dummy';
 import { connect } from 'react-redux'
 import SearchInput from './search_input/search_input';
 import { Link } from 'react-router-dom';
+import { API_HOST } from '_consts/api';
 
 import "./navbar.css"
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav,
@@ -25,7 +26,7 @@ class NavBar extends Component {
 
     render(){
         const { details, loggedIn } = this.props.user;
-        const { user_name } = details || '';
+        const { profile_pic,user_name } = details || '';
         return (
               <div >
                 <MDBRow>
@@ -51,7 +52,7 @@ class NavBar extends Component {
                                 <MDBNavItem className="mr-3 ml-3 float-right my-auto">
                                 <MDBDropdown size="lg">
                                     <MDBDropdownToggle className="no-wrap" nav caret>
-                                        <img src={userImage} className="rounded-circle z-depth-0"
+                                        <img src={`${API_HOST}/${profile_pic}`} className="rounded-circle z-depth-0"
                                             style={{height: "2.5em", padding: 0}} alt="" />
                                     </MDBDropdownToggle>
                                     <MDBDropdownMenu basic >
@@ -67,7 +68,7 @@ class NavBar extends Component {
                                             <MDBDropdownItem><MDBIcon fas icon="bookmark" /> &nbsp; Bookmarks</MDBDropdownItem>
                                         </Link>
                                         <MDBDropdownItem divider />
-                                        <Link to="/dashboard/bookmarks" className="p-0" >
+                                        <Link to="/logout" className="p-0" >
                                             <MDBDropdownItem><MDBIcon icon="power-off" />&nbsp; Logout</MDBDropdownItem>
                                         </Link>
                                     </MDBDropdownMenu>
