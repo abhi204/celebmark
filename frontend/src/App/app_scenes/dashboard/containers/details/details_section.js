@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import {Link, withRouter} from 'react-router-dom';
 import {  MDBRow, MDBCol, MDBCard, MDBCardBody, MDBMask, MDBIcon, MDBView, MDBBtn,MDBContainer } from "mdbreact";
 
 class DetailsSection extends Component {
@@ -52,9 +52,10 @@ class DetailsSection extends Component {
                         </p>
                       </MDBCol>
                       <MDBCol lg="3" className="text-center mt-5">
+                          <Link to='/dashboard/settings'>
                         <MDBBtn rounded color="info">
-                          <MDBIcon icon="pen" className="mr-1" /> Edit Details
-                        </MDBBtn>
+                          <MDBIcon icon="pen" className="mr-1" /> <strong>Edit Details</strong>
+                        </MDBBtn></Link>
                       </MDBCol>
 
                     </MDBRow>
