@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { userImage, favIcon } from '_consts/dummy';
 import { connect } from 'react-redux'
 import SearchInput from './search_input/search_input';
+import { Link } from 'react-router-dom';
 
 import "./navbar.css"
 import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav,
@@ -54,11 +55,21 @@ class NavBar extends Component {
                                             style={{height: "2.5em", padding: 0}} alt="" />
                                     </MDBDropdownToggle>
                                     <MDBDropdownMenu basic >
-                                        <MDBDropdownItem><MDBIcon icon="user-circle" /> &nbsp; My Profile</MDBDropdownItem>
-                                        <MDBDropdownItem><MDBIcon fas icon="envelope-open-text" /> &nbsp; My Invites</MDBDropdownItem>
-                                        <MDBDropdownItem><MDBIcon fas icon="bookmark" /> &nbsp; My Bookmarks</MDBDropdownItem>
+                                        <Link to="/dashboard" className="p-0" >
+                                        <MDBDropdownItem><MDBIcon icon="user-circle" /> &nbsp; Profile</MDBDropdownItem>
+                                        </Link>
+                                        <Link to="/dashboard/invites" className="p-0" >
+                                        <MDBDropdownItem><MDBIcon fas icon="envelope-open-text" />
+                                             &nbsp; Invites
+                                        </MDBDropdownItem>
+                                        </Link>
+                                        <Link to="/dashboard/bookmarks" className="p-0" >
+                                            <MDBDropdownItem><MDBIcon fas icon="bookmark" /> &nbsp; Bookmarks</MDBDropdownItem>
+                                        </Link>
                                         <MDBDropdownItem divider />
-                                        <MDBNavLink to="/logout"><MDBIcon icon="power-off" />&nbsp; Logout</MDBNavLink>
+                                        <Link to="/dashboard/bookmarks" className="p-0" >
+                                            <MDBDropdownItem><MDBIcon icon="power-off" />&nbsp; Logout</MDBDropdownItem>
+                                        </Link>
                                     </MDBDropdownMenu>
                                 </MDBDropdown>
                                 </MDBNavItem>

@@ -7,7 +7,8 @@ import AppHome from './app_scenes/app_home/app_home';
 import SearchPage from './app_scenes/search/search';
 import ProfilePage from './app_scenes/profile/profile';
 import InvitePage from "./app_scenes/invite/invite";
-import PaymentCheckPage from './app_scenes/payment/payment_check'
+import PaymentCheckPage from './app_scenes/payment/payment_check';
+import DashboardPage from './app_scenes/dashboard/dashboard';
 // Any Page/Component is to be rendered inside App
 class App extends Component {
   
@@ -23,6 +24,7 @@ class App extends Component {
           <Route exact path="/profile/:user_name" component={ProfilePage} />
           <Route privateURL exact path="/invite/:celeb" component={InvitePage} />
           <Route privateURL exact path="/payment/check" component={PaymentCheckPage} />
+          <Route privateURL path="/dashboard/:option?" component={DashboardPage} />
           <Route path='*' render={() => (<div>PAGE NOT FOUND</div>)} />
         </Switch>
       </div>

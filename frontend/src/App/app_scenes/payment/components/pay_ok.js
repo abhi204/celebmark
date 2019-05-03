@@ -1,5 +1,5 @@
 import React from 'react';
-import { MDBContainer,MDBRow, MDBCol, MDBIcon, MDBBtn } from "mdbreact";
+import { MDBContainer,MDBRow, MDBCol, MDBIcon } from "mdbreact";
 
 let PaymentDone = (props) => {
     if(props.purpose.startsWith('subscribe'))
@@ -114,7 +114,7 @@ let PaymentDone = (props) => {
                     </section>
 
                     <h3 className="text-center">
-                      Go ahead & start inviting your celebrity & enjoy the
+                      Go ahead, start inviting your celebrity & enjoy the
                       <strong className="green-text"> {plan}</strong> plan.
                     </h3>
 
