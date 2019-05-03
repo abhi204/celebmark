@@ -1,4 +1,4 @@
-from datetime import date, timedelta
+from django.utils import timezone
 from invite.models import Invite
 from payment.models import Payment
 from useraccount.subscription_details import subscription_details
@@ -16,7 +16,8 @@ def create_subscription_payment(data):
     
     user_obj = data['user']
     user_obj.subscription = subscription_detail['name']
-    user_obj.subscription_expiration = date.today() + timedelta(weeks=subscription_detail['duration_months']*4)
+    user_obj.subscription_expiration = timezone.now() + timezone.timedelta(weeks=subscription_detail['duration_months']*4)
+    user_obj.reset_free_invites(override=True)
     user_obj.save()
 
     payment_obj, created = Payment.objects.update_or_create(payment_id=data['payment_id'], defaults=data)
