@@ -13,7 +13,7 @@ class DashboardPage extends Component {
     render(){
         return(
             <div>
-                <h2 className="h2-responsive  text-center my-5 black-text" color=" teal darken-1">
+                <h2 className="h2-responsive  text-center mt-4 mb-3 black-text" color=" teal darken-1">
                     <MDBIcon fas icon="server" size="md" className="pink-text mr-2"/>
                     <strong>CelebMark Dashboard</strong>
                 </h2>
