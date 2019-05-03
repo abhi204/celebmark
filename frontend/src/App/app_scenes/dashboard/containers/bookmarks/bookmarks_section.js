@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import {MDBCardHeader, MDBCol, MDBContainer, MDBIcon, MDBMedia, MDBRow} from "mdbreact";
+import {MDBCol, MDBIcon, MDBRow} from "mdbreact";
 import '../../../search/components/celeb_card.css'
 
 class BookmarksSection extends Component {

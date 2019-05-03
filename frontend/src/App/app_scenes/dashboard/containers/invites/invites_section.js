@@ -1,16 +1,9 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {
-    MDBBtn,
-    MDBCard,
-    MDBCardBody,
     MDBCardHeader,
-    MDBCol,
     MDBContainer,
-    MDBIcon,
-    MDBMask, MDBMedia,
-    MDBRow,
-    MDBView
+    MDBIcon, MDBMedia,
 } from "mdbreact";
 
 class InvitesSection extends Component {
