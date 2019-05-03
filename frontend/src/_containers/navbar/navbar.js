@@ -56,8 +56,8 @@ class NavBar extends Component {
                                             style={{height: "2.5em", padding: 0}} alt="" />
                                     </MDBDropdownToggle>
                                     <MDBDropdownMenu basic >
-                                        <Link to="/dashboard" className="p-0" >
-                                        <MDBDropdownItem><MDBIcon icon="user-circle" /> &nbsp; Profile</MDBDropdownItem>
+                                        <Link to="/dashboard/details" className="p-0" >
+                                        <MDBDropdownItem><MDBIcon icon="user-circle" /> &nbsp; Dashboard</MDBDropdownItem>
                                         </Link>
                                         <Link to="/dashboard/invites" className="p-0" >
                                         <MDBDropdownItem><MDBIcon fas icon="envelope-open-text" />
