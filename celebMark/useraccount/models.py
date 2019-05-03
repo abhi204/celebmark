@@ -143,15 +143,22 @@ class User(models.Model):
     # Subscription Details
     subscription = models.CharField(max_length=100, choices=SUBSCRIPTION_CHOICES, default='free')
     free_invites = models.IntegerField(default=0)
+    last_reset = models.DateField(auto_now_add=True, blank=True, null=True)
     subscription_expiration = models.DateField(auto_now_add=True, blank=True, null=True) 
 
     def __str__(self):
         return self.base_user.full_name
 
     # Used by schedulers
-    def reset_free_invites(self):
-        self.free_invites = subscription_details[self.subscription]['free_invites']
-        self.save()
+    # Override is required for first reset after just after subscribing
+    def reset_free_invites(self, override=False):
+        today = timezone.now()
+        if self.last_reset.month < timezone.now().month or override:
+            self.free_invites = subscription_details[self.subscription]['free_invites']
+            self.last_reset = timezone.now()
+            self.save()
+        else:
+            print("Already reset Invites For this month") # Raise error to logs here
 
     @property
     def has_free_invites(self):
