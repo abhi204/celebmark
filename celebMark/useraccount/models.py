@@ -148,6 +148,11 @@ class User(models.Model):
     def __str__(self):
         return self.base_user.full_name
 
+    # Used by schedulers
+    def reset_free_invites(self):
+        self.free_invites = subscription_details[self.subscription]['free_invites']
+        self.save()
+
     @property
     def has_free_invites(self):
         return self.free_invites > 0
