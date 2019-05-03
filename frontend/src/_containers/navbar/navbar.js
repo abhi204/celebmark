@@ -37,13 +37,11 @@ class NavBar extends Component {
                           </MDBNavItem>
                         
                         </MDBCol>
-                        { loggedIn === true &&
-                        // show search bar on login
-                            <MDBCol>
+                        <MDBCol>
                             <MDBNavItem className="d-inline float-center my-auto" >
                                     <SearchInput/>
                             </MDBNavItem>
-                            </MDBCol> }
+                            </MDBCol>
                         
                         <MDBCol className="d-inline-flex justify-content-end">
                         {( loggedIn === true &&
