@@ -6,7 +6,7 @@ import './search.css';
 class SearchPage extends Component {
     render(){
         return (
-            <div className="container-fluid mt-2 m-3">
+            <div className="container-fluid mt-2">
                 <SearchPanel />
                 <div className="celeb-list">
                 <SearchResults/>

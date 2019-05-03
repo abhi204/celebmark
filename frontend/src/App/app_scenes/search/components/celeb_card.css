@@ -1,11 +1,9 @@
 .cards {
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) ;
   border-radius:0px;
-  width: 600px;
   display: flex;
-  height: 280px;
-  max-height: 10em;
-  max-width: 30em;
+  height: 100px;
+  width: 100%;
 }
 
 .cards:hover{
@@ -15,7 +13,7 @@
 
 .card-left {
   text-align: left;
-  width: 10em;
+  width: 100px;
 }
 
 .card-right {
@@ -23,7 +21,8 @@
   text-align: justify;
   display:flex;
   flex-direction: column;
-  max-height: 10em;
+  justify-content: center;
+  align-content: center;
 }
 
 .card-meta {
