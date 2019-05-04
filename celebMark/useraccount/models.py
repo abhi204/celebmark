@@ -143,7 +143,7 @@ class User(models.Model):
     # Subscription Details
     subscription = models.CharField(max_length=100, choices=SUBSCRIPTION_CHOICES, default='free')
     free_invites = models.IntegerField(default=0)
-    last_reset = models.DateField(auto_now_add=True, blank=True, null=True)
+    last_reset = models.DateTimeField(auto_now_add=True, blank=True, null=True)
     sub_expires = models.DateTimeField(auto_now_add=True, blank=True, null=True) 
 
     def __str__(self):
@@ -155,7 +155,7 @@ class User(models.Model):
         today = timezone.now()
         if (self.last_reset and self.last_reset.month < timezone.now().month) or initial:
             self.free_invites = subscription_details[self.subscription]['free_invites']
-            self.last_reset = timezone.now()
+            self.last_reset = today
             self.save()
         else:
             print("Already reset Invites For this month") # Raise error to logs here
