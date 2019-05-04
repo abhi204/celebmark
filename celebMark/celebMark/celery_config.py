@@ -1,9 +1,6 @@
+import os
+
 # Celery Settings
-CELERY_RESULT_BACKEND = 'rpc://'
-CELERY_BROKER_URL = 'amqp://'
-
-CELERY_CACHE_BACKEND = 'amqp://'
-
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_RESULT_BACKEND', '')
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER_URL', '')
 CELERY_TASK_CREATE_MISSING_QUEUES = True
-
-
