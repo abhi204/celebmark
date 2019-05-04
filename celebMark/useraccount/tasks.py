@@ -11,7 +11,8 @@ from useraccount.models import User
     default_retry_delay=60,
     max_retries=120,
     acks_late=True,
-    queue="daily_invite_reset_queue"
+    ignore_result=True,
+    queue="daily_invite_reset_queue",
 )
 def daily_invite_reset(self):
     today = timezone.now()
@@ -35,7 +36,8 @@ def daily_invite_reset(self):
     default_retry_delay=60,
     max_retries=120,
     acks_late=True,
-    queue='invite_reset_queue'
+    ignore_result=True,
+    queue='invite_reset_queue',
 )
 def future_invite_reset(self, user_name, old_sub_expires):
     today = timezone.now()
