@@ -17,6 +17,7 @@ django-filter = "*"
 django-jsonfield = "*"
 instamojo-wrapper = "*"
 celery = "*"
+librabbitmq = "*"
 
 [dev-packages]
 
