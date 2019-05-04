@@ -144,7 +144,7 @@ class User(models.Model):
     subscription = models.CharField(max_length=100, choices=SUBSCRIPTION_CHOICES, default='free')
     free_invites = models.IntegerField(default=0)
     last_reset = models.DateField(auto_now_add=True, blank=True, null=True)
-    subscription_expiration = models.DateTimeField(auto_now_add=True, blank=True, null=True) 
+    sub_expires = models.DateTimeField(auto_now_add=True, blank=True, null=True) 
 
     def __str__(self):
         return self.base_user.full_name

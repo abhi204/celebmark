@@ -91,7 +91,7 @@ class UserRegisterSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = User
-        exclude = ['free_invites', 'subscription', 'subscription_expiration']
+        exclude = ['free_invites', 'subscription', 'sub_expires']
 
     def to_representation(self, obj):
         '''Move BaseUser fields to this serializer'''
