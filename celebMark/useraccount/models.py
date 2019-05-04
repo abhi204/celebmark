@@ -151,9 +151,9 @@ class User(models.Model):
 
     # Used by schedulers
     # Override is required for first reset after just after subscribing
-    def reset_free_invites(self, override=False):
+    def reset_free_invites(self, initial=False):
         today = timezone.now()
-        if self.last_reset.month < timezone.now().month or override:
+        if self.last_reset.month < timezone.now().month or initial:
             self.free_invites = subscription_details[self.subscription]['free_invites']
             self.last_reset = timezone.now()
             self.save()

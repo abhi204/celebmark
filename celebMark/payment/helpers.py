@@ -17,7 +17,7 @@ def create_subscription_payment(data):
     user_obj = data['user']
     user_obj.subscription = subscription_detail['name']
     user_obj.sub_expires = timezone.now() + timezone.timedelta(weeks=subscription_detail['duration_months']*4)
-    user_obj.reset_free_invites(override=True)
+    user_obj.reset_free_invites(initial=True)
     user_obj.save()
 
     payment_obj, created = Payment.objects.update_or_create(payment_id=data['payment_id'], defaults=data)
