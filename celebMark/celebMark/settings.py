@@ -164,15 +164,16 @@ REST_FRAMEWORK = {
 }
 
 CORS_ALLOW_CREDENTIALS = True
+CORS_ORIGIN_WHITELIST = ['celebmark.com',]
+
 if DEBUG:
     CORS_ORIGIN_ALLOW_ALL = True
-    CORS_ORIGIN_WHITELIST = ('localhost:3000',)
-    CORS_ORIGIN_REGEX_WHITELIST = ('localhost:3000',)
+    CORS_ORIGIN_WHITELIST += ['localhost:3000',]
 
 # Instamojo Api Credentials
 IM_API_KEY = os.environ.get('IM_API_KEY', '')
 IM_AUTH_TOKEN = os.environ.get('IM_AUTH_TOKEN', '')
 IM_PRIVATE_SALT = os.environ.get('IM_PRIVATE_SALT', '')
-if DEBUG:
-    IM_REDIRECT_URL = 'http://localhost:3000/payment/check'
-    IM_WEBHOOK = 'http://e79ffbb6.ngrok.io/payment/hook/'
+IM_REDIRECT_URL = os.environ.get('IM_REDIRECT_URL', '')
+IM_ENDPOINT = os.environ.get('IM_ENDPOINT', '')
+IM_WEBHOOK = os.environ.get('IM_WEBHOOK', '')
