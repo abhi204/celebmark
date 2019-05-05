@@ -15,6 +15,7 @@ let PaymentDone = (props) => {
 
                     <section className="my-5">
                       <h2 className="h1-responsive font-weight-bold text-center my-5">
+                        <MDBIcon icon="feather-alt" size="md" className="blue-text mr-2" rotate="90" flip="horizontal"/>
                         Features of <strong>{plan}</strong> plan !
                       </h2>
                       <MDBRow>

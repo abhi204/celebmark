@@ -18,7 +18,7 @@ class BaseUserAdmin(UserAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('user_name','email','mobile','bookmarks',)
+    list_display = ('user_name','first_name','last_name','email','mobile','bookmarks',)
     list_filter = ()
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
@@ -49,7 +49,7 @@ class CelebAdmin(admin.ModelAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('base_user', 'category', 'rating')
+    list_display = ('base_user', 'category','city', 'rating',)
     list_filter = ()
     fieldsets = (
         (None, {'fields': ('base_user',)}),
@@ -78,7 +78,7 @@ class UserAdmin(admin.ModelAdmin):
     # The fields to be used in displaying the User model.
     # These override the definitions on the base UserAdmin
     # that reference specific fields on auth.User.
-    list_display = ('base_user', 'free_invites')
+    list_display = ('base_user', 'free_invites',)
     list_filter = ()
     fieldsets = (
         (None, {'fields': ('base_user',)}),
