@@ -42,8 +42,7 @@ class InviteViewset(ModelViewSet):
             send_sms=True,
         )
         if not response['success']:
-            print(response)
-            return Response(status=500)
+            return Response(response, status=500)
         
         invite_obj.payment_request_id = response['payment_request']['id']
         invite_obj.save()

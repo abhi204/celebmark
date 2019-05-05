@@ -75,6 +75,6 @@ class SubscribeUserView(APIView):
         )
 
         if not response['success']:
-            return Response(status=500)
+            return Response(response, status=500)
 
         return Response({'payURL': response['payment_request']['longurl']})
