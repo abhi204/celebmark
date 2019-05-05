@@ -48,7 +48,7 @@ class BaseUser(AbstractBaseUser):
     last_name = models.CharField(max_length=255)
     user_name = models.CharField(max_length=255, unique=True, primary_key=True)
     email = models.EmailField(max_length=100, unique=True)
-    mobile = models.IntegerField(unique=True)
+    mobile = models.BigIntegerField(unique=True)
     dob = models.DateField(blank=True, null=True)
     bookmarks = jsonfield.JSONField(default={})
     profile_pic = models.ImageField(
@@ -166,4 +166,7 @@ class User(models.Model):
 
     @property
     def invite_fee(self):
-        return subscription_details[self.subscription]['invite_fee']
+        if self.sub_expires and self.sub_expires > timezone.now():
+            return subscription_details[self.subscription]['invite_fee']
+        else:
+            return subscription_details['free']['invite_fee']
