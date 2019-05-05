@@ -4,27 +4,65 @@ services:
     image: postgres:10-alpine
     container_name: celebMark_postgres
     env_file:
-      - config/env/db_env
+      - ./config/env/db_env
     networks:
       - db_network
     volumes:
-      - postgres_data:/var/lib/postgresql/data/
+      - ./docker_volumes/pg_data:/var/lib/postgres/data/
+      # - postgres_data:/var/lib/postgresql/data/
 
   web:
     container_name: celebMark_django
     build: .
     env_file:
-      - config/env/web_env
+      - ./config/env/web_env
     volumes:
       - ./celebMark:/code/
       - ./logs:/logs/
     depends_on:
       - db
+      - rabbitmq
     networks:
       - db_network
       - nginx_network
+      - rabbitmq_network
     restart: always
     command: bash -c "python manage.py makemigrations && python manage.py migrate && python manage.py collectstatic --noinput && gunicorn celebMark.wsgi -w 4 -b 0.0.0.0:8000 --reload --access-logfile /logs/gunicorn-access.log --error-logfile /logs/gunicorn-error.log"
+
+  celery:
+    container_name: celebMark_celery
+    build: .
+    env_file:
+      - ./config/env/web_env
+    volumes:
+      - ./celebMark:/code/
+      - ./logs:/logs/
+    networks:
+      - db_network
+      - nginx_network
+      - rabbitmq_network
+    ports: # Use nginx in production
+      - 5555:5555
+    depends_on:
+      - web
+      - rabbitmq
+    restart: always
+    command: bash -c "(celery -A celebMark worker --loglevel=info -Q invite_reset_queue -f /logs/celery-invite-reset-queue.log & ) && flower -A celebMark --address=0.0.0.0"
+
+
+  rabbitmq:
+    container_name: celebMark_rabbitmq
+    image: rabbitmq:3.7-management-alpine
+    ports:
+      - 5672:5672
+      - 15672:15672
+    restart: on-failure
+    networks: 
+      - rabbitmq_network
+    env_file:
+      - ./config/env/rabbitmq_env
+    volumes:
+      - ./docker_volumes/rabbitmq_data:/var/lib/rabbitmq/mnesia
 
   nginx:
     container_name: celebMark_nginx
@@ -42,12 +80,14 @@ services:
       - web
     networks:
       - nginx_network
-
+      
 networks:
   nginx_network:
     driver: bridge
   db_network:
     driver: bridge
+  rabbitmq_network:
+    driver: bridge
 
-volumes:
-  postgres_data:
+# volumes:
+#   postgres_data:
