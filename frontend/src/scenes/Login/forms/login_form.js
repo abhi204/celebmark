@@ -32,8 +32,8 @@ const renderField = ({
     <MDBContainer>
       <MDBRow>
         <MDBCol className="mr-5"/>
-        <MDBCol md="7" xs='6' sm='9' lg='5' xl='5'>
-          <MDBCard>
+        <MDBCol md="7" xs='6' sm='12' lg='5' xl='5'>
+          <MDBCard className="login-form-card">
             <MDBCardBody className="mx-4">
               <div className="text-center">
                 <a className="black-text" href="/"><MDBIcon fab icon="teamspeak" size="6x"/></a>
