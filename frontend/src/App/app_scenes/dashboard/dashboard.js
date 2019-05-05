@@ -1,31 +1,88 @@
-import React, { Component } from 'react';
-import { withRouter, Switch } from 'react-router-dom';
+import React, { Component } from "react";
+import { withRouter, Switch } from "react-router-dom";
+import { MDBSideNavNav, MDBSideNav, MDBSideNavLink, MDBContainer, MDBIcon } from "mdbreact";
 import Route from '_containers/custom_route';
-import InvitesSection from './containers/invites/invites_section'
-import BookmarksSection from './containers/bookmarks/bookmarks_section'
-import SettingsSection from './containers/settings/settings_section'
-import DetailsSection from './containers/details/details_section'
-import {MDBIcon} from "mdbreact";
-
+import InvitesSection from './scenes/invites/invites';
+import BookmarksSection from './scenes/bookmarks/bookmarks';
+import SettingsSection from './scenes/settings/settings';
+import ProfileSection from './scenes/profile/profile';
+import "./dashboard.css";
 
 class DashboardPage extends Component {
+    state = {
+        sideNavLeft: false,
+        sideNavRight: false
+    }
 
-    render(){
-        return(
+    sidenavToggle = sidenavId => () => {
+    const sidenavNr = `sideNav${sidenavId}`
+    this.setState({
+        [sidenavNr]: !this.state[sidenavNr]
+    });
+    };
+
+    render() {
+        return (
             <div>
-                <h2 className="h2-responsive  text-center mt-4 mb-3 black-text" color=" teal darken-1">
-                    <MDBIcon fas icon="server" size="md" className="pink-text mr-2"/>
-                    <strong>CelebMark Dashboard</strong>
-                </h2>
-                <Switch>
-                    <Route exact path="/dashboard/details" component={DetailsSection} />
-                    <Route exact path="/dashboard/invites" component={InvitesSection} />
-                    <Route exact path="/dashboard/bookmarks" component={BookmarksSection} />
-                    <Route exact path="/dashboard/settings" component={SettingsSection} />
-                </Switch>
+                {/* Small screen SideNav */}
+                <MDBSideNav 
+                fixed mask="rgba-black"
+                slim
+                triggerOpening={this.state.sideNavLeft}
+                breakWidth={0}
+                className="dashboard-sidebar-sm d-block d-md-none"  
+                >
+                    <br/><br/>
+                    <MDBSideNavNav>
+                        <MDBSideNavLink to="/dashboard">
+                            <MDBIcon icon="user-circle" className="mr-2"/>User Profile
+                        </MDBSideNavLink>
+                        <MDBSideNavLink to="/dashboard/invites">
+                            <MDBIcon icon="envelope" className="mr-2"/>Invites
+                        </MDBSideNavLink>
+                        <MDBSideNavLink to="/dashboard/bookmarks">
+                            <MDBIcon icon="bookmark" className="mr-2"/>Bookmarks
+                        </MDBSideNavLink>
+                        <MDBSideNavLink to="/dashboard/settings">
+                            <MDBIcon icon="cog" className="mr-2"/>Settings
+                        </MDBSideNavLink>
+                    </MDBSideNavNav>
+                </MDBSideNav>
+                {/* Large screen SideNav */}
+                <MDBSideNav 
+                fixed mask="rgba-black"
+                triggerOpening={this.state.sideNavLeft}
+                breakWidth={0}
+                className="dashboard-sidebar d-none d-md-block"  
+                >
+                    <br/><br/>
+                    <MDBSideNavNav>
+                        <MDBSideNavLink to="/dashboard">
+                            <MDBIcon icon="user-circle" className="mr-2"/>User Profile
+                        </MDBSideNavLink>
+                        <MDBSideNavLink to="/dashboard/invites">
+                            <MDBIcon icon="envelope" className="mr-2"/>Invites
+                        </MDBSideNavLink>
+                        <MDBSideNavLink to="/dashboard/bookmarks">
+                            <MDBIcon icon="bookmark" className="mr-2"/>Bookmarks
+                        </MDBSideNavLink>
+                        <MDBSideNavLink to="/dashboard/settings">
+                            <MDBIcon icon="cog" className="mr-2"/>Settings
+                        </MDBSideNavLink>
+                    </MDBSideNavNav>
+                </MDBSideNav>
+                <MDBContainer fluid className="pl-3">
+                    <Switch>
+                        <Route exact path="/dashboard/" component={ProfileSection} />
+                        <Route exact path="/dashboard/invites" component={InvitesSection} />
+                        <Route exact path="/dashboard/bookmarks" component={BookmarksSection} />
+                        <Route exact path="/dashboard/settings" component={SettingsSection} />
+                    </Switch>
+                </MDBContainer>
             </div>
         );
     }
 }
 
 export default withRouter(DashboardPage);
+

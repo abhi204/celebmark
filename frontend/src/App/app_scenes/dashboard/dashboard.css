@@ -1,0 +1,12 @@
+.dashboard-sidebar-sm{
+    z-index: 1!important;
+    font-size: 2em!important;
+}
+
+.dashboard-sidebar{
+    z-index: 1!important;
+    font-size: 2em!important;
+    width: 15vw!important;
+    min-width: 12rem!important;
+    max-width:15rem!important;
+}

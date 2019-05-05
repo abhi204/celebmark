@@ -12,7 +12,7 @@ class InvitesSection extends Component {
         return (
             <div>
                 <h4 className="h4-responsive text-center black-text" color=" teal darken-1">
-                    <MDBIcon fas icon="gift" size="md" className="pink-text mr-2"/>
+                    <MDBIcon icon="gift" size="md" className="pink-text mr-2"/>
                     <strong>Invites</strong>
                 </h4>
                 <MDBContainer className="my-3 z-depth-1 border border-light rounded px-4 py-4">
@@ -36,27 +36,27 @@ class InvitesSection extends Component {
                             <span className="pt-0"><h4><small>Invited On: </small> 01/05/2019</h4></span>
                             <ul className="list-unstyled list-inline mb-2 pt-2  more-padding">
                                 <li className="list-inline-item m-1">
-                                    <MDBIcon fas className="cyan-text" size="md" icon="poll"/><span
+                                    <MDBIcon className="cyan-text" size="md" icon="poll"/><span
                                     className="font-weight-bold">&nbsp;Event Type:</span>
                                 </li>
                                 &nbsp; &nbsp;
                                 <li className="list-inline-item m-1">
-                                    <MDBIcon fas className="cyan-text" size="md" icon="headset"/><span
+                                    <MDBIcon className="cyan-text" size="md" icon="headset"/><span
                                     className="font-weight-bold">&nbsp;Celebrity Role:</span>
                                 </li>
                                 &nbsp; &nbsp;
                                 <li className="list-inline-item m-1">
-                                    <MDBIcon fas className="cyan-text" size="md" icon="map-marker-alt"/><span
+                                    <MDBIcon className="cyan-text" size="md" icon="map-marker-alt"/><span
                                     className="font-weight-bold">&nbsp;Event City:</span>
                                 </li>
                                 &nbsp; &nbsp;
                                 <li className="list-inline-item m-1">
-                                    <MDBIcon fas className="cyan-text" size="md" icon="city"/><span
+                                    <MDBIcon className="cyan-text" size="md" icon="city"/><span
                                     className="font-weight-bold">&nbsp;Event Venue:</span>
                                 </li>
                                 &nbsp; &nbsp;
                                 <li className="list-inline-item m-1">
-                                    <MDBIcon fas className="cyan-text" size="md" icon="calendar-check"/><span
+                                    <MDBIcon className="cyan-text" size="md" icon="calendar-check"/><span
                                     className="font-weight-bold">&nbsp;Event Date:</span>
                                 </li>
                             </ul>

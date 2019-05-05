@@ -30,19 +30,19 @@ class DetailsSection extends Component {
                                     </h6>
                                 </a>
                                 <h4 className="font-weight-bold mb-2 p-0">
-                                    <MDBIcon fas icon="user-circle" size="md" className="pink-text"/>&nbsp;
+                                    <MDBIcon icon="user-circle" size="md" className="pink-text"/>&nbsp;
                                     <strong> Deep Narayan Tandan</strong>
                                 </h4>
                                 <h6 className="font-weight-bold mb-2 p-0">
-                                    <MDBIcon fas icon="at" size="lg" className="pink-text"/>&nbsp;&nbsp;
+                                    <MDBIcon icon="at" size="lg" className="pink-text"/>&nbsp;&nbsp;
                                     <strong> deepnarayan006@gmail.com</strong>
                                 </h6>
                                 <h6 className="font-weight-bold mb-2 p-0">&nbsp;
-                                    <MDBIcon fas icon="mobile" size="lg" className="pink-text"/>&nbsp;&nbsp;&nbsp;
+                                    <MDBIcon icon="mobile" size="lg" className="pink-text"/>&nbsp;&nbsp;&nbsp;
                                     <strong> +91 9982168317</strong>
                                 </h6>
                                 <h6 className="font-weight-bold mb-2 p-0">&nbsp;
-                                    <MDBIcon fas icon="credit-card" size="md" className="pink-text"/>&nbsp;&nbsp;
+                                    <MDBIcon icon="credit-card" size="md" className="pink-text"/>&nbsp;&nbsp;
                                     <strong> Free Plan</strong>
                                 </h6>
 

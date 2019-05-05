@@ -9,7 +9,7 @@ class BookmarksSection extends Component {
         return (
             <div>
                 <h4 className="h4-responsive text-center black-text" color=" teal darken-1">
-                    <MDBIcon fas icon="bookmark" size="md" className="pink-text mr-2"/>
+                    <MDBIcon icon="bookmark" size="md" className="pink-text mr-2"/>
                     <strong>Bookmarks</strong>
                 </h4>
                 <MDBRow className="mt-1 mr-2 ml-2">
