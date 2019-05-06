@@ -16,6 +16,9 @@
 }
 @media only screen and (max-width: 768px){
     .big-screen-margin-profile{
-        margin-left: 2.5em;
+        margin-left: 1.5em;
+    }
+    .mobile-content-profile{
+        max-width: 45em;
     }
 }
