@@ -3,10 +3,20 @@
     padding-top: 0.1em!important;
 }
 .page-footer {
+    z-index: 1050;
     right: 0;
     bottom: 0;
     left: 0;
-    padding: 1rem;
-    padding-bottom: 0.2rem;
+    padding-bottom: 0rem;
     text-align: center;
+}
+@media only screen and (min-width: 768px){
+    .page-footer{
+        margin-left: 20em;
+    }
+}
+@media only screen and (max-width: 768px){
+    .page-footer{
+        margin-left: 2.5em;
+    }
 }
