@@ -34,9 +34,6 @@ class DashboardPage extends Component {
                 >
                     <br/><br/>
                     <MDBSideNavNav>
-                        <MDBSideNavLink >
-                            Hi, Username
-                        </MDBSideNavLink>
                         <MDBSideNavLink to="/dashboard">
                             <MDBIcon icon="user-circle" className="mr-2" size="lg"/>User Profile
                         </MDBSideNavLink>
@@ -65,9 +62,6 @@ class DashboardPage extends Component {
                 >
                     <br/><br/>
                     <MDBSideNavNav>
-                        <MDBSideNavLink >
-                            <h6>Hi, Username</h6>
-                        </MDBSideNavLink>
                         <MDBSideNavLink to="/dashboard">
                             <MDBIcon icon="user-circle" className="mr-2" size="lg"/>Dashboard
                         </MDBSideNavLink>
