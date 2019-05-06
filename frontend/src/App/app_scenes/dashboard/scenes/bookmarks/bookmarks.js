@@ -1,12 +1,26 @@
 import React, {Component} from 'react';
-import {Link, withRouter} from 'react-router-dom';
-import {MDBCol, MDBIcon, MDBRow} from "mdbreact";
-import '../../../search/components/celeb_card.css'
-import "./bookmark.css";
+import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
+import {MDBIcon, MDBRow, MDBSpinner} from "mdbreact";
+import '../../../search/components/celeb_card.css';
+import './bookmark.css';
+import { getCelebBookmark } from '_actions/bookmark'
+import _ from 'lodash';
+import BookmarkCard from './components/bookmark_card';
 
 class BookmarksSection extends Component {
 
+    componentDidMount(){
+        this.props.getCelebBookmark();
+    }
+
     render() {
+        const { celebs } = this.props;
+        const celeb_list = _.values(celebs)
+        if(celebs.loading)
+            return <center className="mt-5" style={{backgroundColor: "red"}}>Loading</center>
+        if(celeb_list.length === 0)
+            return <center className="mt-5" style={{backgroundColor: "red"}}>NO BOOKMARKS</center>
         return (
             <div>
                 <h4 className="h4-responsive text-center mt-5 black-text" color=" teal darken-1">
@@ -14,318 +28,23 @@ class BookmarksSection extends Component {
                     <strong>Bookmarks</strong>
                 </h4>
                 <div className="big-screen-margin-bookmark">
-                    <MDBRow className="mt-1 mr-2 ml-5  ">
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                        <MDBCol sm="6" md="4">
-                            <Link to="">
-                                <div className="cards mt-3 text-right float-left ">
-                                    <div className="card-left p-0">
-                                        <img className="h-100 m-0" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0OntU1bwLjCfzGRcka8t60YMKH0RZ96uthymtySBaXvaVfRPrKQ" alt=""/>
-                                    </div>
-                                    <div className="card-right">
-                                        <h4 className="font-weight-bold mb-0 black-text card-title">Sahil Kumar</h4>
-                                        <div className="font-weight-light pb-0 card-meta grey-text">
-                                            <span>Painter</span>
-                                        </div>
-                                    </div>
-                                    <div className="pr-3 ml-auto d-flex flex-column justify-content-center">
-                                        <MDBIcon className="red-text" icon="chevron-right"/>
-                                    </div>
-                                </div>
-                            </Link>
-                        </MDBCol>
-                    </MDBRow>
+                <MDBRow className="mt-1 mr-2 ml-5">
+                    {
+                        celeb_list.map( celeb => <BookmarkCard celeb={celeb}/> )
+                    }
+                </MDBRow>
                 </div>
             </div>
         );
     }
 }
 
-export default withRouter(BookmarksSection);
+let mapStateToProps = (state) => ({
+    celebs: state.bookmark.celebs
+})
+
+let mapDispatchToProps = {
+    getCelebBookmark
+}
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(BookmarksSection));

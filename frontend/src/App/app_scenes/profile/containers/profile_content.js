@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import AboutTab from './about'
 import GalleryTab from './gallery/gallery'
 import './profile_content.css';
-import doProfileBookmark from '../actions/bookmark';
+import { doProfileBookmark } from '_actions/bookmark';
 import {
     MDBTabPane,
     MDBTabContent,
