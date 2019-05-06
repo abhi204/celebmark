@@ -1,13 +1,14 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {MDBRow, MDBCol, MDBCard, MDBCardBody, MDBMask, MDBIcon, MDBView, MDBBtn, MDBContainer} from "mdbreact";
+import "./profile.css";
 
 class DetailsSection extends Component {
 
     render() {
         return (
             <MDBContainer className="mt-4">
-                <MDBCard className="mt-1 px-5 py-3">
+                <div className="mt-1 px-5 py-3 big-screen-margin-profile">
                     <MDBCardBody>
                         <MDBRow className="pt-3 mb-3 ">
                             <MDBCol lg="3">
@@ -54,7 +55,7 @@ class DetailsSection extends Component {
                             <MDBCol lg="3" className="text-center mt-5">
                                 <Link to='/dashboard/settings'>
                                     <MDBBtn rounded color="info">
-                                        <MDBIcon icon="pen" className="mr-1"/> <strong>Edit Details</strong>
+                                        <MDBIcon icon="pen" className="mr-1"/> <strong>Edit</strong>
                                     </MDBBtn></Link>
                             </MDBCol>
 
@@ -208,7 +209,7 @@ class DetailsSection extends Component {
                             </MDBContainer>
                         </MDBRow>
                     </MDBCardBody>
-                </MDBCard>
+                </div>
             </MDBContainer>
         );
     }

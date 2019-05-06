@@ -42,12 +42,12 @@ class SearchInput extends Component {
             return(
                 <div>
                     { search.results.slice(0,5).map(celeb => (
-                                <div key={celeb.user_name}>
+                                <div key={celeb.user_name} >
                                     <a
                                       href={`/profile/${celeb.user_name}`}
                                       onMouseDown={ () => this.showScreen(`/profile/${celeb.user_name}`) }
                                     >
-                                    <MDBListGroupItem>
+                                    <MDBListGroupItem >
                                         <img src={`${API_HOST}/${celeb.profile_pic}`} className="rounded-circle z-depth-0" style={{height: "2.5em", paddingRight: "0.5em"}} alt="" />
                                         {`${celeb.first_name} ${celeb.last_name}`}
                                     </MDBListGroupItem>
@@ -59,7 +59,7 @@ class SearchInput extends Component {
                      onMouseDown={ () => this.showScreen('/search') }
                     >
                         <MDBListGroupItem id="search-more">
-                                <span style={{fontSize: "0.75em"}}>Show all Results</span>
+                                <span style={{fontSize: "0.95em"}}>Show All Results</span>
                         </MDBListGroupItem>
                     </a>
                 </div>
@@ -68,8 +68,8 @@ class SearchInput extends Component {
         else if(search.searchTerm && !search.results.length) // No results
         {
             return (
-            <MDBListGroupItem>
-                <center><span>No Results Found</span></center>
+            <MDBListGroupItem className="text-center">
+                <span>No Results Found</span>
             </MDBListGroupItem>
             );
         }
@@ -98,7 +98,7 @@ class SearchInput extends Component {
         return(
             <div id="search-input">
                 <input
-                    className="form-control"
+                    className="form-control form-control-search float-center"
                     onChange={event => this.sendQuery(event.target.value)}
                     onBlur = {this.onInputBlur}
                     type="text"

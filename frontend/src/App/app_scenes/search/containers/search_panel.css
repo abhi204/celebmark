@@ -8,6 +8,10 @@
 .search-options{
     background-color: white;
     display: inline-flex;
+    border-radius: 2em;
+}
+.image-padding{
+    margin-top: .36em;
 }
 
 .text-fix{

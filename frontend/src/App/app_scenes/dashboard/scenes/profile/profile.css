@@ -1,0 +1,21 @@
+@media only screen and (min-width: 819px){
+    .big-screen-margin-profile{
+        margin-left: 9em!important;
+        margin-right: 1em;
+    }
+}
+@media only screen and (max-width: 992px) and (min-width: 866px){
+    .big-screen-margin-profile{
+        margin-left: 5em!important;
+    }
+}
+@media only screen and (max-width: 866px) and (min-width: 768px){
+    .big-screen-margin-profile{
+        margin-left: 7em!important;
+    }
+}
+@media only screen and (max-width: 768px){
+    .big-screen-margin-profile{
+        margin-left: 2.5em;
+    }
+}

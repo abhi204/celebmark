@@ -25,50 +25,66 @@ class DashboardPage extends Component {
         return (
             <div>
                 {/* Small screen SideNav */}
-                <MDBSideNav 
+                <MDBSideNav
                 fixed mask="rgba-black"
                 slim
                 triggerOpening={this.state.sideNavLeft}
                 breakWidth={0}
-                className="dashboard-sidebar-sm d-block d-md-none"  
+                className="dashboard-sidebar-sm d-block d-md-none"
                 >
                     <br/><br/>
                     <MDBSideNavNav>
+                        <MDBSideNavLink >
+                            Hi, Username
+                        </MDBSideNavLink>
                         <MDBSideNavLink to="/dashboard">
-                            <MDBIcon icon="user-circle" className="mr-2"/>User Profile
+                            <MDBIcon icon="user-circle" className="mr-2" size="lg"/>User Profile
                         </MDBSideNavLink>
                         <MDBSideNavLink to="/dashboard/invites">
-                            <MDBIcon icon="envelope" className="mr-2"/>Invites
+                            <MDBIcon icon="envelope" className="mr-2" size="lg"/>Invites
                         </MDBSideNavLink>
                         <MDBSideNavLink to="/dashboard/bookmarks">
-                            <MDBIcon icon="bookmark" className="mr-2"/>Bookmarks
+                            <MDBIcon icon="bookmark" className="mr-2" size="lg"/>Bookmarks
                         </MDBSideNavLink>
                         <MDBSideNavLink to="/dashboard/settings">
-                            <MDBIcon icon="cog" className="mr-2"/>Settings
+                            <MDBIcon icon="cog" className="mr-2" size="lg"/>Settings
                         </MDBSideNavLink>
+                        <hr className="my-1"/>
+                        <MDBSideNavLink to="/logout">
+                            <MDBIcon icon="power-off" className="mr-2" size="lg"/>Logout
+                        </MDBSideNavLink>
+                        <hr className="my-1"/>
                     </MDBSideNavNav>
                 </MDBSideNav>
                 {/* Large screen SideNav */}
-                <MDBSideNav 
+                <MDBSideNav
                 fixed mask="rgba-black"
                 triggerOpening={this.state.sideNavLeft}
                 breakWidth={0}
-                className="dashboard-sidebar d-none d-md-block"  
+                className="dashboard-sidebar d-none d-md-block"
                 >
                     <br/><br/>
                     <MDBSideNavNav>
+                        <MDBSideNavLink >
+                            <h6>Hi, Username</h6>
+                        </MDBSideNavLink>
                         <MDBSideNavLink to="/dashboard">
-                            <MDBIcon icon="user-circle" className="mr-2"/>User Profile
+                            <MDBIcon icon="user-circle" className="mr-2" size="lg"/>Dashboard
                         </MDBSideNavLink>
                         <MDBSideNavLink to="/dashboard/invites">
-                            <MDBIcon icon="envelope" className="mr-2"/>Invites
+                            <MDBIcon icon="envelope" className="mr-2" size="lg"/>Invites
                         </MDBSideNavLink>
                         <MDBSideNavLink to="/dashboard/bookmarks">
-                            <MDBIcon icon="bookmark" className="mr-2"/>Bookmarks
+                            <MDBIcon icon="bookmark" className="mr-2" size="lg"/>Bookmarks
                         </MDBSideNavLink>
                         <MDBSideNavLink to="/dashboard/settings">
-                            <MDBIcon icon="cog" className="mr-2"/>Settings
+                            <MDBIcon icon="cog" className="mr-2" size="lg"/>Settings
                         </MDBSideNavLink>
+                        <hr className="my-1"/>
+                        <MDBSideNavLink to="/logout">
+                            <MDBIcon icon="power-off" className="mr-2" size="lg"/>Logout
+                        </MDBSideNavLink>
+                        <hr className="my-1"/>
                     </MDBSideNavNav>
                 </MDBSideNav>
                 <MDBContainer fluid className="pl-3">
@@ -85,4 +101,3 @@ class DashboardPage extends Component {
 }
 
 export default withRouter(DashboardPage);
-

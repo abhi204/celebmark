@@ -5,17 +5,18 @@ import {
     MDBContainer,
     MDBIcon, MDBMedia,
 } from "mdbreact";
+import "./invite.css";
 
 class InvitesSection extends Component {
 
     render() {
         return (
             <div>
-                <h4 className="h4-responsive text-center black-text" color=" teal darken-1">
+                <h4 className="h4-responsive text-center mt-5 black-text" color=" teal darken-1">
                     <MDBIcon icon="gift" size="md" className="pink-text mr-2"/>
                     <strong>Invites</strong>
                 </h4>
-                <MDBContainer className="my-3 z-depth-1 border border-light rounded px-4 py-4">
+                <div className="my-3 z-depth-1 border border-light rounded px-4 py-4 big-screen-margin-invite">
                     <MDBCardHeader className="border-0 font-weight-bold d-flex justify-content-between">
                         <p className="mr-4 mb-0">1. Status :- Pending</p>
                         <ul className="list-unstyled text-default list-inline mb-0">
@@ -62,7 +63,7 @@ class InvitesSection extends Component {
                             </ul>
                         </MDBMedia>
                     </MDBMedia>
-                </MDBContainer>
+                </div>
             </div>
         );
     }
