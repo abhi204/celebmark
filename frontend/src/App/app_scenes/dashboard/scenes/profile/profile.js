@@ -17,7 +17,7 @@ class DetailsSection extends Component {
                                 <MDBView className="rounded z-depth-2 mb-lg-0 mb-4" hover waves>
                                     <img
                                         className="img-fluid"
-                                        src="https://mdbootstrap.com/img/Photos/Others/img%20(27).jpg"
+                                        src={user.profile_pic}
                                         alt=""
                                     />
                                         <MDBMask overlay="white-slight"/>
