@@ -1,9 +1,8 @@
 import React, {Component} from 'react';
-import {userImage, favIcon} from '_consts/dummy';
+import {favIcon} from '_consts/dummy';
 import {connect} from 'react-redux'
 import SearchInput from './search_input/search_input';
 import {Link} from 'react-router-dom';
-import {API_HOST} from '_consts/api';
 
 import "./navbar.css"
 import {
@@ -57,7 +56,7 @@ class NavBar extends Component {
                                     <MDBNavItem className="mr-3 ml-3 float-right my-auto">
                                         <MDBDropdown size="lg">
                                             <MDBDropdownToggle className="no-wrap" nav caret>
-                                                <img src={`${API_HOST}/${profile_pic}`}
+                                                <img src={profile_pic}
                                                      className="rounded-circle z-depth-0"
                                                      style={{height: "2.5em", padding: 0}} alt=""/>
                                             </MDBDropdownToggle>
@@ -111,7 +110,7 @@ class NavBar extends Component {
                             </MDBNavItem>
                             <MDBNavItem className="my-auto">
                                 <MDBNavLink to="/dashboard">
-                                    <img src={`${API_HOST}/${profile_pic}`}
+                                    <img src={profile_pic}
                                                      className="rounded-circle z-depth-0"
                                                      style={{height: "2.5em", padding: 0}} alt=""/>
                                 </MDBNavLink>

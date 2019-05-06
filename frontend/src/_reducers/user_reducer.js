@@ -1,6 +1,6 @@
-import { LOGIN_SUCCESS, LOGIN_ERROR, LOGIN_FAILED, LOGOUT } from "_consts/auth";
-import { BOOKMARK } from "../_consts/types";
-import { LOGIN_IN_PROGRESS, LOGIN_RETRY } from "../_consts/auth";
+import { LOGIN_SUCCESS, LOGIN_ERROR, LOGIN_FAILED, LOGOUT, LOGIN_IN_PROGRESS, LOGIN_RETRY } from "_consts/auth";
+import { BOOKMARK } from "_consts/types";
+import { API_HOST } from "_consts/api";
 
 let initialState = { loggedIn: false, details: {} };
 
@@ -9,7 +9,8 @@ let userReducer = (state=initialState, action) => {
         case LOGIN_IN_PROGRESS:
             return { loggedIn: LOGIN_IN_PROGRESS }
         case LOGIN_SUCCESS:
-        return { loggedIn: true, details: action.payload };
+            action.payload.profile_pic = `${API_HOST}/${action.payload.profile_pic}`
+            return { loggedIn: true, details: action.payload };
         case LOGOUT:
         case LOGIN_ERROR:
         case LOGIN_FAILED:
