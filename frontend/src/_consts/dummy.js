@@ -1,6 +1,6 @@
 export const userImage = "https://react.semantic-ui.com/images/avatar/large/matthew.png";
 export const timelineBg = "https://i.ibb.co/K9XMrWc/celeb-Timeline.png" 
-export const favIcon =  "https://i.ibb.co/nMYYxtd/celeblogo.png";
+export const favIcon =  "http://clipart-library.com/images/dT9rdRr9c.png";
 export const smallIcon = "https://i.ibb.co/rdjYVnq/cm-star-ico.png";
 
 export const carouselUrl = "https://source.unsplash.com/featured/?concert";
