@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MDBCol, MDBContainer, MDBRow, MDBFooter } from "mdbreact";
+import { MDBCol, MDBContainer, MDBRow, MDBFooter,MDBIcon } from "mdbreact";
 import './footer.css'
 import './footer.css';
 
@@ -11,19 +11,19 @@ export default class Footer extends Component {
           <MDBContainer fluid className="text-center text-md-left">
             <MDBRow className="d-flex align-items-center">
               <MDBCol md="6" lg="5" className="text-center text-md-left mb-1 mb-md-0">
-                <h6 className="mb-0 grey-text">
-                &copy; {new Date().getFullYear()} Copyright: <a href="https://www.celebmark.com" className="black-text"> CelebMark.com </a>
+                <h6 className="mb-0 black-text">
+               <a href="https://www.celebmark.com" className="black-text"> CelebMark </a> &copy; {new Date().getFullYear()} - All Rights Reserved
                 </h6>
               </MDBCol>
-              <MDBCol md="6" lg="7" className="text-center text-md-right">
+              <MDBCol md="6" lg="7" className="text-center text-md-right mt-2">
                 <a className="fb-ic ml-0 mr-3" href="https://www.facebook.com/celebmark/">
-                  <i className="fab fa-facebook-f grey-text mr-lg-4"> </i>
+                  <MDBIcon fab icon="facebook-square" size="lg"/>
                 </a>
                 <a className="li-ic mr-3" href="https://www.linkedin.com/company/celebmark/">
-                  <i className="fab fa-linkedin-in grey-text mr-lg-4"> </i>
+                  <MDBIcon fab icon="linkedin-in" size="lg"/>
                 </a>
                 <a className="ins-ic" href="https://www.instagram.com/celebmark/">
-                  <i className="fab fa-instagram grey-text mr-lg-4"> </i>
+                  <MDBIcon fab icon="instagram" size="lg"/>
                 </a>
               </MDBCol>
             </MDBRow>
