@@ -24,19 +24,22 @@ class DetailsSection extends Component {
                                 </MDBView>
                             </MDBCol>
                             <MDBCol className="pl-4 mobile-content-profile" lg="5" >
-                                <a href="#!" className="blue-text">
-                                    <h6 className="font-weight-bold mb-3">
-                                        <MDBIcon icon="info-circle" className="pr-2"/>
-                                        Profile Details
-                                    </h6>
-                                </a>
+                                <h3 className="font-weight-bold mb-3 blue-grey-text">
+                                    <MDBIcon icon="info-circle" className="pr-2"/>
+                                    Profile Details &nbsp;
+                                    <Link to="/dashboard/settings" >
+                                        <sup className="font-medium purple-text">
+                                            <MDBIcon far icon="edit" />
+                                        </sup>
+                                    </Link>
+                                </h3>
                                 <h4 className="h4-responsive font-weight-bold mb-2 p-0">
                                     <MDBIcon icon="user-circle" size="md" className="pink-text"/>&nbsp;
-                                    <strong> Abhi Chaurasia </strong>
+                                    <span className="text-capitalize"> {user.first_name} {user.last_name} </span>
                                 </h4>
                                 <h6 className="font-weight-bold mb-2 p-0">
                                     <MDBIcon icon="at" size="lg" className="pink-text"/>&nbsp;&nbsp;
-                                    <strong> testemail@gmail.com</strong>
+                                    <strong>{ user.email }</strong>
                                 </h6>
                                 <h6 className="font-weight-bold mb-2 p-0">&nbsp;
                                     <MDBIcon icon="mobile" size="lg" className="pink-text"/>&nbsp;&nbsp;&nbsp;
@@ -44,7 +47,7 @@ class DetailsSection extends Component {
                                 </h6>
                                 <h5 className="font-weight-bold pb-2">&nbsp;
                                     <MDBIcon icon="credit-card" size="md" className="pink-text"/>
-                                    &nbsp;&nbsp;Subscribed to<strong> {user.subscription} Plan</strong>
+                                    &nbsp;&nbsp;Subscribed to<span className="text-capitalize"> {user.subscription}</span> plan
                                     &nbsp;<MDBIcon style={{fontSize: '0.7em'}} icon="question-circle" />
                                 </h5>
                             </MDBCol>
@@ -66,13 +69,13 @@ class DetailsSection extends Component {
                                 </Link>
                                 <MDBBtn rounded className="btn-tw waves-light">
                                     <MDBIcon far icon="bell" className="pr-2"/>
-                                    <strong>Remaining</strong>
+                                    <strong>Pending</strong>
                                 </MDBBtn>
                                 <span className="counter">22</span>
                                 <Link to="/dashboard/invites">
                                     <MDBBtn rounded className=" waves-light">
                                         <MDBIcon icon="comments" className="pr-2"/>
-                                        <strong>Accepeted</strong>
+                                        <strong>Accepted</strong>
                                     </MDBBtn>
                                 </Link>
                                 <span className="counter">31</span>
