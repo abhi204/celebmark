@@ -2,18 +2,19 @@ import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {MDBCol, MDBIcon, MDBRow} from "mdbreact";
 import '../../../search/components/celeb_card.css'
+import "./bookmark.css";
 
 class BookmarksSection extends Component {
 
     render() {
         return (
             <div>
-                <h4 className="h4-responsive text-center black-text" color=" teal darken-1">
+                <h4 className="h4-responsive text-center mt-5 black-text" color=" teal darken-1">
                     <MDBIcon icon="bookmark" size="md" className="pink-text mr-2"/>
                     <strong>Bookmarks</strong>
                 </h4>
-                <MDBRow className="mt-1 mr-2 ml-2">
-                    <MDBCol sm="6" md="4">
+                <MDBRow className="mt-1 mr-2 ml-5 ">
+                    <MDBCol sm="6" md="4" className="big-screen-margin-bookmark">
                         <Link to="">
                             <div className="cards mt-3 text-right float-left ">
                                 <div className="card-left p-0">
