@@ -46,6 +46,7 @@ export const apiMiddleware = (store) => (next) => (action) => {
     // response handled by then function
     if(typeof(META.then) === "function")
         return next((dispatch) => {
+                        // dispatch({ type: action.loadingType })
                         return request.then( response => { META.then(response, true); dispatch({type: "api"}) } )
                                         .catch( error => { META.then(error, false); dispatch({type: "api"}) } )
                         }
@@ -54,6 +55,8 @@ export const apiMiddleware = (store) => (next) => (action) => {
     // response data passed to reducers
     else
         return next((dispatch) => {
+                if(action.loadingType)
+                    dispatch({type: action.loadingType})
                 return request.then( ({data}) => next({ type: action.type, payload: data }) )
                                 .catch( error => dispatch({ type: action.failedType, payload: error }))
             }
