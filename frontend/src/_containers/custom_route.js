@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 const Route = (props) => {
     const { user, privateURL, publicOnly } = props;
     let goto = sessionStorage.getItem('goto');
+    
+    window.scrollTo({top: 0})
+    
     if(user.loggedIn === false && privateURL)
     {
         sessionStorage.setItem('goto', props.history.location.pathname) // Temporary Solution to redirects
