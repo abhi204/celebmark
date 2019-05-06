@@ -25,7 +25,7 @@ class CelebViewSet(ReadOnlyModelViewSet):
 
 class CelebBookmarkView(APIView):
     permission_classes = [permissions.IsAuthenticated]
-
+    
     def post(self, request):
         celeb = request.data['celeb']
         user = request.user
@@ -40,3 +40,10 @@ class CelebBookmarkView(APIView):
         user.save()
         # Return New Bookmarks list
         return Response(request.user.bookmarks)
+
+    def get(self, request):
+        celebs_list = request.user.bookmarks.get('celebs',[])
+        data = {}
+        for user_name in celebs_list:
+            data[user_name] = CelebListSerializer(Celeb.objects.get(base_user__user_name=user_name)).data
+        return Response(data)
