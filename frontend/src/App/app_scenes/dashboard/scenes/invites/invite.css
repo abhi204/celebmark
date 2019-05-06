@@ -1,11 +1,23 @@
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 992px){
     .big-screen-margin-invite{
-        margin-left: 15em;
+        margin-left: 18em;
         margin-right: 1em;
+    }
+    .responsive-card-width-invite{
+        max-width: 25rem!important;
+    }
+}
+@media only screen and (min-width: 768px) and (max-width: 992px){
+    .big-screen-margin-invite{
+        margin-left: 18em;
+        margin-right: 1em;
+    }
+    .responsive-card-width-invite{
+        max-width: 20rem;
     }
 }
 @media only screen and (max-width: 768px){
     .big-screen-margin-invite{
-        margin-left: 4em;
+        margin-left: 5em;
     }
 }

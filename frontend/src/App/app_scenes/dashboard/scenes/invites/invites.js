@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {
-    MDBCardHeader,
-    MDBContainer,
-    MDBIcon, MDBMedia,
+    MDBIcon,
+    MDBBtn,
+    MDBCard,
+    MDBCardBody,
+    MDBCardImage,
+    MDBCardTitle,
+    MDBCardText,
+    MDBCol,MDBRow,
 } from "mdbreact";
 import "./invite.css";
 
@@ -16,53 +21,285 @@ class InvitesSection extends Component {
                     <MDBIcon icon="gift" size="md" className="pink-text mr-2"/>
                     <strong>Invites</strong>
                 </h4>
-                <div className="my-3 z-depth-1 border border-light rounded px-4 py-4 big-screen-margin-invite">
-                    <MDBCardHeader className="border-0 font-weight-bold d-flex justify-content-between">
-                        <p className="mr-4 mb-0">1. Status :- Pending</p>
-                        <ul className="list-unstyled text-default list-inline mb-0">
-                            <li className="list-inline-item mr-3"><Link className="green-text" to=""><MDBIcon
-                                className="mr-2" icon="user"/>Profile</Link></li>
-                            <li className="list-inline-item mr-3"><Link className="red-text" to=""><MDBIcon
-                                className="mr-2" icon="trash-alt"/>Cancel</Link></li>
-                        </ul>
-                    </MDBCardHeader>
-                    <MDBMedia className="p-4 bg-white">
-                        <MDBMedia>
-                            <img className="card-img-100 rounded-circle d-flex z-depth-1 mr-3" src="#" alt=""/>
-                        </MDBMedia>
-                        <MDBMedia body>
-                            <h4 className="font-weight-bold mt-0">
-                                Deep Narayan Tandan
-                            </h4>
-                            <span className="pt-0"><h4><small>Invited On: </small> 01/05/2019</h4></span>
-                            <ul className="list-unstyled list-inline mb-2 pt-2  more-padding">
-                                <li className="list-inline-item m-1">
-                                    <MDBIcon className="cyan-text" size="md" icon="poll"/><span
-                                    className="font-weight-bold">&nbsp;Event Type:</span>
-                                </li>
-                                &nbsp; &nbsp;
-                                <li className="list-inline-item m-1">
-                                    <MDBIcon className="cyan-text" size="md" icon="headset"/><span
-                                    className="font-weight-bold">&nbsp;Celebrity Role:</span>
-                                </li>
-                                &nbsp; &nbsp;
-                                <li className="list-inline-item m-1">
-                                    <MDBIcon className="cyan-text" size="md" icon="map-marker-alt"/><span
-                                    className="font-weight-bold">&nbsp;Event City:</span>
-                                </li>
-                                &nbsp; &nbsp;
-                                <li className="list-inline-item m-1">
-                                    <MDBIcon className="cyan-text" size="md" icon="city"/><span
-                                    className="font-weight-bold">&nbsp;Event Venue:</span>
-                                </li>
-                                &nbsp; &nbsp;
-                                <li className="list-inline-item m-1">
-                                    <MDBIcon className="cyan-text" size="md" icon="calendar-check"/><span
-                                    className="font-weight-bold">&nbsp;Event Date:</span>
-                                </li>
-                            </ul>
-                        </MDBMedia>
-                    </MDBMedia>
+                <div className="big-screen-margin-invite">
+                    <MDBRow>
+                        <MDBCol  lg="4" className="my-3 px-2 py-4 mr-3 float-left responsive-card-width-invite">
+                        <MDBCard cascade>
+                            <MDBCardImage cascade className="img-fluid"
+                                          src="https://wallpapercave.com/wp/wp1911087.jpg"/>
+                            <MDBBtn floating tag="a" className="ml-auto mr-4 lighten-3 mdb-coalor" action>
+                                <MDBIcon icon="chevron-right"/>
+                            </MDBBtn>
+                            <MDBCardBody cascade>
+                                <MDBCardTitle>Deep Narayan Tandan</MDBCardTitle>
+                                <MDBCardText>
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="poll"/><span
+                                        className="font-weight-bold">&nbsp;Event Type:</span> invite.event_type
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="headset"/><span
+                                        className="font-weight-bold">&nbsp;Celebrity Role:</span> invite.role
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="map-marker-alt"/><span
+                                        className="font-weight-bold">&nbsp;Event City:</span> invite.city
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="city"/><span
+                                        className="font-weight-bold">&nbsp;Event Venue:</span> invite.venue
+                                    </li>
+                                    &nbsp; &nbsp;
+                                </MDBCardText>
+                            </MDBCardBody>
+                            <div className="rounded-bottom mdb-color lighten-1 text-center pt-3">
+                                <ul className="list-unstyled list-inline font-medium">
+                                    <li className="list-inline-item pr-2 white-text">
+                                        <MDBIcon far icon="calendar-check"/> 05/10/2015
+                                    </li>
+                                    <li className="list-inline-item pr-2">
+                                        <a href="#!" className="white-text">
+                                            <MDBIcon far icon="dot-circle"/> Status
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </MDBCard>
+                    </MDBCol>
+                        <MDBCol  lg="4" className="my-3 px-2 py-4 mr-3 float-left responsive-card-width-invite">
+                        <MDBCard cascade>
+                            <MDBCardImage cascade className="img-fluid"
+                                          src="https://wallpapercave.com/wp/wp1911087.jpg"/>
+                            <MDBBtn floating tag="a" className="ml-auto mr-4 lighten-3 mdb-coalor" action>
+                                <MDBIcon icon="chevron-right"/>
+                            </MDBBtn>
+                            <MDBCardBody cascade>
+                                <MDBCardTitle>Deep Narayan Tandan</MDBCardTitle>
+                                <MDBCardText>
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="poll"/><span
+                                        className="font-weight-bold">&nbsp;Event Type:</span> invite.event_type
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="headset"/><span
+                                        className="font-weight-bold">&nbsp;Celebrity Role:</span> invite.role
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="map-marker-alt"/><span
+                                        className="font-weight-bold">&nbsp;Event City:</span> invite.city
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="city"/><span
+                                        className="font-weight-bold">&nbsp;Event Venue:</span> invite.venue
+                                    </li>
+                                    &nbsp; &nbsp;
+                                </MDBCardText>
+                            </MDBCardBody>
+                            <div className="rounded-bottom mdb-color lighten-1 text-center pt-3">
+                                <ul className="list-unstyled list-inline font-medium">
+                                    <li className="list-inline-item pr-2 white-text">
+                                        <MDBIcon far icon="calendar-check"/> 05/10/2015
+                                    </li>
+                                    <li className="list-inline-item pr-2">
+                                        <a href="#!" className="white-text">
+                                            <MDBIcon far icon="dot-circle"/> Status
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </MDBCard>
+                    </MDBCol>
+                        <MDBCol  lg="4" className="my-3 px-2 py-4 mr-3 float-left responsive-card-width-invite">
+                        <MDBCard cascade>
+                            <MDBCardImage cascade className="img-fluid"
+                                          src="https://wallpapercave.com/wp/wp1911087.jpg"/>
+                            <MDBBtn floating tag="a" className="ml-auto mr-4 lighten-3 mdb-coalor" action>
+                                <MDBIcon icon="chevron-right"/>
+                            </MDBBtn>
+                            <MDBCardBody cascade>
+                                <MDBCardTitle>Deep Narayan Tandan</MDBCardTitle>
+                                <MDBCardText>
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="poll"/><span
+                                        className="font-weight-bold">&nbsp;Event Type:</span> invite.event_type
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="headset"/><span
+                                        className="font-weight-bold">&nbsp;Celebrity Role:</span> invite.role
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="map-marker-alt"/><span
+                                        className="font-weight-bold">&nbsp;Event City:</span> invite.city
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="city"/><span
+                                        className="font-weight-bold">&nbsp;Event Venue:</span> invite.venue
+                                    </li>
+                                    &nbsp; &nbsp;
+                                </MDBCardText>
+                            </MDBCardBody>
+                            <div className="rounded-bottom mdb-color lighten-1 text-center pt-3">
+                                <ul className="list-unstyled list-inline font-medium">
+                                    <li className="list-inline-item pr-2 white-text">
+                                        <MDBIcon far icon="calendar-check"/> 05/10/2015
+                                    </li>
+                                    <li className="list-inline-item pr-2">
+                                        <a href="#!" className="white-text">
+                                            <MDBIcon far icon="dot-circle"/> Status
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </MDBCard>
+                    </MDBCol>
+                        <MDBCol  lg="4" className="my-3 px-2 py-4 mr-3 float-left responsive-card-width-invite">
+                        <MDBCard cascade>
+                            <MDBCardImage cascade className="img-fluid"
+                                          src="https://wallpapercave.com/wp/wp1911087.jpg"/>
+                            <MDBBtn floating tag="a" className="ml-auto mr-4 lighten-3 mdb-coalor" action>
+                                <MDBIcon icon="chevron-right"/>
+                            </MDBBtn>
+                            <MDBCardBody cascade>
+                                <MDBCardTitle>Deep Narayan Tandan</MDBCardTitle>
+                                <MDBCardText>
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="poll"/><span
+                                        className="font-weight-bold">&nbsp;Event Type:</span> invite.event_type
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="headset"/><span
+                                        className="font-weight-bold">&nbsp;Celebrity Role:</span> invite.role
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="map-marker-alt"/><span
+                                        className="font-weight-bold">&nbsp;Event City:</span> invite.city
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="city"/><span
+                                        className="font-weight-bold">&nbsp;Event Venue:</span> invite.venue
+                                    </li>
+                                    &nbsp; &nbsp;
+                                </MDBCardText>
+                            </MDBCardBody>
+                            <div className="rounded-bottom mdb-color lighten-1 text-center pt-3">
+                                <ul className="list-unstyled list-inline font-medium">
+                                    <li className="list-inline-item pr-2 white-text">
+                                        <MDBIcon far icon="calendar-check"/> 05/10/2015
+                                    </li>
+                                    <li className="list-inline-item pr-2">
+                                        <a href="#!" className="white-text">
+                                            <MDBIcon far icon="dot-circle"/> Status
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </MDBCard>
+                    </MDBCol>
+                        <MDBCol  lg="4" className="my-3 px-2 py-4 mr-3 float-left responsive-card-width-invite">
+                        <MDBCard cascade>
+                            <MDBCardImage cascade className="img-fluid"
+                                          src="https://wallpapercave.com/wp/wp1911087.jpg"/>
+                            <MDBBtn floating tag="a" className="ml-auto mr-4 lighten-3 mdb-coalor" action>
+                                <MDBIcon icon="chevron-right"/>
+                            </MDBBtn>
+                            <MDBCardBody cascade>
+                                <MDBCardTitle>Deep Narayan Tandan</MDBCardTitle>
+                                <MDBCardText>
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="poll"/><span
+                                        className="font-weight-bold">&nbsp;Event Type:</span> invite.event_type
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="headset"/><span
+                                        className="font-weight-bold">&nbsp;Celebrity Role:</span> invite.role
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="map-marker-alt"/><span
+                                        className="font-weight-bold">&nbsp;Event City:</span> invite.city
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="city"/><span
+                                        className="font-weight-bold">&nbsp;Event Venue:</span> invite.venue
+                                    </li>
+                                    &nbsp; &nbsp;
+                                </MDBCardText>
+                            </MDBCardBody>
+                            <div className="rounded-bottom mdb-color lighten-1 text-center pt-3">
+                                <ul className="list-unstyled list-inline font-medium">
+                                    <li className="list-inline-item pr-2 white-text">
+                                        <MDBIcon far icon="calendar-check"/> 05/10/2015
+                                    </li>
+                                    <li className="list-inline-item pr-2">
+                                        <a href="#!" className="white-text">
+                                            <MDBIcon far icon="dot-circle"/> Status
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </MDBCard>
+                    </MDBCol>
+                        <MDBCol  lg="4" className="my-3 px-2 py-4 mr-3 float-left responsive-card-width-invite">
+                        <MDBCard cascade>
+                            <MDBCardImage cascade className="img-fluid"
+                                          src="https://wallpapercave.com/wp/wp1911087.jpg"/>
+                            <MDBBtn floating tag="a" className="ml-auto mr-4 lighten-3 mdb-coalor" action>
+                                <MDBIcon icon="chevron-right"/>
+                            </MDBBtn>
+                            <MDBCardBody cascade>
+                                <MDBCardTitle>Deep Narayan Tandan</MDBCardTitle>
+                                <MDBCardText>
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="poll"/><span
+                                        className="font-weight-bold">&nbsp;Event Type:</span> invite.event_type
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="headset"/><span
+                                        className="font-weight-bold">&nbsp;Celebrity Role:</span> invite.role
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="map-marker-alt"/><span
+                                        className="font-weight-bold">&nbsp;Event City:</span> invite.city
+                                    </li>
+                                    &nbsp; &nbsp;
+                                    <li className="list-inline-item m-1">
+                                        <MDBIcon fas className="cyan-text" size="md" icon="city"/><span
+                                        className="font-weight-bold">&nbsp;Event Venue:</span> invite.venue
+                                    </li>
+                                    &nbsp; &nbsp;
+                                </MDBCardText>
+                            </MDBCardBody>
+                            <div className="rounded-bottom mdb-color lighten-1 text-center pt-3">
+                                <ul className="list-unstyled list-inline font-medium">
+                                    <li className="list-inline-item pr-2 white-text">
+                                        <MDBIcon far icon="calendar-check"/> 05/10/2015
+                                    </li>
+                                    <li className="list-inline-item pr-2">
+                                        <a href="#!" className="white-text">
+                                            <MDBIcon far icon="dot-circle"/> Status
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </MDBCard>
+                    </MDBCol>
+                    </MDBRow>
                 </div>
             </div>
         );
