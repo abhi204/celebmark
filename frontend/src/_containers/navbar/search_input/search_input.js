@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { navSearchCeleb as searchCeleb } from '_actions/search';
+import { navSearchCeleb, searchCeleb } from '_actions/search';
 import { API_HOST } from '_consts/api';
 import { debounce } from 'lodash';
 import { withRouter } from 'react-router-dom';
@@ -13,18 +13,26 @@ import {
 class SearchInput extends Component {
     constructor(props){
         super(props);
-        this.sendQuery = this.sendQuery.bind(this);
+        this.doNavSearch = this.doNavSearch.bind(this);
+        this.doSearch = this.doSearch.bind(this);
         this.hideList = this.hideList.bind(this);
         this.onInputBlur = this.onInputBlur.bind(this);
         this.showScreen = this.showScreen.bind(this);
         this.state = { showList: false, clicked: false };
     }
 
-    sendQuery = debounce( (searchTerm) => {
+    doNavSearch = debounce( (searchTerm) => {
         this.setState( { showList: true } ) // show the result list on using the search input
         if(searchTerm)
-            this.props.requestSearch({ search: searchTerm})
+            this.props.navSearchCeleb({ search: searchTerm})
     }, 250)
+
+    doSearch = (searchTerm) => {
+        this.setState( { showList: false } ) // show the result list on using the search input
+        this.props.searchCeleb({ search: searchTerm})
+        if(window.location.pathname !== '/search')
+            this.showScreen('/search')
+    }
 
     hideList = () => {
        this.setState({showList: false})
@@ -99,12 +107,18 @@ class SearchInput extends Component {
             <div id="search-input">
                 <input
                     className="form-control form-control-search float-center"
-                    onChange={event => this.sendQuery(event.target.value)}
+                    onChange={event => {
+                        if(window.location.pathname !== '/search')
+                            this.doNavSearch(event.target.value)
+                    }}
                     onBlur = {this.onInputBlur}
                     type="text"
                     placeholder="Search"
                     aria-label="Search"
-                    onKeyUp={event => { if(event.keyCode===13){this.showScreen('/search')} }}
+                    onKeyUp={event => { 
+                        if(event.keyCode===13)
+                            this.doSearch(event.target.value)
+                    }}
                 />
                 <div className="pos-absolute-correction search-dropdown" hidden={!this.state.showList}>
                     <MDBListGroup>
@@ -121,7 +135,8 @@ function mapStateToProps(state){
 }
 
 const mapDispatchToProps = {
-    requestSearch: searchCeleb,
+    searchCeleb,
+    navSearchCeleb
 }
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(SearchInput));
