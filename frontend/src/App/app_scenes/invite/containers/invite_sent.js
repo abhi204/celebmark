@@ -12,7 +12,7 @@ class InviteSent extends Component {
     if(invite.celeb !== prevState.celeb)
     {
       getCelebProfile(invite.celeb);
-      return { celeb: invite.celeb}
+      return { celeb: invite.celeb }
     }
     return null
   }

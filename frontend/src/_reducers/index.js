@@ -6,7 +6,7 @@ import navSearchReducer from './nav_search_reducer';
 import SearchReducer from './search_reducer';
 import profileReducer from './profile_reducer';
 import bookmarkReducer from './bookmark_reducer';
-
+import invitesReducer from './invites_reducer';
 
 export default (history) => combineReducers({
     router: connectRouter(history), //saves the router state
@@ -16,4 +16,5 @@ export default (history) => combineReducers({
     search: SearchReducer, //for search page
     profile: profileReducer, // for celeb profile page
     bookmark: bookmarkReducer,
+    invites: invitesReducer,
 })

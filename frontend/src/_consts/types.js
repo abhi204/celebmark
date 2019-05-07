@@ -20,6 +20,9 @@ export const BOOKMARK_GET_CELEB = "Get Celeb Bookmark List";
 export const BOOKMARK_GET_CELEB_LOADING = "Getting bookmark celeb list";
 export const BOOKMARK_GET_CELEB_FAILED = "Get Celeb Bookmark List";
 
+export const INVITE_GET = "Get Invites";
+export const INVITE_GET_FAILED = "Failed to get invites"
+export const INVITE_GET_LOADING = "Getting Invites"
 
 export const SUBSCRIBE = "Do Subscribe";
 export const SUBSCRIBE_FAILED = "Subscribe Failed";
