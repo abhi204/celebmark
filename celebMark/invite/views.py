@@ -3,6 +3,7 @@ from .serializers import InviteSerializer
 from django.conf import settings
 from django.shortcuts import render
 from rest_framework import permissions
+from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.viewsets import ModelViewSet
 from useraccount.helpers import UserOnly
@@ -47,3 +48,15 @@ class InviteViewset(ModelViewSet):
         invite_obj.payment_request_id = response['payment_request']['id']
         invite_obj.save()
         return Response({'payURL': response['payment_request']['longurl']})
+
+    @action(detail=False, methods=['get'])
+    def status(self, request):
+        invites = self.get_queryset()
+        status = {
+            'sent': invites.count(),
+            'pending': invites.filter(status='pending').count(),
+            'accepted': invites.filter(status='accepted').count(),
+            'cancelled': invites.filter(status='cancelled').count(),
+        }
+        return Response(status)
+        
