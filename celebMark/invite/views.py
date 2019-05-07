@@ -16,7 +16,7 @@ class InviteViewset(ModelViewSet):
     permission_classes = [permissions.IsAuthenticated, UserOnly]
 
     def get_queryset(self):
-        return Invite.objects.filter(user=self.request.user.user)
+        return Invite.objects.filter(user=self.request.user.user, payment__status="Credit")
 
     def create(self, request, *args, **kwargs):
         invite_response = super(ModelViewSet, self).create(request, *args, **kwargs)
