@@ -81,10 +81,12 @@ class DetailsSection extends Component {
                                     </MDBBtn>
                                     <span className="counter"><strong>{inviteStatus.sent}</strong></span>
                                 </Link>
-                                <MDBBtn rounded className="btn-tw waves-light">
-                                    <MDBIcon far icon="bell" className="pr-2"/>
-                                    <strong>Pending</strong>
-                                </MDBBtn>
+                                <Link to="/dashboard/invites">
+                                    <MDBBtn rounded className="btn-tw waves-light">
+                                        <MDBIcon far icon="bell" className="pr-2"/>
+                                        <strong>Pending</strong>
+                                    </MDBBtn>
+                                </Link>
                                 <span className="counter"><strong>{inviteStatus.pending}</strong></span>
                                 <Link to="/dashboard/invites">
                                     <MDBBtn rounded className=" waves-light">
