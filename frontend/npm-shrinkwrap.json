@@ -8749,8 +8749,8 @@
       }
     },
     "mdbreact": {
-      "version": "git+https://oauth2:4xdQirWuqy_6HVFgCRqz@git.mdbootstrap.com/mdb/react/re-pro.git#d506ace2c18722f181f79f5b70e623be8efe3f80",
-      "from": "git+https://oauth2:4xdQirWuqy_6HVFgCRqz@git.mdbootstrap.com/mdb/react/re-pro.git",
+      "version": "git+https://oauth2:LJ69Ku4bZDsWtmZAibj8@git.mdbootstrap.com/mdb/react/re-pro.git#d506ace2c18722f181f79f5b70e623be8efe3f80",
+      "from": "git+https://oauth2:LJ69Ku4bZDsWtmZAibj8@git.mdbootstrap.com/mdb/react/re-pro.git",
       "requires": {
         "@date-io/moment": "0.0.2",
         "@fortawesome/fontawesome-free": "^5.7.1",

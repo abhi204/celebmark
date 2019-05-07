@@ -6,7 +6,7 @@
     "axios": "^0.18.0",
     "connected-react-router": "^6.2.2",
     "jwt-decode": "^2.2.0",
-    "mdbreact": "git+https://oauth2:4xdQirWuqy_6HVFgCRqz@git.mdbootstrap.com/mdb/react/re-pro.git",
+    "mdbreact": "git+https://oauth2:LJ69Ku4bZDsWtmZAibj8@git.mdbootstrap.com/mdb/react/re-pro.git",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-masonry-component": "^6.2.1",
