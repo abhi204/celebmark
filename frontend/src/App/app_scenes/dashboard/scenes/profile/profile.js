@@ -28,16 +28,16 @@ class DetailsSection extends Component {
                     <MDBCardBody>
                         <MDBRow className="pt-3 mb-3 ">
                             <MDBCol lg="3" >
-                                <MDBView className="rounded z-depth-2 mb-lg-0 mb-4" hover waves>
+                                <MDBView className="rounded mb-lg-0 mb-4" hover waves>
                                     <img
-                                        className="img-fluid"
+                                        className="img-fluid cover"
                                         src={user.profile_pic}
                                         alt=""
                                     />
                                         <MDBMask overlay="white-slight"/>
                                 </MDBView>
                             </MDBCol>
-                            <MDBCol className="pl-4 mobile-content-profile" lg="5" >
+                            <MDBCol className="pl-4 mobile-content-profile" lg="8" >
                                 <h5 className="font-weight-bold mb-3 blue-grey-text">
                                     <MDBIcon icon="info-circle" className="pr-2"/>
                                     Profile Details &nbsp;
