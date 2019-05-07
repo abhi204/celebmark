@@ -1,13 +1,27 @@
+import axios from 'axios';
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
 import {MDBRow, MDBCol, MDBCardBody, MDBMask, MDBIcon, MDBView, MDBBtn, MDBContainer} from "mdbreact";
 import "./profile.css";
+import { API_INVITE_STATUS } from '_consts/api';
+import { getCookie } from '_helpers/cookies';
 
 class DetailsSection extends Component {
+    state = { inviteStatus: {} }
+
+    componentDidMount(){
+        return axios.get(
+            API_INVITE_STATUS, 
+            { 
+                headers : { Authorization: `Bearer ${getCookie('access')}`}
+            }).then( ({data}) => this.setState({ inviteStatus: data }))
+            .catch( error => console.log(error))
+    }
 
     render() {
         const { user } = this.props;
+        const { inviteStatus } = this.state;
         return (
             <MDBContainer className="mt-4">
                 <div className="mt-1 px-5 py-3 big-screen-margin-profile">
@@ -65,26 +79,26 @@ class DetailsSection extends Component {
                                         <MDBIcon icon="gift" className="pr-2"/>
                                         <strong>Sent</strong>
                                     </MDBBtn>
-                                    <span className="counter">46</span>
+                                    <span className="counter"><strong>{inviteStatus.sent}</strong></span>
                                 </Link>
                                 <MDBBtn rounded className="btn-tw waves-light">
                                     <MDBIcon far icon="bell" className="pr-2"/>
                                     <strong>Pending</strong>
                                 </MDBBtn>
-                                <span className="counter">22</span>
+                                <span className="counter"><strong>{inviteStatus.pending}</strong></span>
                                 <Link to="/dashboard/invites">
                                     <MDBBtn rounded className=" waves-light">
                                         <MDBIcon icon="comments" className="pr-2"/>
                                         <strong>Accepted</strong>
                                     </MDBBtn>
                                 </Link>
-                                <span className="counter">31</span>
+                                <span className="counter"><strong>{inviteStatus.accepted}</strong></span>
                                 <Link to="/dashboard/invites">
                                     <MDBBtn rounded className="btn-gplus waves-light">
                                         <MDBIcon icon="ban" className="pr-2"/>
                                         <strong>Cancelled</strong>
                                     </MDBBtn>
-                                    <span className="counter">18</span>
+                                    <span className="counter"><strong>{inviteStatus.cancelled}</strong></span>
                                 </Link>
                             </MDBCardBody>
                         </MDBRow>
