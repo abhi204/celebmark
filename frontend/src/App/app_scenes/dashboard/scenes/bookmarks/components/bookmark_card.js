@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { MDBCol, MDBIcon } from 'mdbreact';
 
 let BookmarkCard = ({ celeb }) => (
-    <MDBCol sm="6" md="4">
+    <MDBCol sm="11" md="9" lg="6" className="mt-3">
         <Link to={`/profile/${celeb.user_name}`}>
             <div className="cards mt-3 text-right float-left ">
                 <div className="card-left p-0">
