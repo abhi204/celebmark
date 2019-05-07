@@ -15,6 +15,7 @@ from payment.helpers import create_free_invite_payment
 class InviteViewset(ModelViewSet):
     serializer_class = InviteSerializer
     permission_classes = [permissions.IsAuthenticated, UserOnly]
+    pagination_class = None
 
     def get_queryset(self):
         return Invite.objects.filter(user=self.request.user.user, payment__status="Credit")

@@ -27,6 +27,10 @@ class CelebField(serializers.Field):
 class InviteSerializer(serializers.ModelSerializer):
     user = UserField()
     celeb = CelebField()
+    celeb_name = serializers.SerializerMethodField()
+
+    def get_celeb_name(self, invite_obj):
+        return invite_obj.celeb.base_user.full_name
 
     class Meta:
         model = Invite
