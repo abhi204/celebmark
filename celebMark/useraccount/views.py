@@ -15,8 +15,8 @@ from rest_framework import filters, permissions
 from rest_framework.decorators import api_view, permission_classes
 from rest_framework.generics import CreateAPIView
 from rest_framework.response import Response
-from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.views import APIView
+from rest_framework_simplejwt.views import TokenObtainPairView
 
 # Create your views here.
 class CustomTokenObtainPairView(TokenObtainPairView):
@@ -44,13 +44,21 @@ def check_unique(request):
     return Response(status=403)
 
 class UserDetailView(APIView):
-    permission_classes = [permissions.IsAuthenticated, ]
+    permission_classes = [permissions.IsAuthenticated, UserOnly]
 
     def get(self,request):
-        base_user = request.user
-        if base_user.user_type == 'user':
-            return Response(UserSerializer(base_user.user).data)
-        return Response(status=404)
+        return Response(UserSerializer(request.user.user).data)
+
+    def patch(self, request):
+        serializer = UserSerializer(
+            request.user.user,
+            data=request.data,
+            partial=True,
+            context={'partial_update': True}
+            )
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return Response(serializer.data, status=200)
 
 class SubscribeUserView(APIView):
     permission_classes = ( permissions.IsAuthenticated, UserOnly )

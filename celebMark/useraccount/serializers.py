@@ -56,6 +56,7 @@ class BaseUserSerializer(serializers.ModelSerializer):
         instance.email = validated_data.get('email', instance.email)
         instance.mobile = validated_data.get('mobile', instance.mobile)
         instance.dob = validated_data.get('dob', instance.dob)
+        instance.save()
         return instance  
 
 class UserSerializer(serializers.ModelSerializer):
@@ -85,8 +86,10 @@ class UserSerializer(serializers.ModelSerializer):
         internal = super().to_internal_value(data)
         internal['base_user'] = base_user_internal
         base_user_serializer = BaseUserSerializer(data=base_user_internal)
-        ''' validate For Base User '''
-        base_user_serializer.is_valid(raise_exception=True)
+
+        ''' validate For Base User (skip for partial_update) '''
+        if self.context.get('partial_update','') != True:
+            base_user_serializer.is_valid(raise_exception=True)
         return internal
 
     # For registering a new User.
@@ -101,13 +104,13 @@ class UserSerializer(serializers.ModelSerializer):
         user.save()
         return user
     
+    # validated_data is proccessed first using to_internal_value
     def update(self, user_obj, validated_data):
         base_user_data = validated_data.pop('base_user')
         # update base_user partially
-        base_user_serializer = BaseUserSerializer(user_obj,base_user, base_user_data, partial=True)
+        base_user_serializer = BaseUserSerializer(user_obj.base_user, base_user_data, partial=True)
         base_user_serializer.is_valid(raise_exception=True)
-        base_user_obj = base_user_serializer # get updated object (usaved)
-        base_user_obj.save()
+        base_user_serializer.save() # save new
         # no other fields to be updated in User model
         return user_obj
 
