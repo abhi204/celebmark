@@ -3,7 +3,6 @@ import {MDBCardHeader, MDBContainer, MDBIcon, MDBMedia, MDBSpinner} from "mdbrea
 import { Link } from 'react-router-dom';
 import { getCelebProfile } from '_actions/profile';
 import { connect } from 'react-redux';
-import { API_HOST } from '_consts/api';
 
 class InviteSent extends Component {
   state = {celeb: null}
@@ -46,7 +45,7 @@ class InviteSent extends Component {
               </MDBCardHeader>
               <MDBMedia className="p-4 bg-white">
                 <MDBMedia >
-                  <img className="card-img-100 rounded-circle d-flex z-depth-1 mr-3" src={`${API_HOST}/${celebProfile.profile_pic}`} alt="" />
+                  <img className="card-img-100 rounded-circle d-flex z-depth-1 mr-3" src={celebProfile.profile_pic} alt="" />
                 </MDBMedia>
                 <MDBMedia body>
                   <h4 className="font-weight-bold mt-0">
