@@ -109,6 +109,10 @@ class BaseUser(AbstractBaseUser):
             pass
         return None
     
+    @property
+    def get_profile_pic(self):
+        return self.profile_pic.url
+    
     objects = UserManager()
 
 class Celeb(models.Model):

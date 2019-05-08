@@ -1,9 +1,9 @@
 from .helpers import unique_fields, UserOnly
 from .models import BaseUser, User, Celeb
-from .serializers import ( 
-    UserRegisterSerializer, 
-    CelebRegisterSerializer, 
-    BaseUserViewSerializer,
+from .serializers import (
+    BaseUserSerializer, 
+    UserSerializer,
+    CelebSerializer,
     CustomTokenObtainPairSerializer
     )
 from .subscription_details import subscription_details
@@ -24,12 +24,12 @@ class CustomTokenObtainPairView(TokenObtainPairView):
 
 class register_user(CreateAPIView):
     model = User
-    serializer_class = UserRegisterSerializer
+    serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny, ]
 
 class register_celeb(CreateAPIView):
     model = Celeb
-    serializer_class = CelebRegisterSerializer
+    serializer_class = CelebSerializer
     permission_classes = [permissions.AllowAny, ]
 
 @api_view(['HEAD'])
@@ -44,11 +44,13 @@ def check_unique(request):
     return Response(status=403)
 
 class UserDetailView(APIView):
-    permission_classes = [permissions.IsAuthenticated,]
+    permission_classes = [permissions.IsAuthenticated, ]
 
     def get(self,request):
-        baseuser_serializer = BaseUserViewSerializer(request.user)
-        return Response(baseuser_serializer.data)
+        base_user = request.user
+        if base_user.user_type == 'user':
+            return Response(UserSerializer(base_user.user).data)
+        return Response(status=404)
 
 class SubscribeUserView(APIView):
     permission_classes = ( permissions.IsAuthenticated, UserOnly )
