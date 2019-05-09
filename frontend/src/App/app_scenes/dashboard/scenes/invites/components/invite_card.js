@@ -49,10 +49,8 @@ let InviteCard = ({invite}) => {
                         <li className="list-inline-item pr-2 white-text">
                             <MDBIcon far icon="calendar-check"/> {invite.event_date}
                         </li>
-                        <li className="list-inline-item pr-2">
-                            <a href="#!" className="white-text">
+                        <li className="list-inline-item pr-2 white-text text-capitalize">
                                 <MDBIcon far icon="dot-circle"/> {invite.status}
-                            </a>
                         </li>
                     </ul>
                 </div>
