@@ -10,6 +10,7 @@ import InvitePage from "./app_scenes/invite/invite";
 import PaymentCheckPage from './app_scenes/payment/payment_check';
 import DashboardPage from './app_scenes/dashboard/dashboard';
 // Any Page/Component is to be rendered inside App
+
 class App extends Component {
   
   render() {
@@ -17,8 +18,9 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        <br/><br/>
-        <Switch>
+        {/* Give navbar spacing */}
+        <div style={{marginTop: "4em"}}/> 
+        <Switch classname="switch-wrapper">
           <Route exact path="/" component={AppHome} />
           <Route exact path="/search" component={SearchPage} />
           <Route exact path="/profile/:user_name" component={ProfilePage} />

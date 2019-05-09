@@ -50,9 +50,9 @@ class Routes extends Component{
                 <ConnectedRouter history={history}>
                     {/* Pages Routed here, Components Routed inside App.js */}
                     <Switch className="switch-wrapper">
-                        <Route publicOnly exact path='/login' component={LoginPage} />
-                        <Route publicOnly exact path='/signup' component={SignupPage} />    
-                        <Route exact path='/logout' component={LogoutPage} />
+                        <Route publicOnly exact path='/login' component={LoginPage} noNav />
+                        <Route publicOnly exact path='/signup' component={SignupPage} noNav />    
+                        <Route exact path='/logout' component={LogoutPage} noNav />
                         <Route path='/' component={App}/>
                     </Switch>
                 </ConnectedRouter>
