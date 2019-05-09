@@ -5,18 +5,25 @@ import { connect } from 'react-redux';
 import {MDBRow, MDBCol, MDBCardBody, MDBMask, MDBIcon, MDBView, MDBBtn, MDBContainer} from "mdbreact";
 import "./profile.css";
 import { API_INVITE_STATUS } from '_consts/api';
-import { getCookie } from '_helpers/cookies';
+import { store } from 'index';
 
 class DetailsSection extends Component {
     state = { inviteStatus: {} }
 
     componentDidMount(){
-        return axios.get(
-            API_INVITE_STATUS,
-            {
-                headers : { Authorization: `Bearer ${getCookie('access')}`}
-            }).then( ({data}) => this.setState({ inviteStatus: data }))
-            .catch( error => console.log(error))
+        store.dispatch({
+            meta: {
+                type: 'api',
+                method: 'get',
+                url: API_INVITE_STATUS,
+                then: (apiResponse, okStatus) => {
+                    if(okStatus)
+                        this.setState({ inviteStatus: apiResponse.data })
+                    else
+                        console.log("error", apiResponse)
+                }
+            }
+        })
     }
 
     render() {

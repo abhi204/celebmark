@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import { getCelebProfile } from '_actions/profile';
 import ProfileTabs from './containers/profile_content';
-import './profile.css'
+import './profile.css';
 
 class ProfilePage extends Component {
     constructor(props) {

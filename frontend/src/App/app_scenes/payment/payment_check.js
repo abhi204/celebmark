@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import 'url-search-params-polyfill';
-import axios from 'axios';
 import { API_PAYMENT_CHECK } from '_consts/api';
-import { getCookie } from '_helpers/cookies';
 import PaymentDone from './components/pay_ok';
 import PaymentFail from './components/pay_fail';
 import FetchPayDetail from './components/pay_fetch';
 import { withRouter } from 'react-router-dom';
+import { store } from 'index';
 
 class PaymentCheckPage extends Component {
     constructor(props){
@@ -16,9 +15,20 @@ class PaymentCheckPage extends Component {
     }
 
     getPaymentStatus(paymentDetails){
-        axios.post(API_PAYMENT_CHECK, paymentDetails,{ headers: { 'Authorization': `Bearer ${getCookie('access')}`}})
-            .then( ({data}) => this.setState({fetching: false, response: data}) )
-            .catch(error => this.setState({fetching: false}))
+        store.dispatch({
+            meta:{
+                type: 'api',
+                url: API_PAYMENT_CHECK,
+                method: 'post',
+                data: paymentDetails,
+                then: (apiResponse, okStatus) => {
+                    if(okStatus)
+                        this.setState({fetching: false, response: apiResponse.data })
+                    else
+                        this.setState({fetching: false})
+                }
+            }
+        })
         
     }
 

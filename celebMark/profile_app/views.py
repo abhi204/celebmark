@@ -1,4 +1,3 @@
-from .serializers import CelebViewSerializer, CelebListSerializer
 from django.shortcuts import render, get_object_or_404
 from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import permissions, filters
@@ -6,10 +5,11 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.viewsets import ReadOnlyModelViewSet
 from useraccount.models import Celeb, BaseUser
+from useraccount.serializers import CelebSerializer
 
 class CelebViewSet(ReadOnlyModelViewSet):
     # For listing Celebs
-    serializer_class = CelebListSerializer
+    serializer_class = CelebSerializer
     queryset = Celeb.objects.all()
     permission_classes = [permissions.AllowAny,]
     filter_backends = (filters.SearchFilter, filters.OrderingFilter, DjangoFilterBackend)
@@ -20,7 +20,7 @@ class CelebViewSet(ReadOnlyModelViewSet):
     # For retreiving profile
     def retrieve(self, request, pk=None):
         celeb = get_object_or_404(self.queryset, base_user__user_name=pk)
-        serializer = CelebViewSerializer(celeb)
+        serializer = CelebSerializer(celeb)
         return Response(serializer.data)
 
 class CelebBookmarkView(APIView):
@@ -45,5 +45,5 @@ class CelebBookmarkView(APIView):
         celebs_list = request.user.bookmarks.get('celebs',[])
         data = {}
         for user_name in celebs_list:
-            data[user_name] = CelebListSerializer(Celeb.objects.get(base_user__user_name=user_name)).data
+            data[user_name] = CelebSerializer(Celeb.objects.get(base_user__user_name=user_name)).data
         return Response(data)

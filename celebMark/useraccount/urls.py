@@ -6,5 +6,5 @@ urlpatterns = [
     path('register/celeb', views.register_celeb.as_view(), name='register-celeb'),
     path('details/', views.UserDetailView.as_view()),
     path('check/', views.check_unique,), #check if given value already exists
-    path('subscribe/<str:subscription_type>/', views.SubscribeUserView.as_view())
+    path('subscribe/<str:subscription_type>/', views.SubscribeUserView.as_view()),
 ]

@@ -46,10 +46,11 @@ export const apiMiddleware = (store) => (next) => (action) => {
     // response handled by then function
     if(typeof(META.then) === "function")
         return next((dispatch) => {
-                        // dispatch({ type: action.loadingType })
-                        return request.then( response => { META.then(response, true); dispatch({type: "api"}) } )
-                                        .catch( error => { META.then(error, false); dispatch({type: "api"}) } )
-                        }
+                if(action.loadingType)
+                    dispatch({type: action.loadingType})
+                return request.then( response => { META.then(response, true); dispatch({type: "api"}) } )
+                            .catch( error => { META.then(error, false); dispatch({type: "api"}) } )
+                }
         )
     
     // response data passed to reducers
