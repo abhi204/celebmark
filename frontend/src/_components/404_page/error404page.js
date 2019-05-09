@@ -6,10 +6,10 @@ class Error404Page extends Component {
         return (
             <div id="notfound">
                 <div className="notfound">
-                    <div className="notfound-404">
+                    <div className="notfound-404 mb-5">
                         <h1>4<span>0</span>4</h1>
                     </div>
-                    <p>The page you are looking for might have been removed had its name changed or is temporarily
+                    <p className="pt-4 mb-3">The page you are looking for might have been removed had its name changed or is temporarily
                         unavailable.</p>
                     <a href="/">home page</a>
                 </div>
