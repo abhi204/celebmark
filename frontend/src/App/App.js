@@ -9,6 +9,7 @@ import ProfilePage from './app_scenes/profile/profile';
 import InvitePage from "./app_scenes/invite/invite";
 import PaymentCheckPage from './app_scenes/payment/payment_check';
 import DashboardPage from './app_scenes/dashboard/dashboard';
+import Error404Page from '_components/404_page/error404page';
 // Any Page/Component is to be rendered inside App
 
 class App extends Component {
