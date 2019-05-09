@@ -113,7 +113,7 @@ class SearchInput extends Component {
                     }}
                     onBlur = {this.onInputBlur}
                     type="text"
-                    placeholder="Search"
+                    placeholder="Search Your Queries"
                     aria-label="Search"
                     onKeyUp={event => { 
                         if(event.keyCode===13)
