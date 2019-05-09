@@ -3,6 +3,7 @@ import Form1 from '../forms/form1';
 import Form2 from "../forms/form2";
 import { MDBContainer, MDBRow, MDBCol, MDBStepper, MDBStep, MDBBtn, MDBCard, MDBCardBody, MDBIcon} from "mdbreact";
 import { submitForm, submitOK } from "../helpers/submit_form";
+import {favIcon} from '_consts/dummy';
 
 class SignupStepper extends React.Component {
 
@@ -44,7 +45,7 @@ render() {
             <MDBCard>
               <MDBCardBody>
                 <div className="text-center">
-                    <a className="black-text" href="/"><MDBIcon fab icon="teamspeak" size="6x"/></a>
+                    <a className="black-text" href="/"><img style={{height: "7.5em"}} src={favIcon} alt=""/></a>
                 </div>
                   <h2 className="text-center font-weight-bold pt-4 pb-5">
                       <strong>Register At CelebMark</strong>

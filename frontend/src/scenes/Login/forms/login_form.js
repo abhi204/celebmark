@@ -3,6 +3,7 @@ import { Field, reduxForm } from 'redux-form';
 import { withRouter, Link } from 'react-router-dom';
 import { validators as $ } from '_helpers/field_validators';
 import { loginFormSubmit } from '../actions/login_submit';
+import {favIcon} from '_consts/dummy';
 import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon, MDBModalFooter } from 'mdbreact';
 
 const renderField = ({
@@ -36,7 +37,7 @@ const renderField = ({
           <MDBCard className="login-form-card">
             <MDBCardBody className="mx-4">
               <div className="text-center">
-                <a className="black-text" href="/"><MDBIcon fab icon="teamspeak" size="6x"/></a>
+                <a className="black-text" href="/"><img style={{height: "7.5em"}} src={favIcon} alt=""/></a>
                 <h3 className="dark-grey-text mb-5">
                     <center>
                       <strong><br/>Login</strong>
