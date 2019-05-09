@@ -8,7 +8,7 @@ class Route extends Component {
         const { user, privateURL, publicOnly, history, noNav } = this.props;
         let goto = sessionStorage.getItem('goto');
         
-        window.scrollTo({top: 0})
+        window.scrollTo({top: 0, behavior: 'smooth'})
         
         if(user.loggedIn === false && privateURL)
         {

@@ -4,6 +4,8 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import createAppStore from './configureStore';
 import { PersistGate } from 'redux-persist/integration/react';
+import { ConnectedRouter } from 'connected-react-router';
+import { history } from './configureStore';
 import Routes from './routes';
 
 import "@fortawesome/fontawesome-free/css/all.min.css";
@@ -19,7 +21,9 @@ window.store = store
 ReactDOM.render(
     <PersistGate persistor={persistor}>
     <Provider store={store}>
+    <ConnectedRouter history={history}>
         <Routes/>
+    </ConnectedRouter>
     </Provider>
     </PersistGate>,
     document.getElementById('root'));

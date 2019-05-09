@@ -18,17 +18,18 @@ class App extends Component {
     return (
       <div>
         <NavBar />
-        {/* Give navbar spacing */}
-        <div style={{marginTop: "4em"}}/> 
-        <Switch classname="switch-wrapper">
-          <Route exact path="/" component={AppHome} />
-          <Route exact path="/search" component={SearchPage} />
-          <Route exact path="/profile/:user_name" component={ProfilePage} />
-          <Route privateURL exact path="/invite/:celeb" component={InvitePage} />
-          <Route privateURL exact path="/payment/check" component={PaymentCheckPage} />
-          <Route privateURL path="/dashboard/:option?" component={DashboardPage} />
-          <Route path='*' render={() => (<div>PAGE NOT FOUND</div>)} />
-        </Switch>
+        <div style={{marginTop: "4em"}}/>{/* margin for navbar */}
+        <div>
+          <Switch classname="switch-wrapper">
+            <Route exact path="/" component={AppHome} />
+            <Route exact path="/search" component={SearchPage} />
+            <Route exact path="/profile/:user_name" component={ProfilePage} />
+            <Route privateURL exact path="/invite/:celeb" component={InvitePage} />
+            <Route privateURL exact path="/payment/check" component={PaymentCheckPage} />
+            <Route privateURL path="/dashboard/:option?" component={DashboardPage} />
+            <Route path='*' render={() => (<div>PAGE NOT FOUND</div>)} />
+          </Switch>
+        </div>
       </div>
     );
   }

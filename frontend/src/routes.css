@@ -1,14 +1,18 @@
 .switch-wrapper {
-    position: relative;
-    top: 1em;
-  }
-   
-.switch-wrapper > div {
+  position: relative;
+  top: 1em;
+}
+
+.switch-wrapper>div {
   position: absolute;
   left: 0;
   right: 0;
 }
 
-.page{
+.page {
   margin-top: 4em;
+}
+
+body {
+  overflow-y: scroll;
 }

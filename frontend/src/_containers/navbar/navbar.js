@@ -35,10 +35,10 @@ class NavBar extends Component {
                         <MDBCol>
                             <MDBNavItem fluid='true' className="d-inline my-auto">
                                 <MDBNavbarBrand>
-                                    <a className="black-text" href="/">
+                                    <Link className="black-text" to="/">
                                         <img style={{height: "2em"}} src={favIcon} alt=""/>
                                         &nbsp;CelebMark
-                                    </a>
+                                    </Link>
                                 </MDBNavbarBrand>
                             </MDBNavItem>
 
@@ -102,7 +102,7 @@ class NavBar extends Component {
                         <MDBNavbarNav className="d-inline-flex py-1 flex-row flex-fill">
                             <MDBNavItem className="my-auto">
                                 <MDBNavbarBrand>
-                                    <a href="/"><img src={favIcon} style={{height: "1.8em", padding: 0}} alt=""/></a>
+                                    <Link to="/"><img src={favIcon} style={{height: "1.8em", padding: 0}} alt=""/></Link>
                                 </MDBNavbarBrand>
                             </MDBNavItem>
                             <MDBNavItem  className="d-inline float-center my-auto">

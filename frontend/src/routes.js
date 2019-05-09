@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-import { history } from './configureStore';
-import { ConnectedRouter } from 'connected-react-router';
-import { Switch } from 'react-router-dom';
+import { Switch, withRouter } from 'react-router-dom';
 import Route from '_containers/custom_route.js'
 import { connect } from 'react-redux';
 import { MDBSpinner, MDBRow, MDBCol } from 'mdbreact';
@@ -37,25 +35,31 @@ class Routes extends Component{
 
     render(){
         if(this.state.loading)
-            return <div>
-                <MDBRow className="mt-5 pt-5">
-                    <MDBCol size="5"></MDBCol>
-                    <MDBCol size="2" className="mt-5 pt-5">Loading..<br/><MDBSpinner green /></MDBCol>
-                    <MDBCol size="5"></MDBCol>
-                </MDBRow>
-        </div>
+            return (
+                <div>
+                    <div 
+                        className="d-flex 
+                        flex-column
+                        justify-content-center
+                        align-items-center 
+                        h-100"
+                    >
+                        Loading..
+                        <br/>
+                        <MDBSpinner green />
+                    </div>
+                </div>
+            )
         // Initial actions dispatched here
         return (
             <div>
-                <ConnectedRouter history={history}>
-                    {/* Pages Routed here, Components Routed inside App.js */}
-                    <Switch className="switch-wrapper">
-                        <Route publicOnly exact path='/login' component={LoginPage} noNav />
-                        <Route publicOnly exact path='/signup' component={SignupPage} noNav />    
-                        <Route exact path='/logout' component={LogoutPage} noNav />
-                        <Route path='/' component={App}/>
-                    </Switch>
-                </ConnectedRouter>
+                {/* Pages Routed here, Components Routed inside App.js */}
+                <Switch className="switch-wrapper">
+                    <Route publicOnly exact path='/login' component={LoginPage} noNav />
+                    <Route publicOnly exact path='/signup' component={SignupPage} noNav />    
+                    <Route exact path='/logout' component={LogoutPage} noNav />
+                    <Route path='/' component={App}/>
+                </Switch>
                 <Footer/>
             </div>
         );
@@ -70,4 +74,4 @@ const mapDispatchToProps = {
     checkLogin
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Routes);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Routes));
