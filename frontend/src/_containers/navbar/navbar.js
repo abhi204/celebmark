@@ -33,7 +33,7 @@ class NavBar extends Component {
                     <MDBNavbar color="white" light className="d-none d-sm-flex pt-0 pb-0 py-1" scrolling fixed="top">
 
                         <MDBCol>
-                            <MDBNavItem fluid='true' className="d-inline my-auto">
+                            <MDBNavItem fluid='true' className="ml-3 d-inline my-auto">
                                 <MDBNavbarBrand>
                                     <a className="black-text" href="/">
                                         <img style={{height: "2em"}} src={favIcon} alt=""/>
@@ -53,7 +53,11 @@ class NavBar extends Component {
                             {(loggedIn === true &&
                                 //loggedin desktop navigation
                                 <MDBNavbarNav right className="d-inline-flex flex-row">
-                                    <MDBNavItem className="mr-3 ml-3 float-right my-auto">
+
+                                    <MDBNavItem className="mr-3 float-right my-auto no-wrap pink-text">
+                                        Hi, {user_name}
+                                    </MDBNavItem>
+                                    <MDBNavItem className="mr-4 ml-3 float-right my-auto">
                                         <MDBDropdown size="lg">
                                             <MDBDropdownToggle className="no-wrap" nav caret>
                                                 <img src={profile_pic}
@@ -71,9 +75,6 @@ class NavBar extends Component {
                                                 </Link>
                                             </MDBDropdownMenu>
                                         </MDBDropdown>
-                                    </MDBNavItem>
-                                    <MDBNavItem className="mr-3 float-right my-auto no-wrap pink-text">
-                                        Hi, {user_name}
                                     </MDBNavItem>
 
                                 </MDBNavbarNav>)
