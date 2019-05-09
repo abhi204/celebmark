@@ -30,7 +30,7 @@ class NavBar extends Component {
             <div>
                 <MDBRow>
                     {/* Desktop navigation */}
-                    <MDBNavbar color="white" light className="d-none d-sm-flex pt-0 pb-0 py-1" scrolling fixed="top">
+                    <MDBNavbar color="white" light className="d-none nav-height d-sm-flex pt-0 pb-0 py-1" scrolling fixed="top">
 
                         <MDBCol>
                             <MDBNavItem fluid='true' className="d-inline my-auto">
@@ -96,7 +96,7 @@ class NavBar extends Component {
                 </MDBRow>
 
                 {/* Navabar for Mobile Devices */}
-                <MDBNavbar style={this.state.color} className="d-flex d-sm-none p-0 z-depth-1" fixed="top">
+                <MDBNavbar style={this.state.color} className="d-flex nav-height d-sm-none p-0 z-depth-1" fixed="top">
                     {(loggedIn === true &&
                         // loggedin mobile navigation
                         <MDBNavbarNav className="d-inline-flex py-1 flex-row flex-fill">

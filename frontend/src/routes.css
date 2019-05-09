@@ -1,0 +1,14 @@
+.switch-wrapper {
+    position: relative;
+    top: 1em;
+  }
+   
+.switch-wrapper > div {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.page{
+  margin-top: 4em;
+}

@@ -16,6 +16,10 @@ import { checkLogin } from './_actions/auth';
 import Footer from '_components/Footer/footer';
 import { LOGIN_IN_PROGRESS } from './_consts/auth';
 
+import './routes.css';
+
+
+
 class Routes extends Component{
     constructor(props){
         super(props);
@@ -41,19 +45,19 @@ class Routes extends Component{
                 </MDBRow>
         </div>
         // Initial actions dispatched here
-        return(
-            <ConnectedRouter history={history}>
-            <div id="body">
-                {/* Pages Routed here, Components Routed inside App.js */}
-                <Switch>
-                    <Route publicOnly exact path='/login' component={LoginPage} />
-                    <Route publicOnly exact path='/signup' component={SignupPage} />    
-                    <Route exact path='/logout' component={LogoutPage} />
-                    <Route path='/' component={App} />
-                </Switch>
+        return (
+            <div>
+                <ConnectedRouter history={history}>
+                    {/* Pages Routed here, Components Routed inside App.js */}
+                    <Switch className="switch-wrapper">
+                        <Route publicOnly exact path='/login' component={LoginPage} />
+                        <Route publicOnly exact path='/signup' component={SignupPage} />    
+                        <Route exact path='/logout' component={LogoutPage} />
+                        <Route path='/' component={App}/>
+                    </Switch>
+                </ConnectedRouter>
                 <Footer/>
             </div>
-            </ConnectedRouter>
         );
     }
 }
