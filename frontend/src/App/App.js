@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import NavBar from '_containers/navbar/navbar';
-import { Switch } from 'react-router-dom';
 import Route from '_containers/custom_route';
 import AppHome from './app_scenes/app_home/app_home';
 import SearchPage from './app_scenes/search/search';
@@ -12,6 +11,9 @@ import DashboardPage from './app_scenes/dashboard/dashboard';
 import Error404Page from '_components/404_page/error404page';
 // Any Page/Component is to be rendered inside App
 
+import { AnimatedSwitch } from "react-router-transition";
+import { mapStyles, bounceTransition } from "_helpers/page_animate"
+
 class App extends Component {
   
   render() {
@@ -21,15 +23,21 @@ class App extends Component {
         <NavBar />
         <div style={{marginTop: "4em"}}/>{/* margin for navbar */}
         <div>
-          <Switch classname="switch-wrapper">
+          <AnimatedSwitch
+                atEnter={bounceTransition.atEnter}
+                atLeave={bounceTransition.atLeave}
+                atActive={bounceTransition.atActive}
+                mapStyles={mapStyles}
+                className="switch-wrapper"
+          >
             <Route exact path="/" component={AppHome} />
             <Route exact path="/search" component={SearchPage} />
             <Route exact path="/profile/:user_name" component={ProfilePage} />
             <Route privateURL exact path="/invite/:celeb" component={InvitePage} />
             <Route privateURL exact path="/payment/check" component={PaymentCheckPage} />
             <Route privateURL path="/dashboard/:option?" component={DashboardPage} />
-            <Route path='*' render={() => (<div>PAGE NOT FOUND</div>)} />
-          </Switch>
+            <Route path='*' component={Error404Page} />
+            </AnimatedSwitch>
         </div>
       </div>
     );

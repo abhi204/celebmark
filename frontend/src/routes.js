@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import { Switch, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Route from '_containers/custom_route.js'
 import { connect } from 'react-redux';
-import { MDBSpinner, MDBRow, MDBCol } from 'mdbreact';
+import { MDBSpinner } from 'mdbreact';
 
 // Import Pages/Components Here
 // Homepage Component Already imported in App.js
@@ -11,11 +11,12 @@ import LoginPage from './scenes/Login/login';
 import SignupPage from './scenes/Signup/signup';
 import LogoutPage from './scenes/Logout/logout';
 import { checkLogin } from './_actions/auth';
-import Footer from '_components/Footer/footer';
 import { LOGIN_IN_PROGRESS } from './_consts/auth';
 
 import './routes.css';
 
+import { AnimatedSwitch } from 'react-router-transition';
+import { mapStyles, bounceTransition } from '_helpers/page_animate'
 
 
 class Routes extends Component{
@@ -54,13 +55,18 @@ class Routes extends Component{
         return (
             <div>
                 {/* Pages Routed here, Components Routed inside App.js */}
-                <Switch className="switch-wrapper">
+                <AnimatedSwitch
+                    atEnter={bounceTransition.atEnter}
+                    atLeave={bounceTransition.atLeave}
+                    atActive={bounceTransition.atActive}
+                    mapStyles={mapStyles}
+                    className="switch-wrapper"
+                >
                     <Route publicOnly exact path='/login' component={LoginPage} noNav />
                     <Route publicOnly exact path='/signup' component={SignupPage} noNav />    
                     <Route exact path='/logout' component={LogoutPage} noNav />
                     <Route path='/' component={App}/>
-                </Switch>
-                <Footer/>
+                </AnimatedSwitch>
             </div>
         );
     }
@@ -74,4 +80,4 @@ const mapDispatchToProps = {
     checkLogin
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Routes));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Routes));

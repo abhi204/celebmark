@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 class Route extends Component {
 
     render(){
-        const { user, privateURL, publicOnly, history, noNav } = this.props;
+        const { user, privateURL, publicOnly, history } = this.props;
         let goto = sessionStorage.getItem('goto');
         
         window.scrollTo({top: 0, behavior: 'smooth'})
@@ -32,14 +32,7 @@ class Route extends Component {
         }
         else 
             return (
-                <div className="page-content" 
-                  style={{ 
-                      minHeight: `${
-                          window.innerHeight - 64 - (noNav ? 0: 64)
-                        }px`
-                    }}
-                //   64 => 4em => height of footer & navbar
-                >
+                <div className="page-content" >
                     <RootRoute {...this.props} />
                 </div>
             );
