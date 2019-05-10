@@ -12,11 +12,12 @@ import SignupPage from './scenes/Signup/signup';
 import LogoutPage from './scenes/Logout/logout';
 import { checkLogin } from './_actions/auth';
 import { LOGIN_IN_PROGRESS } from './_consts/auth';
+import { AnimatedSwitch } from 'react-router-transition';
+import { mapStyles, bounceTransition } from '_helpers/page_animate'
+import Error404Page from '_components/404_page/error404page';
 
 import './routes.css';
 
-import { AnimatedSwitch } from 'react-router-transition';
-import { mapStyles, bounceTransition } from '_helpers/page_animate'
 
 
 class Routes extends Component{
@@ -62,9 +63,10 @@ class Routes extends Component{
                     mapStyles={mapStyles}
                     className="switch-wrapper"
                 >
-                    <Route publicOnly exact path='/login' component={LoginPage} noNav />
-                    <Route publicOnly exact path='/signup' component={SignupPage} noNav />    
-                    <Route exact path='/logout' component={LogoutPage} noNav />
+                    <Route publicOnly exact path='/login' component={LoginPage} />
+                    <Route publicOnly exact path='/signup' component={SignupPage} />    
+                    <Route exact path='/logout' component={LogoutPage} />
+                    <Route exact path='/404' component={Error404Page} />
                     <Route path='/' component={App}/>
                 </AnimatedSwitch>
             </div>
