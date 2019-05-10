@@ -64,7 +64,10 @@ class SearchInput extends Component {
                     }
                     <a
                      href="/search"
-                     onMouseDown={ () => this.showScreen('/search') }
+                     onMouseDown={ () => { 
+                        this.showScreen('/search'); 
+                        this.doSearch(search.searchTerm)
+                    }}
                     >
                         <MDBListGroupItem id="search-more">
                                 <span style={{fontSize: "0.95em"}}>Show All Results</span>
@@ -96,11 +99,6 @@ class SearchInput extends Component {
             this.hideList()
         }
     }
-
-    // componentDidMount = () => {
-    //     let listItems = document.querySelector("#search-input").getElementsByTagName("*");
-    //     [...listItems].forEach( listItem => { listItem.addEventListener("click", this.hideList) })
-    // }
 
     render(){
         return(

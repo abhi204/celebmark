@@ -8,7 +8,7 @@ class SearchPage extends Component {
         return (
             <div className="">
                 <SearchPanel />
-                <div className="celeb-list container-fluid mt-2">
+                <div className="container-fluid">
                 <SearchResults/>
                 </div>
             </div>

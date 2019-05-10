@@ -1,11 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { searchNext } from '_actions/search';
+import { searchNext, searchCeleb } from '_actions/search';
 import CelebCard from '../components/celeb_card';
 import { MDBBtn, MDBSpinner, MDBRow } from 'mdbreact';
 
 
 class SearchResults extends Component {
+
+  componentDidMount(){
+    let { search, navSearch } = this.props;
+    if( !search.results.length && !navSearch.results.length )
+      this.props.searchCeleb()
+  }
 
 
   render(){
@@ -30,7 +36,18 @@ class SearchResults extends Component {
         <MDBRow className="mt-1 pr-0 pl-0">
           {childElements}
         </MDBRow>
-          { search.next && <center className="mt-3"><MDBBtn onClick={()=>{this.props.searchNext(search.next)}} disabled={search.loadingNext}>SHOW MORE</MDBBtn></center>}
+          { search.next ?
+            <center className="my-3">
+              <MDBBtn 
+                onClick={()=>{this.props.searchNext(search.next, search.searchTerm)}} 
+                disabled={search.loadingNext}
+              >
+              SHOW MORE
+              </MDBBtn>
+            </center>
+            :
+            <center className="my-3"/>
+          }
         </div>
       );
   }
@@ -42,7 +59,8 @@ let mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = {
-  searchNext
+  searchNext,
+  searchCeleb
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchResults);

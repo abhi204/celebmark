@@ -31,7 +31,7 @@ import {
  On Fail:
     returns the error response object from server 
  */
-export function navSearchCeleb(params=null){
+export function navSearchCeleb(params={}){
     let searchTerm = params.search || '';
     const request = params ? axios.get(API_SEARCH_CELEB, { params }) : axios.get(API_SEARCH_CELEB)
     return (dispatch) => {
@@ -42,7 +42,7 @@ export function navSearchCeleb(params=null){
 
 }
 
-export function searchCeleb(params=null){
+export function searchCeleb(params={}){
     let searchTerm = params.search || '';
     const request = params ? axios.get(API_SEARCH_CELEB, { params }) : axios.get(API_SEARCH_CELEB)
     return (dispatch) => {
@@ -54,13 +54,13 @@ export function searchCeleb(params=null){
 
 }
 
-export function searchNext(nextUrl){
+export function searchNext(nextUrl, searchTerm){
     const request = axios.get(nextUrl)
     return (dispatch) => {
         dispatch({ type: SEARCH_NEXT_LOADING })
         return request.then( ({data}) => {
-            dispatch({type: SEARCH_NEXT_RESPONSE, payload: { ...data } });
-        }).catch( error => dispatch({type: SEARCH_NEXT_FAILED, payload: error }) )
+            dispatch({type: SEARCH_NEXT_RESPONSE, payload: { ...data, searchTerm } });
+        }).catch( error => dispatch({type: SEARCH_NEXT_FAILED, payload: {...error, searchTerm} }) )
     }
 }
 
