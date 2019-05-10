@@ -3,7 +3,16 @@
     overflow: hidden;
 }
 
-.carousel-image-sm {
-    height: 25%;
-    overflow: hidden;
+
+
+.carousel-loading{
+    background-color: #CDCDCD;
 }
+
+
+@media only screen and (max-width: 576px) {
+    .carousel-image {
+        height: 275px;
+        overflow: hidden;
+    }
+  }
