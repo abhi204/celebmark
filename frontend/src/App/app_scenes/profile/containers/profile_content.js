@@ -68,7 +68,6 @@ class TabsPage extends Component {
                         </MDBNavItem>
                         <MDBNavbarNav right className="d-flex flex-row mr-5">
                             <MDBNavItem>
-                                {/* <HandlesList handles={profile.handles} /> */}
                             </MDBNavItem>
                             <MDBNavItem>
                                 <MDBBtn color="black" onClick={ () => {this.props.history.push(`/invite/${profile.user_name}`)} } className="invite-btn mr-5" rounded>
