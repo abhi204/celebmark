@@ -1,7 +1,7 @@
 import React from "react";
 import Form1 from '../forms/form1';
 import Form2 from "../forms/form2";
-import { MDBContainer, MDBRow, MDBCol, MDBStepper, MDBStep, MDBBtn, MDBCard, MDBCardBody, MDBIcon} from "mdbreact";
+import { MDBContainer, MDBRow, MDBCol, MDBStepper, MDBStep, MDBBtn, MDBCard, MDBCardBody } from "mdbreact";
 import { submitForm, submitOK } from "../helpers/submit_form";
 import {favIcon} from '_consts/dummy';
 

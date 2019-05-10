@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {searchCeleb, clearSearch} from '_actions/search';
+import {clearSearch} from '_actions/search';
 // import {MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem} from 'mdbreact';
 import './search_panel.css';
 

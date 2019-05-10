@@ -14,8 +14,9 @@ let invitesReducer = (state=initialState, { type, payload }) => {
             return { error: true, payload }
         case INVITE_GET:
             return { inviteList: payload }
+        default:
+            return state;
     }
-    return state;
 }
 
 export default invitesReducer;

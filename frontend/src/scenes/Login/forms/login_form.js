@@ -4,7 +4,7 @@ import { withRouter, Link } from 'react-router-dom';
 import { validators as $ } from '_helpers/field_validators';
 import { loginFormSubmit } from '../actions/login_submit';
 import {favIcon} from '_consts/dummy';
-import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBIcon, MDBModalFooter } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody, MDBInput, MDBBtn, MDBModalFooter } from 'mdbreact';
 
 const renderField = ({
   label,

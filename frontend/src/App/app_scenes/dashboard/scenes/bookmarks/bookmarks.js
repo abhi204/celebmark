@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import {withRouter} from 'react-router-dom';
-import {MDBIcon, MDBRow, MDBSpinner} from "mdbreact";
+import {MDBIcon, MDBRow} from "mdbreact";
 import '../../../search/components/celeb_card.css';
 import './bookmark.css';
 import { getCelebBookmark } from '_actions/bookmark'
