@@ -5,14 +5,15 @@ import { connect } from 'react-redux';
 class Route extends Component {
 
     render(){
-        const { user, privateURL, publicOnly, history } = this.props;
+        let { user, privateURL, publicOnly, history } = this.props;
         let goto = sessionStorage.getItem('goto');
         
         window.scrollTo({top: 0, behavior: 'smooth'})
         
         if(user.loggedIn === false && privateURL)
         {
-            sessionStorage.setItem('goto', history.location.pathname)
+            if(history.location.pathname !== '/login')
+                sessionStorage.setItem('goto', history.location.pathname)
             return  <Redirect 
                     to={{
                         pathname: "/login",
@@ -22,7 +23,7 @@ class Route extends Component {
                         }
                     }} 
                     />
-        }
+                }
         else if(user.loggedIn === true && publicOnly)
             return <Redirect to="/" />
         else if(user.loggedIn === true && goto)
