@@ -5,13 +5,21 @@ import { logout } from '_actions/auth';
 
 
 class LogoutPage extends Component {
-    componentWillMount(){
-        //reset root reducer here and cleanups here
+
+    componentDidMount(){
         this.props.logout();
     }
+
     render(){
-        return(
-            <Redirect to='/' />
+        return (
+            <div>
+                {
+                    this.props.user.loggedIn === false ?
+                    <Redirect to="/" />
+                    :
+                    <div></div>
+                }
+            </div>
         );
     }
 }
@@ -20,4 +28,8 @@ const mapDispatchToProps = {
     logout,
 }
 
-export default connect(null,mapDispatchToProps)(LogoutPage);
+const mapStateToProps = (state) => ({
+    user: state.user
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(LogoutPage);
