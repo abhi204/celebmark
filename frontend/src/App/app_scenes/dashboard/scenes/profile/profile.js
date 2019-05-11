@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import { connect } from 'react-redux';
-import {MDBRow, MDBCol, MDBCardBody, MDBMask, MDBIcon, MDBView, MDBBtn, MDBContainer} from "mdbreact";
+import {MDBRow, MDBCol, MDBCardBody, MDBMask, MDBIcon, MDBView, MDBBtn} from "mdbreact";
 import "./profile.css";
 import { API_INVITE_STATUS } from '_consts/api';
 import { store } from 'index';
@@ -29,8 +29,7 @@ class DetailsSection extends Component {
         const { user } = this.props;
         const { inviteStatus } = this.state;
         return (
-            <MDBContainer className="mt-4">
-                <div className="mt-1 px-5 py-3 big-screen-margin-profile">
+                <div className="mt-1 py-3 big-screen-margin-profile">
                     <MDBCardBody>
                         <MDBRow className="pt-3 mb-3 ">
                             <MDBCol lg="3" >
@@ -43,7 +42,7 @@ class DetailsSection extends Component {
                                         <MDBMask overlay="white-slight"/>
                                 </MDBView>
                             </MDBCol>
-                            <MDBCol className="pl-4 mobile-content-profile" lg="8" >
+                            <MDBCol className="mobile-content-profile" lg="8" >
                                 <h5 className="font-weight-bold mb-3 blue-grey-text">
                                     <MDBIcon icon="info-circle" className="pr-2"/>
                                     Profile Details &nbsp;
@@ -119,17 +118,16 @@ class DetailsSection extends Component {
                                         <strong> Subscription Status</strong>
                                     </h2>
                                     <div className="pt-3">
-                                        <p className="pb-0  float-left mr-4 font-weight-bold text-capitalize"><MDBIcon fas icon="wallet" /> Plan :- {user.subscription} </p>
-                                        <p className="pb-0  float-left mr-4 font-weight-bold"><MDBIcon far icon="calendar-alt" /> Started On :- 04/05/2019 </p>
-                                        <p className="pb-0  float-left mr-4 font-weight-bold"><MDBIcon far icon="calendar-check" /> Ends On :- 04/08/2019 </p>
-                                        <p className="pb-0  float-left font-weight-bold"><MDBIcon icon="gift" /> Invites Left (This Month) :- 12 </p>
+                                        <p className="pb-0  float-left mr-4 font-weight-bold text-capitalize"><MDBIcon icon="wallet" /> Plan {user.subscription} </p>
+                                        <p className="pb-0  float-left mr-4 font-weight-bold"><MDBIcon far icon="calendar-alt" /> Started On 04/05/2019 </p>
+                                        <p className="pb-0  float-left mr-4 font-weight-bold"><MDBIcon far icon="calendar-check" /> Ends On 04/08/2019 </p>
+                                        <p className="pb-0  float-left font-weight-bold"><MDBIcon icon="gift" /> Invites Left (This Month) 12 </p>
                                     </div>
                                 </MDBCardBody>
                             </MDBCol>
                         </MDBRow>
                     </MDBCardBody>
                 </div>
-            </MDBContainer>
         );
     }
 }

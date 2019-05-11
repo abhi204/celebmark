@@ -28,9 +28,9 @@ class BookmarksSection extends Component {
                     <strong>Bookmarks</strong>
                 </h4>
                 <div className="big-screen-margin-bookmark">
-                <MDBRow className="mt-1 mr-2 ml-5">
+                <MDBRow className="mt-1 mr-2">
                     {
-                        celeb_list.map( celeb => <BookmarkCard celeb={celeb}/> )
+                        celeb_list.map( celeb => <BookmarkCard key={celeb.user_name} celeb={celeb}/> )
                     }
                 </MDBRow>
                 </div>

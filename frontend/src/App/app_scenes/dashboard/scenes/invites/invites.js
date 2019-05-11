@@ -24,7 +24,7 @@ class InvitesSection extends Component {
                     <MDBIcon icon="gift" size="md" className="pink-text mr-2"/>
                     <strong>Invites</strong>
                 </h4>
-                <div className="big-screen-margin-invite">
+                {/* <div className="big-screen-margin-invite"> */}
                 {
                     ( invites.loading && <div>Loading...</div> )
                     ||
@@ -44,7 +44,7 @@ class InvitesSection extends Component {
                     
                 }
                     
-                </div>
+                {/* </div> */}
             </div>
         );
     }

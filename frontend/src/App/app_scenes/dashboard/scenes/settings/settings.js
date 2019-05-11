@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
 import {MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody} from 'mdbreact';
-import "./setting.css";
+import "./settings.css";
 
 class SettingsSection extends Component {
 
     render() {
         return (
             <div>
-                <MDBRow className="big-screen-margin-setting">
-                    <MDBCol md="6" className="big-screen-margin-setting">
+                <MDBRow>
+                    <MDBCol md="6">
                         <MDBCard>
                             <MDBCardBody>
                                 <form>

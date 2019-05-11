@@ -6,4 +6,4 @@ export const smallIcon = "https://i.ibb.co/rdjYVnq/cm-star-ico.png";
 export const carouselUrl = "https://source.unsplash.com/featured/?concert";
 export const sponsorUrl = "https://source.unsplash.com/160x80/?company,logo";
 
-export const largeProfileUrl = "https://images.unsplash.com/photo-1493676304819-0d7a8d026dcf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80";
+export const largeProfileUrl = "https://cdn-images-1.medium.com/max/2560/1*bbrdaWB-Yz8MVm6T-QZuug.jpeg";
