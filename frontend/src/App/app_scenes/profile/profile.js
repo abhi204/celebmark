@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
 import { getCelebProfile } from '_actions/profile';
 import ProfileTabs from './containers/profile_content';
 import './profile.css';
@@ -41,4 +42,4 @@ const mapStateToProps = state => (
 const mapDispatchToProps = {
     getCeleb: getCelebProfile
 }
-export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ProfilePage));
