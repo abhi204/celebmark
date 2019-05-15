@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Switch } from 'react-router-dom';
 import Route from '_containers/custom_route.js'
 import { connect } from 'react-redux';
 import { MDBSpinner } from 'mdbreact';
@@ -12,12 +12,9 @@ import SignupPage from './scenes/Signup/signup';
 import LogoutPage from './scenes/Logout/logout';
 import { checkLogin } from './_actions/auth';
 import { LOGIN_IN_PROGRESS } from './_consts/auth';
-import { AnimatedSwitch } from 'react-router-transition';
-import { mapStyles, bounceTransition } from '_helpers/page_animate'
 import Error404Page from '_components/404_page/error404page';
 
 import './routes.css';
-
 
 
 class Routes extends Component{
@@ -56,19 +53,13 @@ class Routes extends Component{
         return (
             <div>
                 {/* Pages Routed here, Components Routed inside App.js */}
-                <AnimatedSwitch
-                    atEnter={bounceTransition.atEnter}
-                    atLeave={bounceTransition.atLeave}
-                    atActive={bounceTransition.atActive}
-                    mapStyles={mapStyles}
-                    className="switch-wrapper"
-                >
+                <Switch>
                     <Route publicOnly exact path='/login' component={LoginPage} />
                     <Route publicOnly exact path='/signup' component={SignupPage} />    
                     <Route exact path='/logout' component={LogoutPage} />
                     <Route exact path='/404' component={Error404Page} />
                     <Route path='/' component={App}/>
-                </AnimatedSwitch>
+                </Switch>
             </div>
         );
     }

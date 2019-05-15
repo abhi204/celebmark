@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import InviteForm from './forms/invite_form';
 import { getYMDFormat } from '_helpers/date_convertor';
 import InviteSent from './containers/invite_sent';
+import { withRouter } from 'react-router-dom';
 
 class InvitePage extends Component {
     render() {
@@ -36,4 +37,4 @@ const mapStateToProps = state => (
         userDetails: state.user.details
     }
 )
-export default connect(mapStateToProps,)(InvitePage);
+export default withRouter(connect(mapStateToProps,)(InvitePage));

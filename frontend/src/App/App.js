@@ -9,10 +9,9 @@ import InvitePage from "./app_scenes/invite/invite";
 import PaymentCheckPage from './app_scenes/payment/payment_check';
 import DashboardPage from './app_scenes/dashboard/dashboard';
 import Error404Page from '_components/404_page/error404page';
+import { withRouter, Switch } from 'react-router-dom';
 // Any Page/Component is to be rendered inside App
 
-import { AnimatedSwitch } from "react-router-transition";
-import { mapStyles, bounceTransition } from "_helpers/page_animate"
 
 class App extends Component {
   
@@ -23,13 +22,7 @@ class App extends Component {
         <NavBar />
         <div style={{marginTop: "4em"}}/>{/* margin for navbar */}
         <div>
-          <AnimatedSwitch
-                atEnter={bounceTransition.atEnter}
-                atLeave={bounceTransition.atLeave}
-                atActive={bounceTransition.atActive}
-                mapStyles={mapStyles}
-                className="switch-wrapper"
-          >
+          <Switch>
             <Route exact path="/" component={AppHome} />
             <Route exact path="/search" component={SearchPage} />
             <Route exact path="/profile/:user_name" component={ProfilePage} />
@@ -37,7 +30,7 @@ class App extends Component {
             <Route privateURL exact path="/payment/check" component={PaymentCheckPage} />
             <Route privateURL path="/dashboard/:option?" component={DashboardPage} />
             <Route path='*' component={Error404Page} />
-            </AnimatedSwitch>
+            </Switch>
         </div>
       </div>
     );
@@ -50,4 +43,4 @@ function mapStateToProps(state){
   }
 }
 
-export default connect(mapStateToProps,)(App);
+export default withRouter(connect(mapStateToProps,)(App));
