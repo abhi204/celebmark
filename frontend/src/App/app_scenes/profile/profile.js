@@ -1,9 +1,10 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Redirect } from 'react-router-dom';
 import { getCelebProfile } from '_actions/profile';
 import ProfileTabs from './containers/profile_content';
 import './profile.css';
+import { MDBSpinner } from "mdbreact";
 
 class ProfilePage extends Component {
     constructor(props) {
@@ -23,9 +24,22 @@ class ProfilePage extends Component {
     render() {
         let {profile} = this.props;
         if (profile.loading)
-            return <div>LOADING</div>
-        else if (!profile.loading && !profile.user_name)
-            return <div>NO CELEB</div>
+            return (
+            <div>
+                <div 
+                    className="d-flex 
+                    flex-column
+                    justify-content-center
+                    align-items-center 
+                    h-100"
+                >
+                    Loading..
+                    <br/>
+                    <MDBSpinner green />
+                </div>
+            </div>)
+        else if (!profile.loading && profile.error)
+            return <Redirect to="/404" />
         else
             return (
                 <div style={{backgroundColor: "white"}}>
