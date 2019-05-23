@@ -22,7 +22,7 @@ class ProfilePage extends Component {
     }
 
     render() {
-        let {profile} = this.props;
+        let { profile } = this.props;
         if (profile.loading)
             return (
             <div>
