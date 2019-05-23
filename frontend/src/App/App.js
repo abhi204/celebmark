@@ -12,7 +12,6 @@ import Error404Page from '_components/404_page/error404page';
 import { withRouter, Switch } from 'react-router-dom';
 // Any Page/Component is to be rendered inside App
 
-
 class App extends Component {
   
   render() {

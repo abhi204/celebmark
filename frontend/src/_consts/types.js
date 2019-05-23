@@ -26,3 +26,6 @@ export const INVITE_GET_LOADING = "Getting Invites"
 
 export const SUBSCRIBE = "Do Subscribe";
 export const SUBSCRIBE_FAILED = "Subscribe Failed";
+
+export const USER_UPDATE = "Update User Details";
+export const USER_UPDATE_FAILED = "Failed To Update User Details";

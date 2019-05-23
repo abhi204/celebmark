@@ -31,6 +31,10 @@ class BaseUserSerializer(serializers.ModelSerializer):
     
     bookmarks = serializers.JSONField(required=False)
 
+    def validate_mobile(self, value):
+        if value < 1000000000 or type(value) != int:
+            raise serializers.ValidationError("Invalid Mobile number")
+        return value
 
     def get_profile_pic(self, user_obj):
         return user_obj.profile_pic.url

@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {withRouter} from 'react-router-dom';
-import {MDBRow, MDBCol, MDBInput, MDBBtn, MDBCard, MDBCardBody} from 'mdbreact';
+import { connect } from 'react-redux';
+import UpdateUserForm from './forms/update_user_form';
+import {MDBRow, MDBCol, MDBCard, MDBCardBody} from 'mdbreact';
+
 import "./settings.css";
 
 class SettingsSection extends Component {
@@ -9,25 +12,13 @@ class SettingsSection extends Component {
         return (
             <div>
                 <MDBRow>
-                    <MDBCol md="6">
+                    <MDBCol md="6" className="m-4">
                         <MDBCard>
                             <MDBCardBody>
-                                <form>
-                                    <p className="h4 text-center py-4">Update Details</p>
-                                    <div className="grey-text">
-                                        <MDBInput label="Update First Name" icon="user-edit" group type="text" validate error="wrong" success="right" />
-                                        <MDBInput label="Update Last Name" icon="user-edit" group type="text" validate error="wrong" success="right" />
-                                        <MDBInput label="Update Email" icon="envelope" group type="text" validate error="wrong" success="right" />
-                                        <MDBInput label="Update Phone" icon="mobile-alt" group type="text" validate error="wrong" success="right" />
-                                        <MDBInput label="Enter Password " icon="lock" group type="text" validate error="wrong" success="right" />
-
-                                    </div>
-                                    <div className="text-center py-4 mt-3">
-                                        <MDBBtn rounded color="cyan" type="submit">
-                                            Update Details
-                                        </MDBBtn>
-                                    </div>
-                                </form>
+                                <p className="h4 text-center py-4">Update Details</p>
+                                <div className="grey-text">
+                                    <UpdateUserForm />
+                                </div>
                             </MDBCardBody>
                         </MDBCard>
                     </MDBCol>
@@ -37,4 +28,8 @@ class SettingsSection extends Component {
     }
 }
 
-export default withRouter(SettingsSection);
+let mapStateToProps = (state) => ({
+    user: state.user
+})
+
+export default withRouter(connect(mapStateToProps)(SettingsSection));
