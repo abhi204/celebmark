@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "connected-react-router": "^6.2.2",
     "jwt-decode": "^2.2.0",
     "mdbreact": "git+https://oauth2:kFVDxrnUw3diXAby1zf2@git.mdbootstrap.com/mdb/react/re-pro.git",
